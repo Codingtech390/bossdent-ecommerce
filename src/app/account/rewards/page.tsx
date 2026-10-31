@@ -38,7 +38,7 @@ export default async function RewardsLedgerPage() {
       <div className="bg-gradient-to-r from-amber-500 via-amber-600 to-orange-600 text-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
         <div className="space-y-2">
           <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">
-            <Coins className="w-3.5 h-3.5" /> DentalKart Rewards Balance
+            <Coins className="w-3.5 h-3.5" /> Bossdent Rewards Balance
           </span>
           <h1 className="text-3xl md:text-4xl font-black">{user.dentacoins} Dentacoins</h1>
           <p className="text-xs text-amber-100">

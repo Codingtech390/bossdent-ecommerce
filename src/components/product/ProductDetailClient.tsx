@@ -178,7 +178,7 @@ export function ProductDetailClient({
                 href={`/brands/${product.brand?.slug || ""}`}
                 className="font-bold text-dk-teal-700 hover:underline uppercase tracking-wider"
               >
-                {product.brand?.name || "DentalKart Verified Brand"}
+                {product.brand?.name || "Bossdent Verified Brand"}
               </Link>
               <span className="text-slate-400 font-mono">SKU: {currentSku}</span>
             </div>

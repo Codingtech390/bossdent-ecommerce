@@ -5,12 +5,12 @@ import { HelpCircle, ChevronRight } from "lucide-react";
 export default function FAQPage() {
   const faqs = [
     {
-      q: "Are all products on DentalKart 100% genuine and authorized?",
-      a: "Yes. DentalKart sources exclusively from official manufacturer channels and direct Indian brand representatives (3M ESPE, Dentsply Sirona, NSK, GC, Waldent, Woodpecker). Every product carries genuine manufacturer warranty and batch certification.",
+      q: "Are all products on Bossdent 100% genuine and authorized?",
+      a: "Yes. Bossdent sources exclusively from official manufacturer channels and direct Indian brand representatives (3M ESPE, Dentsply Sirona, NSK, GC, Waldent, Woodpecker). Every product carries genuine manufacturer warranty and batch certification.",
     },
     {
       q: "How do Dentacoins work?",
-      a: "For every ₹50 spent, regular practitioners earn 1 Dentacoin, while DentalKart Plus members earn 2 Dentacoins. 1 Dentacoin equals ₹1 discount redeemable at checkout on your subsequent orders.",
+      a: "For every ₹50 spent, regular practitioners earn 1 Dentacoin, while Bossdent Plus members earn 2 Dentacoins. 1 Dentacoin equals ₹1 discount redeemable at checkout on your subsequent orders.",
     },
     {
       q: "Can I receive a GST Tax invoice with my Clinic and DCI registration?",
@@ -18,7 +18,7 @@ export default function FAQPage() {
     },
     {
       q: "What is the Freebies Zone?",
-      a: "DentalKart features monthly promotional freebies where dentists can claim complimentary instruments, burs, and materials for just ₹1 upon reaching qualifying cart amounts.",
+      a: "Bossdent features monthly promotional freebies where dentists can claim complimentary instruments, burs, and materials for just ₹1 upon reaching qualifying cart amounts.",
     },
     {
       q: "How does the New Clinic Setup consultation work?",

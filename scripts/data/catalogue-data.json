@@ -1,716 +1,744 @@
 {
   "brands": [
     {
-      "name": "3M ESPE",
-      "slug": "3m-espe",
-      "originCountry": "USA",
+      "name": "Labodent",
+      "slug": "labodent",
+      "originCountry": "India",
       "isFeatured": true,
-      "description": "Global leader in innovative dental materials including Filtek composites and RelyX dental cements."
+      "description": "Dental 3D printing resins and digital dentistry materials."
+    },
+    {
+      "name": "Dentaltech",
+      "slug": "dentaltech",
+      "originCountry": "India",
+      "isFeatured": true,
+      "description": "Dental implant prosthetic components and clinical instrument kits."
+    },
+    {
+      "name": "Frank Dental",
+      "slug": "frank-dental",
+      "originCountry": "Germany",
+      "isFeatured": true,
+      "description": "Rotary diamond burs and precision dental instruments."
+    },
+    {
+      "name": "UU Ortho",
+      "slug": "uu-ortho",
+      "originCountry": "India",
+      "isFeatured": true,
+      "description": "Orthodontic and clear-aligner materials."
     },
     {
       "name": "Waldent",
       "slug": "waldent",
       "originCountry": "India",
       "isFeatured": true,
-      "description": "DentalKart's flagship precision equipment, rotary handpieces, and surgical instruments brand."
+      "description": "Dental consumables, instruments and clinical equipment."
+    },
+    {
+      "name": "DentsMind",
+      "slug": "dentsmind",
+      "originCountry": "India",
+      "isFeatured": true,
+      "description": "Endodontic rotary files and dental consumables."
     },
     {
       "name": "Dentsply Sirona",
       "slug": "dentsply-sirona",
       "originCountry": "USA / Germany",
       "isFeatured": true,
-      "description": "World-renowned endodontic instruments, ProTaper rotary files, and restorative systems."
+      "description": "Dental restorative and endodontic products."
     },
     {
-      "name": "NSK",
-      "slug": "nsk",
-      "originCountry": "Japan",
-      "isFeatured": true,
-      "description": "Pioneering ultra-high precision turbine handpieces, contra-angles, and micromotor equipment."
-    },
-    {
-      "name": "Woodpecker",
-      "slug": "woodpecker",
-      "originCountry": "China",
-      "isFeatured": true,
-      "description": "Leading manufacturer of LED curing lights, ultrasonic scalers, apex locators, and surgical units."
-    },
-    {
-      "name": "GC Corporation",
-      "slug": "gc-corporation",
-      "originCountry": "Japan",
-      "isFeatured": true,
-      "description": "Gold standard glass ionomer cements, Fuji series, and clinical restorative materials."
-    },
-    {
-      "name": "Eighteeth",
-      "slug": "eighteeth",
-      "originCountry": "China",
-      "isFeatured": true,
-      "description": "Smart, cordless endodontic motors, apex locators, and digital dental imaging equipment."
-    },
-    {
-      "name": "Mani",
-      "slug": "mani",
-      "originCountry": "Japan",
-      "isFeatured": true,
-      "description": "Japanese high-grade stainless steel K-files, H-files, and dental burs."
-    },
-    {
-      "name": "Zhermack",
-      "slug": "zhermack",
-      "originCountry": "Italy",
-      "isFeatured": true,
-      "description": "Premium impression materials, Zetaplus C-silicone, and Elite HD+ A-silicone."
-    },
-    {
-      "name": "U Orthodontics",
-      "slug": "u-orthodontics",
+      "name": "ICPA",
+      "slug": "icpa",
       "originCountry": "India",
       "isFeatured": true,
-      "description": "High-accuracy orthodontic brackets, MBT/Roth slot systems, and nickel-titanium archwires."
+      "description": "Dental anaesthetic and clinical consumable products."
+    },
+    {
+      "name": "Generic Supplies",
+      "slug": "generic-supplies",
+      "originCountry": "Not specified",
+      "isFeatured": true,
+      "description": "Generic clinic consumables where the listing does not identify a manufacturer."
+    },
+    {
+      "name": "GI Dental",
+      "slug": "gi-dental",
+      "originCountry": "Not specified",
+      "isFeatured": true,
+      "description": "Dental diagnostic consumables; manufacturer origin not verified."
+    },
+    {
+      "name": "GDC",
+      "slug": "gdc",
+      "originCountry": "Not specified",
+      "isFeatured": true,
+      "description": "Dental hand instruments and clinical tools."
+    },
+    {
+      "name": "SDI",
+      "slug": "sdi",
+      "originCountry": "Australia",
+      "isFeatured": true,
+      "description": "Dental whitening and restorative materials."
+    },
+    {
+      "name": "Medicept",
+      "slug": "medicept",
+      "originCountry": "Not specified",
+      "isFeatured": true,
+      "description": "Dental restorative materials."
     }
   ],
   "categories": [
     {
-      "name": "Restorative & Esthetics",
-      "slug": "restorative-and-esthetics",
-      "description": "Universal composites, bonding agents, etchants, glass ionomer cements, and finishing systems.",
+      "name": "Digital Dentistry & 3D Printing",
+      "slug": "digital-dentistry-3d-printing",
+      "description": "Materials used in digital dental design and 3D printing workflows.",
       "isFeatured": true,
       "order": 1,
       "subcategories": [
-        { "name": "Dental Composites", "slug": "dental-composites", "description": "Micro-hybrid and nano-filled restorative resins" },
-        { "name": "Bonding Agents & Etchants", "slug": "bonding-agents-and-etchants", "description": "Universal adhesives, self-etch and total-etch systems" },
-        { "name": "Glass Ionomer Cements", "slug": "glass-ionomer-cements", "description": "Luting and restorative glass ionomers" }
+        {
+          "name": "3D Printing Resins",
+          "slug": "3d-printing-resins",
+          "description": "Model and dental 3D printing resins."
+        }
       ]
     },
     {
-      "name": "Endodontics",
-      "slug": "endodontics",
-      "description": "Rotary files, cordless endomotors, apex locators, obturation systems, and root canal sealers.",
+      "name": "Implantology",
+      "slug": "implantology",
+      "description": "Implant prosthetic components and related clinical tools.",
       "isFeatured": true,
       "order": 2,
       "subcategories": [
-        { "name": "Rotary & Hand Files", "slug": "rotary-and-hand-files", "description": "NiTi rotary files, K-files, and glide path instruments" },
-        { "name": "Endomotors & Apex Locators", "slug": "endomotors-and-apex-locators", "description": "Cordless smart endodontic motors with integrated apex locators" },
-        { "name": "Obturation & Sealers", "slug": "obturation-and-sealers", "description": "Gutta percha, bioceramic sealers, and thermal obturation" }
+        {
+          "name": "Implant Drivers & Prosthetics",
+          "slug": "implant-drivers-prosthetics",
+          "description": "Prosthetic drivers and implant abutments."
+        }
       ]
     },
     {
-      "name": "Handpieces & Rotary",
-      "slug": "handpieces-and-rotary",
-      "description": "High-speed airotors, low-speed straight & contra-angle handpieces, and air micromotors.",
+      "name": "Rotary Instruments & Burs",
+      "slug": "rotary-instruments-burs",
+      "description": "Dental rotary burs and precision cutting instruments.",
       "isFeatured": true,
       "order": 3,
       "subcategories": [
-        { "name": "High Speed Airotors", "slug": "high-speed-airotors", "description": "LED and non-LED push button dental turbines" },
-        { "name": "Micromotors & Attachments", "slug": "micromotors-and-attachments", "description": "Air and electric micromotors with 1:1 straight and contra-angle handpieces" }
-      ]
-    },
-    {
-      "name": "Instruments & Surgery",
-      "slug": "instruments-and-surgery",
-      "description": "Diagnostic kits, tooth extraction forceps, root elevators, bone curettes, and suture materials.",
-      "isFeatured": true,
-      "order": 4,
-      "subcategories": [
-        { "name": "Extraction Forceps & Elevators", "slug": "extraction-forceps-and-elevators", "description": "Stainless steel adult and pedo extraction forceps and luxating elevators" },
-        { "name": "Diagnostic & Scaler Instruments", "slug": "diagnostic-and-scaler-instruments", "description": "Mouth mirrors, tweezers, explorers, and periodontal probes" }
+        {
+          "name": "Diamond Burs",
+          "slug": "diamond-burs",
+          "description": "Diamond rotary burs."
+        }
       ]
     },
     {
       "name": "Orthodontics",
       "slug": "orthodontics",
-      "description": "Metal and ceramic bracket systems, buccal tubes, molar bands, and super-elastic Niti archwires.",
+      "description": "Orthodontic and aligner materials.",
+      "isFeatured": true,
+      "order": 4,
+      "subcategories": [
+        {
+          "name": "Clear Aligner Materials",
+          "slug": "clear-aligner-materials",
+          "description": "Thermoforming sheets for aligner workflows."
+        }
+      ]
+    },
+    {
+      "name": "Restorative Dentistry",
+      "slug": "restorative-dentistry",
+      "description": "Etchants, composites and restorative materials.",
       "isFeatured": true,
       "order": 5,
       "subcategories": [
-        { "name": "Brackets & Buccal Tubes", "slug": "brackets-and-buccal-tubes", "description": "0.022 & 0.018 MBT and Roth slot orthodontic brackets" },
-        { "name": "Archwires & Elastics", "slug": "archwires-and-elastics", "description": "Round and rectangular NiTi wires, ligature ties, and power chains" }
+        {
+          "name": "Etchants & Bonding",
+          "slug": "etchants-bonding",
+          "description": "Dental etching materials."
+        },
+        {
+          "name": "Composite Kits",
+          "slug": "composite-kits",
+          "description": "Dental composite restorative kits."
+        },
+        {
+          "name": "Glass Ionomer Materials",
+          "slug": "glass-ionomer-materials",
+          "description": "Glass ionomer restorative products."
+        }
       ]
     },
     {
-      "name": "Equipment & Digital Dentistry",
-      "slug": "equipment-and-digital-dentistry",
-      "description": "Dental chairs, autoclaves, intraoral cameras, ultrasonic scalers, and curing lights.",
+      "name": "Endodontics",
+      "slug": "endodontics",
+      "description": "Root canal preparation and endodontic consumables.",
       "isFeatured": true,
       "order": 6,
       "subcategories": [
-        { "name": "Sterilization & Autoclaves", "slug": "sterilization-and-autoclaves", "description": "Class B vacuum autoclaves, UV chambers, and sealing machines" },
-        { "name": "Operatory Hardware", "slug": "operatory-hardware", "description": "LED curing lights, ultrasonic piezo scalers, and intraoral cameras" },
-        { "name": "Dental Chairs & Units", "slug": "dental-chairs-and-units", "description": "Fully motorized luxury dental operatory chairs (Quotation available)" }
+        {
+          "name": "Rotary Files",
+          "slug": "rotary-files",
+          "description": "NiTi rotary endodontic files."
+        },
+        {
+          "name": "Canal Preparation Materials",
+          "slug": "canal-preparation-materials",
+          "description": "Materials used during root canal preparation."
+        }
       ]
     },
     {
-      "name": "Impression Materials",
-      "slug": "impression-materials",
-      "description": "Addition & condensation silicone putties, light body cartridges, and chromatic alginates.",
+      "name": "Clinical Consumables",
+      "slug": "clinical-consumables",
+      "description": "General dental clinic consumables and patient-use products.",
       "isFeatured": true,
       "order": 7,
       "subcategories": [
-        { "name": "Silicone Putty & Light Body", "slug": "silicone-putty-and-light-body", "description": "C-silicone and VPS impression kits" },
-        { "name": "Alginates & Trays", "slug": "alginates-and-trays", "description": "Fast-setting chromatic dust-free dental alginates" }
+        {
+          "name": "Anaesthetic Products",
+          "slug": "anaesthetic-products",
+          "description": "Topical dental anaesthetic products."
+        },
+        {
+          "name": "Protective Apparel",
+          "slug": "protective-apparel",
+          "description": "Patient protective apparel."
+        }
       ]
     },
     {
-      "name": "New Clinic Setup",
-      "slug": "new-clinic-setup",
-      "description": "Comprehensive operatory packages, dental equipment packages, and turnkey clinical clinic setup solutions.",
+      "name": "Dental Instruments",
+      "slug": "dental-instruments",
+      "description": "Diagnostic and restorative hand instruments.",
       "isFeatured": true,
       "order": 8,
       "subcategories": [
-        { "name": "Turnkey Packages", "slug": "turnkey-packages", "description": "Full dental clinic setup bundles with installation assistance" }
+        {
+          "name": "Diagnostic Instruments",
+          "slug": "diagnostic-instruments",
+          "description": "Mouth mirrors and diagnostic instruments."
+        },
+        {
+          "name": "Crown & Bridge Instruments",
+          "slug": "crown-bridge-instruments",
+          "description": "Crown removal and related instruments."
+        }
       ]
     }
   ],
   "products": [
     {
-      "title": "3M Filtek Z250 Universal Restorative Composite",
-      "slug": "3m-filtek-z250-universal-restorative-composite",
-      "brandSlug": "3m-espe",
-      "categorySlug": "restorative-and-esthetics",
-      "subcategorySlug": "dental-composites",
-      "shortDescription": "Proven universal microhybrid restorative composite delivering superior strength and aesthetic Polishability.",
-      "fullDescription": "3M Filtek Z250 Universal Restorative has been trusted by dentists worldwide for more than 20 years. Designed for anterior and posterior restorations, core build-ups, splinting, and indirect restorations including inlays, onlays, and veneers. Offers low polymerization shrinkage for reduced stress on the tooth and lower sensitivity.",
-      "features": [
-        "Hybrid technology with 82% filler by weight (60% by volume)",
-        "Exceptional handling: sculptable, does not slump or stick to instruments",
-        "Fast curing time of just 20 seconds for 2.5mm depth of cure",
-        "Excellent mechanical properties with high flexural and compressive strength"
-      ],
+      "title": "Labodent DentWERK HD Dental 3D Printer Model Resin",
+      "slug": "labodent-dentwerk-hd-dental-3d-printer-model-resin",
+      "brandSlug": "labodent",
+      "categorySlug": "digital-dentistry-3d-printing",
+      "subcategorySlug": "3d-printing-resins",
+      "shortDescription": "Dental model resin listed in Grey and Almond 1 kg options. Reference price captured from the DentalKart Hot Selling listing.",
+      "fullDescription": "Dental model resin listed in Grey and Almond 1 kg options. Reference price captured from the DentalKart Hot Selling listing.",
+      "features": [],
       "specifications": [
-        { "key": "Filler Loading", "value": "82% by weight" },
-        { "key": "Curing Depth", "value": "2.5 mm in 20 seconds" },
-        { "key": "Delivery System", "value": "4g Ergonomic Syringe" },
-        { "key": "Indications", "value": "Class I - V restorations, Core build-ups" }
+        {
+          "key": "Pack size",
+          "value": "1 kg"
+        },
+        {
+          "key": "Available options",
+          "value": "Grey; Almond"
+        }
       ],
-      "images": [
-        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "3M-Z250-A2",
-      "basePrice": 1420,
-      "baseComparePrice": 1850,
-      "badges": ["Best Seller", "DentalKart Verified"],
-      "rewardCoins": 50,
-      "inStock": true,
-      "totalStock": 140,
-      "warrantyMonths": 24,
-      "packageContents": "1 x 4g Composite Syringe, Instruction Manual",
-      "variantAttributeNames": ["Shade"],
-      "variants": [
-        { "sku": "3M-Z250-A1", "title": "Shade A1 - 4g Syringe", "attributes": { "Shade": "A1" }, "price": 1420, "comparePrice": 1850, "stock": 45 },
-        { "sku": "3M-Z250-A2", "title": "Shade A2 - 4g Syringe", "attributes": { "Shade": "A2" }, "price": 1420, "comparePrice": 1850, "stock": 55 },
-        { "sku": "3M-Z250-A3", "title": "Shade A3 - 4g Syringe", "attributes": { "Shade": "A3" }, "price": 1420, "comparePrice": 1850, "stock": 40 }
-      ]
-    },
-    {
-      "title": "Waldent Eco Plus Super Torque LED Airotor Handpiece",
-      "slug": "waldent-eco-plus-super-torque-led-airotor-handpiece",
-      "brandSlug": "waldent",
-      "categorySlug": "handpieces-and-rotary",
-      "subcategorySlug": "high-speed-airotors",
-      "shortDescription": "Push-button high-torque ceramic bearing airotor featuring integrated self-generating LED illumination.",
-      "fullDescription": "Waldent Eco Plus LED Airotor provides daylight-quality illumination directly in the oral cavity without needing an optical fiber dental unit. Features Japanese ceramic bearings for whisper-quiet vibration-free operation, triple water spray for rapid bur cooling, and anti-retraction hygiene head design to protect the cartdrige from aerosol backflow.",
-      "features": [
-        "Self-illuminating dynamo generator LED - no optical unit needed",
-        "Ultra-smooth Japanese Ceramic Ball Bearings (380,000 - 420,000 RPM)",
-        "Triple water jet spray with effective atomization",
-        "Autoclavable at 135°C (275°F)"
-      ],
-      "specifications": [
-        { "key": "Head Type", "value": "Super Torque Push Button" },
-        { "key": "Speed", "value": "380,000 - 420,000 RPM" },
-        { "key": "Light Source", "value": "Generator LED (>25,000 Lux)" },
-        { "key": "Chuck Type", "value": "Push Button Chuck" },
-        { "key": "Coupling", "value": "Standard 2-Hole B2 / 4-Hole M4" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "WAL-ECO-LED-B2",
-      "basePrice": 1699,
-      "baseComparePrice": 2990,
-      "badges": ["Hot Seller", "Freebie Included"],
-      "isFreebieEligible": true,
-      "freebieTitle": "Free High-Speed Diamond Bur Kit (Pack of 5)",
-      "rewardCoins": 60,
-      "inStock": true,
-      "totalStock": 85,
-      "warrantyMonths": 6,
-      "packageContents": "1 x Waldent LED Airotor, 1 x Head Wrench, 1 x Lubrication Nozzle, User Manual",
-      "variantAttributeNames": ["Connector"],
-      "variants": [
-        { "sku": "WAL-ECO-LED-B2", "title": "2-Hole (Borden)", "attributes": { "Connector": "2-Hole B2" }, "price": 1699, "comparePrice": 2990, "stock": 50 },
-        { "sku": "WAL-ECO-LED-M4", "title": "4-Hole (Midwest)", "attributes": { "Connector": "4-Hole M4" }, "price": 1799, "comparePrice": 3150, "stock": 35 }
-      ]
-    },
-    {
-      "title": "Dentsply ProTaper Gold Rotary Files Assorted",
-      "slug": "dentsply-protaper-gold-rotary-files-assorted",
-      "brandSlug": "dentsply-sirona",
-      "categorySlug": "endodontics",
-      "subcategorySlug": "rotary-and-hand-files",
-      "shortDescription": "Advanced gold metallurgy endodontic rotary files offering 2.4x greater cyclic fatigue resistance.",
-      "fullDescription": "ProTaper Gold features the exact same geometries as ProTaper Universal, but incorporates advanced proprietary gold thermal metallurgy. The visible difference is the warm golden shade of the metal; the clinical difference is vastly enhanced flexibility, resistance to cyclic fatigue, and respecting severe canal curvatures without ledging or transporting.",
-      "features": [
-        "Gold metallurgy enhances flexibility and resistance to cyclic fatigue",
-        "Progressive taper design optimizes cutting efficiency and debris evacuation",
-        "Maintains canal curvature even in acutely curved roots",
-        "Compatible with all standard endodontic rotary handpieces"
-      ],
-      "specifications": [
-        { "key": "Material", "value": "Heat-treated Gold NiTi Alloy" },
-        { "key": "Length", "value": "25mm (Standard)" },
-        { "key": "File Sequence", "value": "SX, S1, S2, F1, F2, F3" },
-        { "key": "Recommended Speed", "value": "250 - 300 RPM" },
-        { "key": "Torque", "value": "1.5 - 3.0 N.cm" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "DEN-PTG-25-ASS",
-      "basePrice": 2350,
-      "baseComparePrice": 3100,
-      "badges": ["Best Seller", "DentalKart Verified"],
-      "rewardCoins": 75,
-      "inStock": true,
-      "totalStock": 120,
-      "warrantyMonths": 0,
-      "packageContents": "Pack of 6 Sterilized Rotary Files (SX, S1, S2, F1, F2, F3)",
-      "variantAttributeNames": ["Length"],
-      "variants": [
-        { "sku": "DEN-PTG-21-ASS", "title": "21mm Assorted (Pack of 6)", "attributes": { "Length": "21mm" }, "price": 2350, "comparePrice": 3100, "stock": 40 },
-        { "sku": "DEN-PTG-25-ASS", "title": "25mm Assorted (Pack of 6)", "attributes": { "Length": "25mm" }, "price": 2350, "comparePrice": 3100, "stock": 60 },
-        { "sku": "DEN-PTG-31-ASS", "title": "31mm Assorted (Pack of 6)", "attributes": { "Length": "31mm" }, "price": 2490, "comparePrice": 3250, "stock": 20 }
-      ]
-    },
-    {
-      "title": "Woodpecker LED.F Light Cure Curing Unit",
-      "slug": "woodpecker-led-f-light-cure-curing-unit",
-      "brandSlug": "woodpecker",
-      "categorySlug": "equipment-and-digital-dentistry",
-      "subcategorySlug": "operatory-hardware",
-      "shortDescription": "Wireless ergonomic LED curing light equipped with built-in light meter and OLED display.",
-      "fullDescription": "The Woodpecker LED.F Light Curing Unit delivers intense 1600 mW/cm² optical output capable of curing all standard dental photo-composites in under 5 seconds. Featuring an intuitive charging base with integrated digital radiometer to verify light intensity before clinical use, three functional curing modes, and a long-life lithium battery.",
-      "features": [
-        "High power 1600 mW/cm² broad-spectrum LED output",
-        "Integrated base light meter for instant intensity calibration",
-        "OLED screen displaying remaining battery and countdown seconds",
-        "3 operating modes: Full Power, Ramping, and Pulse"
-      ],
-      "specifications": [
-        { "key": "Optical Power", "value": "850 - 1600 mW/cm²" },
-        { "key": "Wavelength", "value": "420nm - 480nm" },
-        { "key": "Battery", "value": "3.7V 2000mAh Rechargeable Lithium" },
-        { "key": "Optical Fiber Rod", "value": "8mm High Transmittance Quartz Autoclavable" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1583912267670-6575ad472688?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "WDP-LED-F-W",
-      "basePrice": 4850,
+      "images": [],
+      "defaultSku": "BOSS-LABODENT-DENTWERK-HD-DEN",
+      "basePrice": 1090,
       "baseComparePrice": 6500,
-      "badges": ["Hot Seller", "1 Year Warranty"],
-      "rewardCoins": 120,
-      "inStock": true,
-      "totalStock": 42,
-      "warrantyMonths": 12,
-      "packageContents": "1 x Handpiece, 1 x Charging Base with Light Meter, 1 x Optical Fiber Rod, 1 x Light Shield, Adapter",
-      "variantAttributeNames": ["Color"],
-      "variants": [
-        { "sku": "WDP-LED-F-W", "title": "Dental White", "attributes": { "Color": "White" }, "price": 4850, "comparePrice": 6500, "stock": 25 },
-        { "sku": "WDP-LED-F-B", "title": "Sky Blue", "attributes": { "Color": "Blue" }, "price": 4850, "comparePrice": 6500, "stock": 17 }
-      ]
-    },
-    {
-      "title": "GC Gold Label 2 (Fuji II) Glass Ionomer Restorative Cement",
-      "slug": "gc-gold-label-2-fuji-ii-glass-ionomer-restorative-cement",
-      "brandSlug": "gc-corporation",
-      "categorySlug": "restorative-and-esthetics",
-      "subcategorySlug": "glass-ionomer-cements",
-      "shortDescription": "Chemically cured restorative glass ionomer cement with high fluoride release and thermal biocompatibility.",
-      "fullDescription": "GC Gold Label 2 (Fuji II) is the global standard for tooth-colored glass ionomer restorative materials. Ideal for Class III and Class V cavities, cervical erosion, pediatric primary teeth restorations, and core build-ups. Bonds chemically to enamel and dentin without the necessity of etchants or bonding agents while releasing continuous protective fluoride ions.",
-      "features": [
-        "Natural chemical adhesion to dentin and enamel without acid etching",
-        "High continuous fluoride release protecting against secondary caries",
-        "Thermal expansion coefficient matching natural tooth structure",
-        "Excellent biocompatibility and radiopacity"
+      "badges": [
+        "Hot Selling"
       ],
-      "specifications": [
-        { "key": "Pack Size", "value": "15g Powder + 10g Liquid (8ml)" },
-        { "key": "Working Time", "value": "1 minute 45 seconds" },
-        { "key": "Setting Time", "value": "5 minutes 30 seconds" },
-        { "key": "Compressive Strength", "value": "160 MPa" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "GC-GL2-MINI",
-      "basePrice": 1280,
-      "baseComparePrice": 1620,
-      "badges": ["Best Seller"],
-      "rewardCoins": 40,
-      "inStock": true,
-      "totalStock": 95,
-      "warrantyMonths": 0,
-      "packageContents": "1 x 15g Powder Bottle, 1 x 8ml Liquid Bottle, 1 x Measuring Spoon, 1 x Mixing Pad",
-      "variantAttributeNames": ["Pack Size"],
-      "variants": [
-        { "sku": "GC-GL2-MINI", "title": "Standard Pack (15g + 8ml)", "attributes": { "Pack Size": "15g + 8ml" }, "price": 1280, "comparePrice": 1620, "stock": 65 },
-        { "sku": "GC-GL2-1-1", "title": "1-1 Clinic Pack (35g + 20ml)", "attributes": { "Pack Size": "35g + 20ml" }, "price": 2450, "comparePrice": 2990, "stock": 30 }
-      ]
-    },
-    {
-      "title": "Eighteeth E-Connect S Cordless Endomotor with Built-in Apex Locator",
-      "slug": "eighteeth-e-connect-s-cordless-endomotor-with-built-in-apex-locator",
-      "brandSlug": "eighteeth",
-      "categorySlug": "endodontics",
-      "subcategorySlug": "endomotors-and-apex-locators",
-      "shortDescription": "Brushless motor with integrated apex locator and 340° miniature adjustable contra-angle head.",
-      "fullDescription": "The Eighteeth E-Connect S represents next-generation cordless endodontic technology. With an ultra-miniature 340-degree rotatable contra-angle head and brushless motor, it provides exceptionally quiet, smooth rotation and real-time apical position display on its OLED panel. Supports auto apical reverse, auto stop, and customizable reciprocal angles.",
-      "features": [
-        "High-performance brushless motor: longer lifespan, negligible noise",
-        "Integrated dual-frequency apex locator for real-time canal monitoring",
-        "Miniature 340° rotatable contra-angle head for unhindered posterior access",
-        "Customizable reciprocation mode with adjustable forward and reverse angles"
-      ],
-      "specifications": [
-        { "key": "Speed Range", "value": "100 - 1000 RPM" },
-        { "key": "Torque Range", "value": "0.5 - 4.0 N.cm" },
-        { "key": "Head Ratio", "value": "1:1 Push Button Miniature Contra Angle" },
-        { "key": "Battery", "value": "1500mAh Lithium-ion Cordless Induction Base" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "EGT-ECON-S",
-      "basePrice": 26900,
-      "baseComparePrice": 34500,
-      "badges": ["Hot Seller", "DentalKart Verified", "1 Year Warranty"],
-      "rewardCoins": 600,
-      "inStock": true,
-      "totalStock": 18,
-      "warrantyMonths": 12,
-      "packageContents": "1 x Cordless Handpiece Motor, 1 x 1:1 Contra Angle, 1 x Charging Base, 1 x Measuring Wire, 2 x Lip Hooks, 2 x File Clips",
-      "variantAttributeNames": ["Model"],
-      "variants": [
-        { "sku": "EGT-ECON-S", "title": "E-Connect S Standard", "attributes": { "Model": "E-Connect S" }, "price": 26900, "comparePrice": 34500, "stock": 18 }
-      ]
-    },
-    {
-      "title": "Zhermack Zetaplus C-Silicone Impression Putty System",
-      "slug": "zhermack-zetaplus-c-silicone-impression-putty-system",
-      "brandSlug": "zhermack",
-      "categorySlug": "impression-materials",
-      "subcategorySlug": "silicone-putty-and-light-body",
-      "shortDescription": "Hydrocompatible condensation silicone impression kit offering superior final hardness and tear resistance.",
-      "fullDescription": "Zhermack Zetaplus is Italy's leading C-silicone impression material for two-stage and single-stage putty-wash techniques. Reduces oral compression deformation and maintains dimensionally stable details. Paired with Oranwash VL light body and Indurent Gel universal catalyst.",
-      "features": [
-        "High initial fluidity in wash material for subgingival margin reproduction",
-        "Optimal Shore A hardness after setting for stable cast pouring",
-        "Fresh mint aroma for comfortable patient experience",
-        "Complete 3-part intro system ready for immediate clinical use"
-      ],
-      "specifications": [
-        { "key": "System Components", "value": "Zetaplus Putty 900ml + Oranwash L 140ml + Indurent Gel 60ml" },
-        { "key": "Total Working Time", "value": "1 min 15 sec" },
-        { "key": "Time in Mouth", "value": "3 min 15 sec" },
-        { "key": "Final Hardness", "value": "60 Shore A" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "ZHK-ZETA-INTRO",
-      "basePrice": 2150,
-      "baseComparePrice": 2690,
-      "badges": ["Best Seller"],
-      "rewardCoins": 55,
-      "inStock": true,
-      "totalStock": 75,
-      "warrantyMonths": 0,
-      "packageContents": "1 x Zetaplus Putty (900ml), 1 x Oranwash VL (140ml), 1 x Indurent Gel Catalyst (60ml), Mixing Block",
-      "variantAttributeNames": ["Pack Configuration"],
-      "variants": [
-        { "sku": "ZHK-ZETA-INTRO", "title": "Complete Intro Kit (Putty + Wash + Catalyst)", "attributes": { "Pack Configuration": "Complete Intro Kit" }, "price": 2150, "comparePrice": 2690, "stock": 50 },
-        { "sku": "ZHK-ZETA-PUTTY", "title": "Putty Refill Only (900ml)", "attributes": { "Pack Configuration": "Putty Refill Only" }, "price": 1490, "comparePrice": 1850, "stock": 25 }
-      ]
-    },
-    {
-      "title": "Waldent Premium Stainless Steel Extraction Forceps Kit",
-      "slug": "waldent-premium-stainless-steel-extraction-forceps-kit",
-      "brandSlug": "waldent",
-      "categorySlug": "instruments-and-surgery",
-      "subcategorySlug": "extraction-forceps-and-elevators",
-      "shortDescription": "12-piece German stainless steel surgical extraction forceps set complete with protective leatherette pouch.",
-      "fullDescription": "Crafted from corrosion-resistant French and German-grade surgical stainless steel, the Waldent 12-Piece Adult Extraction Forceps Kit gives oral surgeons and general dentists the complete anatomical range required for upper and lower anterior, premolar, molar, and root tip extractions. Laser-knurled grip prevents slippage during luxation and elevation.",
-      "features": [
-        "Forged from surgical AISI 410/420 high-carbon stainless steel",
-        "Precision beaks shaped to anatomical tooth neck contours",
-        "Diamond-textured cross-serration grip handle",
-        "Autoclavable and resistant to passivation bath staining"
-      ],
-      "specifications": [
-        { "key": "Set Quantity", "value": "12 Anatomical Forceps" },
-        { "key": "Included Shapes", "value": "Upper Anterior, Upper Premolars, Upper Molars (L&R), Lower Molars, Bayonet Root Tips, Cowhorn" },
-        { "key": "Finish", "value": "Satin Matte Anti-Glare" },
-        { "key": "Carrying Case", "value": "Surgical Velvet-Lined Zip Pouch" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "WAL-FORC-12KIT",
-      "basePrice": 3890,
-      "baseComparePrice": 5990,
-      "badges": ["Hot Seller", "DentalKart Verified", "5 Year Warranty"],
-      "rewardCoins": 95,
-      "inStock": true,
-      "totalStock": 35,
-      "warrantyMonths": 60,
-      "packageContents": "12 x Extraction Forceps, 1 x Deluxe Pouch",
-      "variantAttributeNames": ["Kit Type"],
-      "variants": [
-        { "sku": "WAL-FORC-12KIT", "title": "Adult Complete 12-Piece Kit", "attributes": { "Kit Type": "Adult 12-Piece Kit" }, "price": 3890, "comparePrice": 5990, "stock": 25 },
-        { "sku": "WAL-FORC-PEDO", "title": "Pedodontic 7-Piece Mini Kit", "attributes": { "Kit Type": "Pedodontic 7-Piece Kit" }, "price": 2790, "comparePrice": 4200, "stock": 10 }
-      ]
-    },
-    {
-      "title": "U Orthodontics Metal MBT 0.022 Bracket Kit with Buccal Tubes",
-      "slug": "u-orthodontics-metal-mbt-0022-bracket-kit-with-buccal-tubes",
-      "brandSlug": "u-orthodontics",
-      "categorySlug": "orthodontics",
-      "subcategorySlug": "brackets-and-buccal-tubes",
-      "shortDescription": "MIM technology orthodontic brackets with 80-gauge mesh pad base for maximum bond strength.",
-      "fullDescription": "U Orthodontics MBT 0.022 bracket system manufactured with modern Metal Injection Molding (MIM) technology for exceptionally rounded edges and maximum patient comfort. The micro-etched 80-gauge mesh pad base ensures reliable adhesive retention and clean debonding without enamel fracture.",
-      "features": [
-        "MIM one-piece monoblock bracket prevents pad detachment",
-        "Ultra-smooth rounded tie-wings minimize soft tissue irritation",
-        "Permanent FDI color-coded identification dots on disto-gingival wing",
-        "Pre-adjusted torque and angulation following Roth/MBT prescription"
-      ],
-      "specifications": [
-        { "key": "Slot Size", "value": "0.022 inch (also available in 0.018)" },
-        { "key": "Prescription", "value": "MBT Technique (Hooks on 3, 4, 5)" },
-        { "key": "Base", "value": "80-Gauge Laser Micro-Etched Mesh Base" },
-        { "key": "Set Contents", "value": "20 Brackets (Upper/Lower 5-5) + 4 Buccal Tubes (6s)" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "UOR-MBT22-HOOKS",
-      "basePrice": 850,
-      "baseComparePrice": 1400,
-      "badges": ["Budget Friendly"],
-      "rewardCoins": 25,
-      "inStock": true,
-      "totalStock": 150,
-      "warrantyMonths": 0,
-      "packageContents": "Set of 20 Brackets (Upper/Lower 5-5) + 4 Buccal Tubes in sealed card packaging",
-      "variantAttributeNames": ["Slot System"],
-      "variants": [
-        { "sku": "UOR-MBT22-HOOKS", "title": "MBT 0.022 with Hooks (3,4,5)", "attributes": { "Slot System": "MBT 0.022" }, "price": 850, "comparePrice": 1400, "stock": 90 },
-        { "sku": "UOR-ROTH22-HOOKS", "title": "Roth 0.022 with Hooks (3,4,5)", "attributes": { "Slot System": "Roth 0.022" }, "price": 850, "comparePrice": 1400, "stock": 60 }
-      ]
-    },
-    {
-      "title": "Waldent Class B Fully Automatic Vacuum Dental Autoclave (18L)",
-      "slug": "waldent-class-b-fully-automatic-vacuum-dental-autoclave-18l",
-      "brandSlug": "waldent",
-      "categorySlug": "equipment-and-digital-dentistry",
-      "subcategorySlug": "sterilization-and-autoclaves",
-      "shortDescription": "Medical-grade triple fractionated pre-vacuum sterilization unit with integrated thermal printer.",
-      "fullDescription": "Waldent 18L Class B Vacuum Autoclave is built in strict adherence to European EN13060 standards. Ideal for sterilizing hollow wrapped and unwrapped instruments, rotary handpieces, and surgical cassettes with guaranteed moisture-free vacuum drying. Features automatic fault self-diagnosis and USB/thermal receipt printout for clinic sterilization logs.",
-      "features": [
-        "Triple fractionated vacuum pulses ensure complete steam penetration in porous & hollow items",
-        "High-grade SUS304 medical stainless steel chamber",
-        "Built-in microprinter for legal sterilization cycle documentation",
-        "Bowie & Dick, Helix, and Vacuum testing validation cycles included"
-      ],
-      "specifications": [
-        { "key": "Chamber Capacity", "value": "18 Litres (Diameter 250mm x Depth 350mm)" },
-        { "key": "Sterilization Temperatures", "value": "121°C and 134°C" },
-        { "key": "Vacuum Type", "value": "Triple Fractionated Pulse (-0.85 bar)" },
-        { "key": "Safety Features", "value": "Dual Door Interlock, Overpressure Valve, Auto Power Cutoff" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1583912267670-6575ad472688?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "WAL-AUTO-18L-B",
-      "basePrice": 88000,
-      "baseComparePrice": 115000,
-      "badges": ["DentalKart Verified", "2 Years Warranty"],
-      "rewardCoins": 1500,
-      "inStock": true,
-      "totalStock": 12,
-      "warrantyMonths": 24,
-      "packageContents": "1 x 18L Autoclave Unit, 3 x Stainless Trays, 1 x Tray Rack, 1 x Tray Extractor, Water Drainage Tubes",
-      "variantAttributeNames": ["Capacity"],
-      "variants": [
-        { "sku": "WAL-AUTO-18L-B", "title": "18 Litres Chamber", "attributes": { "Capacity": "18 Litres" }, "price": 88000, "comparePrice": 115000, "stock": 8 },
-        { "sku": "WAL-AUTO-23L-B", "title": "23 Litres Large Chamber", "attributes": { "Capacity": "23 Litres" }, "price": 99500, "comparePrice": 128000, "stock": 4 }
-      ]
-    },
-    {
-      "title": "Complete Turnkey Dental Clinic Setup Package - Premium Operatory",
-      "slug": "complete-turnkey-dental-clinic-setup-package-premium-operatory",
-      "brandSlug": "waldent",
-      "categorySlug": "new-clinic-setup",
-      "subcategorySlug": "turnkey-packages",
-      "shortDescription": "Complete operatory suite: luxury hydraulic dental chair, Class B autoclave, compressor, and starter instruments.",
-      "fullDescription": "Designed specifically for dentists inaugurating a new dental clinic. Includes a fully motorized dental chair with LED operating sensor light, silent oil-free dental air compressor, 18L autoclave, ultrasonic scaler, light cure unit, handpiece kit, and complete clinical consumables pack. Backed by nationwide engineer on-site installation and 1 year doorstep warranty support.",
-      "features": [
-        "All-in-one verified setup tailored for newly graduating and expanding practitioners",
-        "On-site engineer installation and plumbing consultation included across India",
-        "Includes dental chair, silent compressor, autoclave, and 2 high-speed handpieces",
-        "Custom financing and zero-percent EMI assistance available upon enquiry"
-      ],
-      "specifications": [
-        { "key": "Chair Unit", "value": "Waldent Premium Motorized Chair with LED Sensor Light" },
-        { "key": "Air Compressor", "value": "1.0 HP 35L Tank Silent Medical Grade Oil-Free" },
-        { "key": "Sterilizer", "value": "Waldent 18L Vacuum Autoclave with Digital Cycles" },
-        { "key": "Warranty & Support", "value": "12 Months Comprehensive On-Site Engineer Warranty" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80",
-        "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "DK-CLINIC-PACK-PREM",
-      "basePrice": 245000,
-      "baseComparePrice": 320000,
-      "badges": ["Hot Seller", "Clinic Setup Special"],
       "isQuotationOnly": false,
-      "rewardCoins": 5000,
-      "inStock": true,
-      "totalStock": 5,
-      "warrantyMonths": 12,
-      "packageContents": "1 x Dental Chair Unit, 1 x Oil-Free Compressor, 1 x 18L Autoclave, 1 x Ultrasonic Scaler, 2 x LED Handpieces, Free Setup Kit",
-      "variantAttributeNames": ["Configuration"],
-      "variants": [
-        { "sku": "DK-CLINIC-PACK-PREM", "title": "Premium Operatory Package (Complete)", "attributes": { "Configuration": "Standard 1-Chair Operatory" }, "price": 245000, "comparePrice": 320000, "stock": 5 }
-      ]
-    },
-    {
-      "title": "Waldent Promotional Dental Mirror and Probe Starter Freebie",
-      "slug": "waldent-promotional-dental-mirror-and-probe-starter-freebie",
-      "brandSlug": "waldent",
-      "categorySlug": "instruments-and-surgery",
-      "subcategorySlug": "diagnostic-and-scaler-instruments",
-      "shortDescription": "Promotional diagnostic mouth mirror and dental explorer examination freebie at ₹1 for eligible orders.",
-      "fullDescription": "DentalKart exclusive promotional offer: stainless steel front surface mouth mirror with ergonomic handle and sharp shepherd's hook explorer probe. Eligible as a promotional freebie add-on or direct purchase.",
-      "features": [
-        "Distortion-free front surface optical reflection",
-        "Ergonomic knurled anti-slip handle",
-        "Autoclavable stainless steel construction"
-      ],
-      "specifications": [
-        { "key": "Items", "value": "Mouth Mirror Handle #4 + Explorer Probe" },
-        { "key": "Material", "value": "Stainless Steel" }
-      ],
-      "images": [
-        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80"
-      ],
-      "defaultSku": "WAL-FREEBIE-MIRROR-1",
-      "basePrice": 1,
-      "baseComparePrice": 199,
-      "badges": ["Gift at ₹1", "Freebie"],
-      "isFreebieEligible": true,
-      "freebieTitle": "Claim at ₹1 with any order above ₹1,000",
+      "isFreebieEligible": false,
       "rewardCoins": 0,
-      "inStock": true,
-      "totalStock": 500,
+      "inStock": false,
+      "totalStock": 0,
       "warrantyMonths": 0,
-      "packageContents": "1 x Mouth Mirror, 1 x Explorer Probe",
-      "variantAttributeNames": ["Type"],
+      "packageContents": "",
+      "variantAttributeNames": [],
       "variants": [
-        { "sku": "WAL-FREEBIE-MIRROR-1", "title": "Diagnostic Pair", "attributes": { "Type": "Pair" }, "price": 1, "comparePrice": 199, "stock": 500 }
-      ]
+        {
+          "sku": "BOSS-LABODENT-RESIN-GREY-1KG",
+          "title": "Grey - 1 kg",
+          "attributes": {
+            "Colour": "Grey",
+            "Pack": "1 kg"
+          },
+          "price": 1090,
+          "comparePrice": 6500,
+          "stock": 0
+        },
+        {
+          "sku": "BOSS-LABODENT-RESIN-ALMOND-1KG",
+          "title": "Almond - 1 kg",
+          "attributes": {
+            "Colour": "Almond",
+            "Pack": "1 kg"
+          },
+          "price": 1090,
+          "comparePrice": 6500,
+          "stock": 0
+        }
+      ],
+      "provenance": "DentalKart Hot Selling listing; price and two colour/pack options captured during research."
+    },
+    {
+      "title": "Dentaltech Universal Prosthetic Driver Kit",
+      "slug": "dentaltech-universal-prosthetic-driver-kit",
+      "brandSlug": "dentaltech",
+      "categorySlug": "implantology",
+      "subcategorySlug": "implant-drivers-prosthetics",
+      "shortDescription": "Universal prosthetic driver kit for implant prosthetic procedures. Reference price captured from the DentalKart Hot Selling listing.",
+      "fullDescription": "Universal prosthetic driver kit for implant prosthetic procedures. Reference price captured from the DentalKart Hot Selling listing.",
+      "features": [],
+      "specifications": [],
+      "images": [],
+      "defaultSku": "BOSS-DENTALTECH-UNIVERSAL-PRO",
+      "basePrice": 3145,
+      "baseComparePrice": 13990,
+      "badges": [
+        "Hot Selling"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Hot Selling product detail; price and product title verified."
+    },
+    {
+      "title": "Frank Dental Tapered Round Diamond Bur TR Series (Coarse)",
+      "slug": "frank-dental-tapered-round-diamond-bur-tr-series-coarse",
+      "brandSlug": "frank-dental",
+      "categorySlug": "rotary-instruments-burs",
+      "subcategorySlug": "diamond-burs",
+      "shortDescription": "Coarse tapered round diamond bur from the Frank Dental TR series. Listing price is a starting price; individual bur codes may vary.",
+      "fullDescription": "Coarse tapered round diamond bur from the Frank Dental TR series. Listing price is a starting price; individual bur codes may vary.",
+      "features": [],
+      "specifications": [
+        {
+          "key": "Series",
+          "value": "TR"
+        },
+        {
+          "key": "Grit",
+          "value": "Coarse"
+        },
+        {
+          "key": "Pack",
+          "value": "Pack of 5"
+        }
+      ],
+      "images": [],
+      "defaultSku": "BOSS-FRANK-DENTAL-TAPERED-ROU",
+      "basePrice": 495,
+      "baseComparePrice": 1450,
+      "badges": [
+        "Hot Selling"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Hot Selling product detail; starting price and TR series details verified."
+    },
+    {
+      "title": "UU Ortho TriAlign Pro Multi-Layer Aligner Sheets - Round (Pack of 10)",
+      "slug": "uu-ortho-trialign-pro-multi-layer-aligner-sheets-round-pack-of-10",
+      "brandSlug": "uu-ortho",
+      "categorySlug": "orthodontics",
+      "subcategorySlug": "clear-aligner-materials",
+      "shortDescription": "Round multi-layer aligner sheets supplied in a pack of 10. Reference starting price captured from the DentalKart Hot Selling listing.",
+      "fullDescription": "Round multi-layer aligner sheets supplied in a pack of 10. Reference starting price captured from the DentalKart Hot Selling listing.",
+      "features": [],
+      "specifications": [
+        {
+          "key": "Shape",
+          "value": "Round"
+        },
+        {
+          "key": "Pack quantity",
+          "value": "10 sheets"
+        }
+      ],
+      "images": [],
+      "defaultSku": "BOSS-UU-ORTHO-TRIALIGN-PRO-MU",
+      "basePrice": 2170,
+      "badges": [
+        "Hot Selling"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Hot Selling listing; product name, pack quantity and starting price verified."
+    },
+    {
+      "title": "Waldent BESTEtch Plus 37% Phosphoric Acid Etchant",
+      "slug": "waldent-bestetch-plus-37-percent-phosphoric-acid-etchant",
+      "brandSlug": "waldent",
+      "categorySlug": "restorative-dentistry",
+      "subcategorySlug": "etchants-bonding",
+      "shortDescription": "37% phosphoric acid dental etchant. Reference price captured from the DentalKart Hot Selling listing.",
+      "fullDescription": "37% phosphoric acid dental etchant. Reference price captured from the DentalKart Hot Selling listing.",
+      "features": [],
+      "specifications": [
+        {
+          "key": "Concentration",
+          "value": "37% phosphoric acid"
+        }
+      ],
+      "images": [],
+      "defaultSku": "BOSS-WALDENT-BESTETCH-PLUS-37",
+      "basePrice": 130,
+      "baseComparePrice": 265,
+      "badges": [
+        "Hot Selling"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Hot Selling product detail; title and price verified."
+    },
+    {
+      "title": "DentsMind DM-F1 NiTi Gold Rotary Files - 21mm (Pack of 6)",
+      "slug": "dentsmind-dm-f1-niti-gold-rotary-files-21mm-pack-of-6",
+      "brandSlug": "dentsmind",
+      "categorySlug": "endodontics",
+      "subcategorySlug": "rotary-files",
+      "shortDescription": "NiTi Gold rotary endodontic files, 21 mm, supplied as a pack of 6. Reference price captured from the DentalKart Hot Selling listing.",
+      "fullDescription": "NiTi Gold rotary endodontic files, 21 mm, supplied as a pack of 6. Reference price captured from the DentalKart Hot Selling listing.",
+      "features": [],
+      "specifications": [
+        {
+          "key": "Length",
+          "value": "21 mm"
+        },
+        {
+          "key": "Pack quantity",
+          "value": "6 files"
+        }
+      ],
+      "images": [],
+      "defaultSku": "BOSS-DENTSMIND-DM-F1-NITI-GOL",
+      "basePrice": 620,
+      "baseComparePrice": 1990,
+      "badges": [
+        "Hot Selling"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Hot Selling listing; title, length, pack size and price verified."
+    },
+    {
+      "title": "Dentaltech Straight Abutments RS",
+      "slug": "dentaltech-straight-abutments-rs",
+      "brandSlug": "dentaltech",
+      "categorySlug": "implantology",
+      "subcategorySlug": "implant-drivers-prosthetics",
+      "shortDescription": "Straight RS implant abutment. The listing shows a starting price; exact connection/platform options should be configured after checking the selected variant.",
+      "fullDescription": "Straight RS implant abutment. The listing shows a starting price; exact connection/platform options should be configured after checking the selected variant.",
+      "features": [],
+      "specifications": [],
+      "images": [],
+      "defaultSku": "BOSS-DENTALTECH-STRAIGHT-ABUT",
+      "basePrice": 265,
+      "baseComparePrice": 490,
+      "badges": [
+        "Hot Selling"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Hot Selling listing; title and starting price verified."
+    },
+    {
+      "title": "Waldent RCTprep EDTA",
+      "slug": "waldent-rctprep-edta",
+      "brandSlug": "waldent",
+      "categorySlug": "endodontics",
+      "subcategorySlug": "canal-preparation-materials",
+      "shortDescription": "EDTA preparation material for endodontic use. Reference price captured from the DentalKart Hot Selling listing.",
+      "fullDescription": "EDTA preparation material for endodontic use. Reference price captured from the DentalKart Hot Selling listing.",
+      "features": [],
+      "specifications": [],
+      "images": [],
+      "defaultSku": "BOSS-WALDENT-RCTPREP-EDTA",
+      "basePrice": 125,
+      "baseComparePrice": 275,
+      "badges": [
+        "Hot Selling"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Hot Selling listing; title and price verified."
+    },
+    {
+      "title": "Dentsply Spectrum Composite Kit",
+      "slug": "dentsply-spectrum-composite-kit",
+      "brandSlug": "dentsply-sirona",
+      "categorySlug": "restorative-dentistry",
+      "subcategorySlug": "composite-kits",
+      "shortDescription": "Dental composite kit listed in the DentalKart Offer Zone. Price is a research-time reference, not a live quote.",
+      "fullDescription": "Dental composite kit listed in the DentalKart Offer Zone. Price is a research-time reference, not a live quote.",
+      "features": [],
+      "specifications": [],
+      "images": [],
+      "defaultSku": "BOSS-DENTSPLY-SPECTRUM-COMPOS",
+      "basePrice": 3248,
+      "baseComparePrice": 6205,
+      "badges": [
+        "Best Seller"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Offer Zone Best Seller listing; supplementary to the Hot Selling category."
+    },
+    {
+      "title": "ICPA Nummit Topical Anesthetic Spray",
+      "slug": "icpa-nummit-topical-anesthetic-spray",
+      "brandSlug": "icpa",
+      "categorySlug": "clinical-consumables",
+      "subcategorySlug": "anaesthetic-products",
+      "shortDescription": "Topical anaesthetic spray listed in the DentalKart Offer Zone. Confirm pack details and regulatory labelling before publishing.",
+      "fullDescription": "Topical anaesthetic spray listed in the DentalKart Offer Zone. Confirm pack details and regulatory labelling before publishing.",
+      "features": [],
+      "specifications": [],
+      "images": [],
+      "defaultSku": "BOSS-ICPA-NUMMIT-TOPICAL-ANES",
+      "basePrice": 278,
+      "baseComparePrice": 347,
+      "badges": [
+        "Best Seller"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Offer Zone Best Seller listing; supplementary to the Hot Selling category."
+    },
+    {
+      "title": "Patient Apron",
+      "slug": "patient-apron",
+      "brandSlug": "generic-supplies",
+      "categorySlug": "clinical-consumables",
+      "subcategorySlug": "protective-apparel",
+      "shortDescription": "Patient apron listed as a clinic consumable in the DentalKart Offer Zone. Manufacturer and exact pack details were not established in the source extract.",
+      "fullDescription": "Patient apron listed as a clinic consumable in the DentalKart Offer Zone. Manufacturer and exact pack details were not established in the source extract.",
+      "features": [],
+      "specifications": [],
+      "images": [],
+      "defaultSku": "BOSS-PATIENT-APRON",
+      "basePrice": 80,
+      "baseComparePrice": 162,
+      "badges": [
+        "Best Seller"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Offer Zone Best Seller listing; brand and pack details not verified."
+    },
+    {
+      "title": "GI Dental Mouth Mirror No.5 Tops (Pack of 10)",
+      "slug": "gi-dental-mouth-mirror-no-5-tops-pack-of-10",
+      "brandSlug": "gi-dental",
+      "categorySlug": "dental-instruments",
+      "subcategorySlug": "diagnostic-instruments",
+      "shortDescription": "No. 5 mouth mirror tops supplied in a pack of 10. Listed in the DentalKart Offer Zone.",
+      "fullDescription": "No. 5 mouth mirror tops supplied in a pack of 10. Listed in the DentalKart Offer Zone.",
+      "features": [],
+      "specifications": [
+        {
+          "key": "Size",
+          "value": "No. 5"
+        },
+        {
+          "key": "Pack quantity",
+          "value": "10"
+        }
+      ],
+      "images": [],
+      "defaultSku": "BOSS-GI-DENTAL-MOUTH-MIRROR-N",
+      "basePrice": 195,
+      "baseComparePrice": 270,
+      "badges": [
+        "Best Seller"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Offer Zone Best Seller listing; supplementary to the Hot Selling category."
+    },
+    {
+      "title": "GDC Automatic Crown Remover Standard",
+      "slug": "gdc-automatic-crown-remover-standard",
+      "brandSlug": "gdc",
+      "categorySlug": "dental-instruments",
+      "subcategorySlug": "crown-bridge-instruments",
+      "shortDescription": "Standard automatic crown remover listed in the DentalKart Offer Zone. Confirm included accessories before publishing.",
+      "fullDescription": "Standard automatic crown remover listed in the DentalKart Offer Zone. Confirm included accessories before publishing.",
+      "features": [],
+      "specifications": [],
+      "images": [],
+      "defaultSku": "BOSS-GDC-AUTOMATIC-CROWN-REMO",
+      "basePrice": 2925,
+      "baseComparePrice": 5100,
+      "badges": [
+        "Best Seller"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Offer Zone Best Seller listing; supplementary to the Hot Selling category."
+    },
+    {
+      "title": "SDI Pola Office Plus 1 Patient Kit",
+      "slug": "sdi-pola-office-plus-1-patient-kit",
+      "brandSlug": "sdi",
+      "categorySlug": "restorative-dentistry",
+      "subcategorySlug": "composite-kits",
+      "shortDescription": "One-patient Pola Office Plus kit listed in the DentalKart Offer Zone. Confirm current kit contents and instructions from the manufacturer.",
+      "fullDescription": "One-patient Pola Office Plus kit listed in the DentalKart Offer Zone. Confirm current kit contents and instructions from the manufacturer.",
+      "features": [],
+      "specifications": [
+        {
+          "key": "Kit type",
+          "value": "1 patient kit"
+        }
+      ],
+      "images": [],
+      "defaultSku": "BOSS-SDI-POLA-OFFICE-PLUS-1-P",
+      "basePrice": 3960,
+      "baseComparePrice": 4725,
+      "badges": [
+        "Best Seller"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Offer Zone Best Seller listing; supplementary to the Hot Selling category."
+    },
+    {
+      "title": "Medicept Glass Ionomer Universal Liquid",
+      "slug": "medicept-glass-ionomer-universal-liquid",
+      "brandSlug": "medicept",
+      "categorySlug": "restorative-dentistry",
+      "subcategorySlug": "glass-ionomer-materials",
+      "shortDescription": "Universal glass ionomer liquid listed in the DentalKart Offer Zone. Confirm pack size and compatible powder before publishing.",
+      "fullDescription": "Universal glass ionomer liquid listed in the DentalKart Offer Zone. Confirm pack size and compatible powder before publishing.",
+      "features": [],
+      "specifications": [],
+      "images": [],
+      "defaultSku": "BOSS-MEDICEPT-GLASS-IONOMER-U",
+      "basePrice": 778,
+      "baseComparePrice": 1050,
+      "badges": [
+        "Best Seller"
+      ],
+      "isQuotationOnly": false,
+      "isFreebieEligible": false,
+      "rewardCoins": 0,
+      "inStock": false,
+      "totalStock": 0,
+      "warrantyMonths": 0,
+      "packageContents": "",
+      "variantAttributeNames": [],
+      "variants": [],
+      "provenance": "DentalKart Offer Zone Best Seller listing; supplementary to the Hot Selling category."
     }
   ],
-  "coupons": [
-    {
-      "code": "DENTALKART500",
-      "description": "₹500 Flat Off on dental consumables orders above ₹3,000",
-      "discountType": "fixed",
-      "discountValue": 500,
-      "minOrderValue": 3000,
-      "validUntil": "2027-12-31T23:59:59Z",
-      "applicableTiers": ["all"]
-    },
-    {
-      "code": "PLUS10",
-      "description": "Exclusive 10% Extra Discount for DentalKart Plus Members (Max ₹1,500)",
-      "discountType": "percentage",
-      "discountValue": 10,
-      "minOrderValue": 2500,
-      "maxDiscount": 1500,
-      "validUntil": "2027-12-31T23:59:59Z",
-      "applicableTiers": ["plus"]
-    },
-    {
-      "code": "FIRSTORDER",
-      "description": "Welcome 5% Off for First Time Dental Practitioners",
-      "discountType": "percentage",
-      "discountValue": 5,
-      "minOrderValue": 1000,
-      "maxDiscount": 500,
-      "validUntil": "2027-12-31T23:59:59Z",
-      "applicableTiers": ["all"]
-    }
-  ],
-  "membershipPlans": [
-    {
-      "name": "DentalKart Plus 1-Year Membership",
-      "slug": "dentalkart-plus-annual",
-      "price": 999,
-      "durationMonths": 12,
-      "benefits": {
-        "dentacoinsMultiplier": 2,
-        "freeShippingThreshold": 499,
-        "maxCoinRedemptionPercent": 20,
-        "priorityProcessing": true,
-        "freeDentalWebinarAccess": true
-      }
-    }
-  ],
-  "siteBanners": [
-    {
-      "title": "Mega Dental Savings Festival",
-      "subtitle": "Up to 55% Off on World-Class Composites, Handpieces & Rotary Files",
-      "badge": "LIMITED TIME OFFER",
-      "imageUrl": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80",
-      "linkUrl": "/offers",
-      "position": "hero",
-      "order": 1,
-      "bgGradient": "from-[#0b4d6c] to-[#04202c]"
-    },
-    {
-      "title": "Upgrade Your Practice: 3M & NSK Special",
-      "subtitle": "Genuine imported dental supplies with direct manufacturer warranty",
-      "badge": "100% GENUINE",
-      "imageUrl": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1600&q=80",
-      "linkUrl": "/brands/3m-espe",
-      "position": "hero",
-      "order": 2,
-      "bgGradient": "from-[#0f766e] to-[#083344]"
-    },
-    {
-      "title": "Starting a New Clinic? Let's Build It Together",
-      "subtitle": "Turnkey Packages, Chairs, Autoclaves & Free Doctor Consultation",
-      "badge": "CLINIC SETUP PARTNER",
-      "imageUrl": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600&q=80",
-      "linkUrl": "/clinic-setup",
-      "position": "middle",
-      "order": 1,
-      "bgGradient": "from-[#ff6b00] to-[#c2410c]"
-    }
-  ]
+  "catalogueNotes": {
+    "currency": "INR",
+    "priceDisclaimer": "Reference prices captured during research; verify current price and MRP before publishing.",
+    "stockDisclaimer": "Stock is intentionally seeded as zero because live inventory was not supplied. Update stock before making products purchasable.",
+    "imageDisclaimer": "Images are intentionally empty. Add Bossdent-owned or properly licensed product images before publishing.",
+    "sourceSplit": "First 8 products are from DentalKart Hot Selling. Products 9-15 are supplementary Best Seller listings from DentalKart Offer Zone, not confirmed members of Hot Selling."
+  }
 }

@@ -35,7 +35,7 @@ export default function LoginPage() {
   };
 
   const handleDemoAdmin = () => {
-    setEmail("admin@dentalkart.com");
+    setEmail("admin@bossdent.com");
     setPassword("Admin@123");
   };
 
@@ -127,7 +127,7 @@ export default function LoginPage() {
         </form>
 
         <div className="text-center pt-2 border-t border-slate-100 text-slate-500">
-          New to DentalKart?{" "}
+          New to Bossdent?{" "}
           <Link href="/register" className="text-dk-teal-800 font-bold hover:underline">
             Register as a Dentist / Clinic
           </Link>

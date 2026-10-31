@@ -1,351 +1,298 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
-import {
-  User,
-  Brand,
-  Category,
-  Product,
-  ProductVariant,
-  Review,
-  Coupon,
-  MembershipPlan,
-  SiteBanner,
-  Order,
-} from "../src/models";
+import { Brand, Category, Product, ProductVariant } from "../src/models";
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/dentalkart_clone";
+type SeedOptions = { dryRun?: boolean };
 
-async function seed() {
-  console.log("Connecting to MongoDB for seeding:", MONGODB_URI);
-  await mongoose.connect(MONGODB_URI);
-  console.log("Connected to MongoDB.");
+function loadLocalEnv() {
+  // tsx scripts run outside Next.js, so .env.local is not loaded automatically.
+  const envPath = path.join(process.cwd(), ".env.local");
+  if (!fs.existsSync(envPath)) return;
 
-  // Clear existing collections to make seed deterministic
-  await Promise.all([
-    User.deleteMany({}),
-    Brand.deleteMany({}),
-    Category.deleteMany({}),
-    Product.deleteMany({}),
-    ProductVariant.deleteMany({}),
-    Review.deleteMany({}),
-    Coupon.deleteMany({}),
-    MembershipPlan.deleteMany({}),
-    SiteBanner.deleteMany({}),
-    Order.deleteMany({}),
-  ]);
-
-  console.log("Cleared existing data.");
-
-  // 1. Create Default Users (Admin & Demo Dentist)
-  const passwordHash = await bcrypt.hash("Admin@123", 10);
-  const doctorHash = await bcrypt.hash("Doctor@123", 10);
-
-  const adminUser = await User.create({
-    name: "DentalKart SuperAdmin",
-    email: "admin@dentalkart.com",
-    password: passwordHash,
-    phone: "9876543210",
-    role: "admin",
-    dentacoins: 5000,
-    membershipTier: "plus",
-    addresses: [
-      {
-        fullName: "DentalKart HQ Operations",
-        clinicName: "DentalKart Logistics Hub",
-        phone: "9876543210",
-        addressLine1: "Plot 14, Okhla Industrial Area, Phase III",
-        city: "New Delhi",
-        state: "Delhi",
-        pincode: "110020",
-        isDefault: true,
-      },
-    ],
-  });
-
-  const doctorUser = await User.create({
-    name: "Dr. Rajesh Sharma, MDS",
-    email: "dr.sharma@dentalcare.com",
-    password: doctorHash,
-    phone: "9811223344",
-    role: "customer",
-    clinicName: "Sharma Multispeciality Dental Clinic & Implant Centre",
-    gstNumber: "07AAAAA0000A1Z5",
-    dciNumber: "DCI-DL-2015-8941",
-    dentacoins: 450, // Has 450 Dentacoins
-    membershipTier: "plus",
-    membershipExpiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
-    addresses: [
-      {
-        fullName: "Dr. Rajesh Sharma",
-        clinicName: "Sharma Multispeciality Dental Care",
-        phone: "9811223344",
-        addressLine1: "Shop 4, Ground Floor, Sector 18 Commercial Complex",
-        city: "Noida",
-        state: "Uttar Pradesh",
-        pincode: "201301",
-        isDefault: true,
-      },
-    ],
-  });
-
-  console.log("Seeded Users: admin@dentalkart.com / dr.sharma@dentalcare.com");
-
-  // Read JSON catalogue
-  const dataPath = path.join(process.cwd(), "scripts/data/catalogue-data.json");
-  const rawData = fs.readFileSync(dataPath, "utf-8");
-  const data = JSON.parse(rawData);
-
-  // 2. Seed Brands
-  const brandMap = new Map<string, mongoose.Types.ObjectId>();
-  for (const b of data.brands) {
-    const brandDoc = await Brand.create({
-      name: b.name,
-      slug: b.slug,
-      originCountry: b.originCountry,
-      isFeatured: b.isFeatured,
-      description: b.description,
-      logo: `https://avatar.vercel.sh/${b.slug}.svg?text=${encodeURIComponent(b.name.slice(0, 3))}`,
-      productCount: 0,
-    });
-    brandMap.set(b.slug, brandDoc._id as mongoose.Types.ObjectId);
-  }
-  console.log(`Seeded ${data.brands.length} Brands.`);
-
-  // 3. Seed Categories & Subcategories
-  const categoryMap = new Map<string, mongoose.Types.ObjectId>();
-  for (const c of data.categories) {
-    const parentCat = await Category.create({
-      name: c.name,
-      slug: c.slug,
-      description: c.description,
-      isFeatured: c.isFeatured,
-      order: c.order,
-      level: 0,
-      image: `https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=400&q=80`,
-    });
-    categoryMap.set(c.slug, parentCat._id as mongoose.Types.ObjectId);
-
-    if (c.subcategories && Array.isArray(c.subcategories)) {
-      for (const [subIndex, sub] of c.subcategories.entries()) {
-        const subCat = await Category.create({
-          name: sub.name,
-          slug: sub.slug,
-          description: sub.description,
-          parentId: parentCat._id,
-          level: 1,
-          order: subIndex + 1,
-          isFeatured: false,
-        });
-        categoryMap.set(sub.slug, subCat._id as mongoose.Types.ObjectId);
-      }
-    }
-  }
-  console.log(`Seeded Categories and Subcategories.`);
-
-  // 4. Seed Products and Variants
-  for (const p of data.products) {
-    const brandId = brandMap.get(p.brandSlug);
-    const categoryId = categoryMap.get(p.categorySlug);
-    const subcategoryId = p.subcategorySlug ? categoryMap.get(p.subcategorySlug) : undefined;
-
-    if (!brandId || !categoryId) {
-      console.warn(`Skipping product ${p.title} due to missing brand or category.`);
-      continue;
-    }
-
-    const discountPercent = p.baseComparePrice && p.baseComparePrice > p.basePrice
-      ? Math.round(((p.baseComparePrice - p.basePrice) / p.baseComparePrice) * 100)
-      : 0;
-
-    const productDoc = await Product.create({
-      title: p.title,
-      slug: p.slug,
-      brand: brandId,
-      category: categoryId,
-      subcategory: subcategoryId,
-      shortDescription: p.shortDescription,
-      fullDescription: p.fullDescription,
-      features: p.features || [],
-      specifications: p.specifications || [],
-      images: p.images || [],
-      defaultSku: p.defaultSku,
-      basePrice: p.basePrice,
-      baseComparePrice: p.baseComparePrice,
-      discountPercent,
-      rating: 4.6 + Math.random() * 0.4,
-      reviewCount: Math.floor(15 + Math.random() * 85),
-      badges: p.badges || [],
-      isQuotationOnly: Boolean(p.isQuotationOnly),
-      isFreebieEligible: Boolean(p.isFreebieEligible),
-      freebieTitle: p.freebieTitle,
-      rewardCoins: p.rewardCoins || 20,
-      inStock: p.inStock ?? true,
-      totalStock: p.totalStock || 50,
-      warrantyMonths: p.warrantyMonths || 0,
-      packageContents: p.packageContents || "",
-      variantAttributeNames: p.variantAttributeNames || [],
-      active: true,
-      salesCount: Math.floor(50 + Math.random() * 200),
-      views: Math.floor(300 + Math.random() * 1000),
-      provenance: "DentalKart Verified Public Catalogue",
-    });
-
-    // Update Brand & Category product counts
-    await Brand.findByIdAndUpdate(brandId, { $inc: { productCount: 1 } });
-    await Category.findByIdAndUpdate(categoryId, { $inc: { productCount: 1 } });
-    if (subcategoryId) {
-      await Category.findByIdAndUpdate(subcategoryId, { $inc: { productCount: 1 } });
-    }
-
-    // Seed Variants
-    if (p.variants && Array.isArray(p.variants)) {
-      for (const v of p.variants) {
-        await ProductVariant.create({
-          product: productDoc._id,
-          sku: v.sku,
-          title: v.title,
-          attributes: v.attributes || {},
-          price: v.price,
-          comparePrice: v.comparePrice,
-          stock: v.stock || 20,
-          image: p.images[0] || "",
-          active: true,
-        });
-      }
+  const content = fs.readFileSync(envPath, "utf8");
+  for (const line of content.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const match = trimmed.match(/^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/);
+    if (!match) continue;
+    const key = match[1];
+    let value = match[2].trim();
+    if ((value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
     } else {
-      await ProductVariant.create({
-        product: productDoc._id,
-        sku: p.defaultSku,
-        title: "Standard Pack",
-        attributes: { Option: "Standard" },
-        price: p.basePrice,
-        comparePrice: p.baseComparePrice,
-        stock: p.totalStock || 50,
-        image: p.images[0] || "",
-        active: true,
-      });
+      value = value.replace(/\s+#.*$/, "").trim();
     }
-
-    // Seed sample verified reviews for the product
-    await Review.create({
-      product: productDoc._id,
-      user: doctorUser._id,
-      userName: "Dr. Rajesh Sharma, MDS",
-      userClinic: "Sharma Multispeciality Dental Care",
-      rating: 5,
-      title: "Excellent quality and authentic batch",
-      comment: `Consistently order this from DentalKart. Long expiry date, flawless packaging, and fast delivery to our clinic. Highly recommended for daily clinical practice.`,
-      verifiedPurchase: true,
-      status: "approved",
-      helpfulCount: 8,
-    });
+    if (!process.env[key]) process.env[key] = value;
   }
-  console.log(`Seeded Products, Variants, and Clinical Reviews.`);
-
-  // 5. Seed Coupons
-  for (const c of data.coupons) {
-    await Coupon.create({
-      code: c.code,
-      description: c.description,
-      discountType: c.discountType,
-      discountValue: c.discountValue,
-      minOrderValue: c.minOrderValue,
-      maxDiscount: c.maxDiscount,
-      validUntil: new Date(c.validUntil),
-      applicableTiers: c.applicableTiers || ["all"],
-      isActive: true,
-    });
-  }
-  console.log(`Seeded Coupons.`);
-
-  // 6. Seed Membership Plans
-  for (const m of data.membershipPlans) {
-    await MembershipPlan.create({
-      name: m.name,
-      slug: m.slug,
-      price: m.price,
-      durationMonths: m.durationMonths,
-      benefits: m.benefits,
-      isActive: true,
-    });
-  }
-  console.log(`Seeded Membership Plans.`);
-
-  // 7. Seed Banners
-  for (const b of data.siteBanners) {
-    await SiteBanner.create({
-      title: b.title,
-      subtitle: b.subtitle,
-      badge: b.badge,
-      imageUrl: b.imageUrl,
-      linkUrl: b.linkUrl,
-      position: b.position,
-      order: b.order,
-      bgGradient: b.bgGradient,
-      active: true,
-    });
-  }
-  console.log(`Seeded Site Banners.`);
-
-  // 8. Seed Sample Order for Dr. Sharma
-  const sampleProduct = await Product.findOne({ slug: "3m-filtek-z250-universal-restorative-composite" });
-  if (sampleProduct) {
-    await Order.create({
-      orderNumber: "DK-202610-89104",
-      user: doctorUser._id,
-      items: [
-        {
-          product: sampleProduct._id,
-          sku: "3M-Z250-A2",
-          title: sampleProduct.title,
-          variantTitle: "Shade A2 - 4g Syringe",
-          image: sampleProduct.images[0],
-          quantity: 2,
-          unitPrice: 1420,
-          lineTotal: 2840,
-        },
-      ],
-      shippingAddress: doctorUser.addresses[0],
-      pricing: {
-        subtotal: 2840,
-        discount: 0,
-        dentacoinsRedeemed: 100,
-        dentacoinsDiscount: 100,
-        shippingFee: 0,
-        total: 2740,
-      },
-      dentacoinsEarned: 100,
-      payment: {
-        method: "online",
-        status: "paid",
-        provider: "demo",
-        transactionId: "TXN_DEMO_91823749",
-        paidAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-      },
-      shipment: {
-        carrier: "Delhivery Medical Express",
-        trackingNumber: "DLV981273948IN",
-        trackingUrl: "https://www.delhivery.com/track/package/DLV981273948IN",
-        estimatedDelivery: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-        dispatchedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
-      },
-      orderStatus: "shipped",
-      timeline: [
-        { status: "Order Placed", timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), note: "Verified online payment received." },
-        { status: "Packed & Sterilized Check", timestamp: new Date(Date.now() - 1.5 * 24 * 60 * 60 * 1000), note: "Batch verified with >18 months expiry." },
-        { status: "Handed over to Delhivery Express", timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), note: "Tracking # DLV981273948IN" },
-      ],
-    });
-    console.log(`Seeded Dr. Sharma's order history.`);
-  }
-
-  console.log("Seeding finished successfully!");
-  await mongoose.disconnect();
 }
 
-seed().catch((err) => {
-  console.error("Seeding error:", err);
-  process.exit(1);
+function getBossdentUri(): string {
+  loadLocalEnv();
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    throw new Error("MONGODB_URI is missing. Add it to .env.local and include /bossdent as the database name.");
+  }
+
+  let databaseName = "";
+  try {
+    databaseName = new URL(uri).pathname.replace(/^\/+/, "").split("/")[0];
+  } catch {
+    throw new Error("MONGODB_URI is not a valid MongoDB connection URI.");
+  }
+
+  if (databaseName !== "bossdent") {
+    throw new Error(`Safety stop: this script only writes to the 'bossdent' database. Current URI database is '${databaseName || "(not specified)"}'.`);
+  }
+  return uri;
+}
+
+async function main() {
+  const dryRun = process.argv.includes("--dry-run");
+  const uri = getBossdentUri();
+  const dataPath = path.join(process.cwd(), "scripts", "data", "catalogue-data.json");
+
+  if (!fs.existsSync(dataPath)) throw new Error(`Catalogue file not found: ${dataPath}`);
+  const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+
+  if (!Array.isArray(data.brands) || !Array.isArray(data.categories) || !Array.isArray(data.products)) {
+    throw new Error("Catalogue JSON must contain brands, categories and products arrays.");
+  }
+  if (data.products.length < 15) {
+    throw new Error(`Expected at least 15 catalogue products; found ${data.products.length}.`);
+  }
+
+  const allSlugs = new Set<string>();
+  const allSkus = new Set<string>();
+  for (const product of data.products) {
+    if (!product.title || !product.slug || !product.brandSlug || !product.categorySlug ||
+        !product.defaultSku || typeof product.basePrice !== "number") {
+      throw new Error(`Invalid required product fields: ${product.title || product.slug || "(unnamed product)"}`);
+    }
+    if (allSlugs.has(product.slug)) throw new Error(`Duplicate product slug: ${product.slug}`);
+    allSlugs.add(product.slug);
+
+    const variants = Array.isArray(product.variants) && product.variants.length
+      ? product.variants
+      : [{ sku: product.defaultSku, title: "Standard option", attributes: {}, price: product.basePrice, comparePrice: product.baseComparePrice, stock: 0 }];
+    for (const variant of variants) {
+      const sku = String(variant.sku || "").toUpperCase().trim();
+      if (!sku) throw new Error(`Missing variant SKU for ${product.title}`);
+      if (allSkus.has(sku)) throw new Error(`Duplicate SKU in catalogue: ${sku}`);
+      allSkus.add(sku);
+    }
+  }
+
+  console.log(`Bossdent catalogue ${dryRun ? "DRY RUN" : "SEED"}`);
+  console.log(`Brands: ${data.brands.length} | Categories: ${data.categories.length} | Products: ${data.products.length}`);
+  console.log("Target database: bossdent (URI is not printed).");
+  console.log("No users, carts, orders, reviews, coupons, memberships or banners will be deleted or seeded.");
+
+  if (dryRun) {
+    console.log("Validation passed. No database connection or writes performed.");
+    return;
+  }
+
+  await mongoose.connect(uri, { maxPoolSize: 5, serverSelectionTimeoutMS: 15000 });
+
+  try {
+    const brandIds = new Map<string, mongoose.Types.ObjectId>();
+    for (const item of data.brands) {
+      let doc = await Brand.findOne({ slug: item.slug });
+      if (!doc) {
+        doc = await Brand.create({
+          name: item.name,
+          slug: item.slug,
+          originCountry: item.originCountry || "Not specified",
+          description: item.description || "",
+          logo: "",
+          isFeatured: Boolean(item.isFeatured),
+          productCount: 0,
+        });
+      }
+      brandIds.set(item.slug, doc._id as mongoose.Types.ObjectId);
+    }
+
+    const categoryIds = new Map<string, mongoose.Types.ObjectId>();
+    for (const item of data.categories) {
+      let parent = await Category.findOne({ slug: item.slug });
+      if (!parent) {
+        parent = await Category.create({
+          name: item.name,
+          slug: item.slug,
+          description: item.description || "",
+          parentId: null,
+          level: 0,
+          order: item.order || 0,
+          icon: "",
+          image: "",
+          banner: "",
+          isFeatured: Boolean(item.isFeatured),
+          productCount: 0,
+        });
+      }
+      categoryIds.set(item.slug, parent._id as mongoose.Types.ObjectId);
+
+      for (const [index, sub] of (item.subcategories || []).entries()) {
+        let child = await Category.findOne({ slug: sub.slug });
+        if (!child) {
+          child = await Category.create({
+            name: sub.name,
+            slug: sub.slug,
+            description: sub.description || "",
+            parentId: parent._id,
+            level: 1,
+            order: index + 1,
+            icon: "",
+            image: "",
+            banner: "",
+            isFeatured: false,
+            productCount: 0,
+          });
+        }
+        categoryIds.set(sub.slug, child._id as mongoose.Types.ObjectId);
+      }
+    }
+
+    let createdProducts = 0;
+    let existingProducts = 0;
+    let createdVariants = 0;
+    let existingVariants = 0;
+
+    for (const item of data.products) {
+      const brandId = brandIds.get(item.brandSlug);
+      const categoryId = categoryIds.get(item.categorySlug);
+      const subcategoryId = item.subcategorySlug
+        ? categoryIds.get(item.subcategorySlug)
+        : undefined;
+      if (!brandId) throw new Error(`Brand '${item.brandSlug}' missing for ${item.title}`);
+      if (!categoryId) throw new Error(`Category '${item.categorySlug}' missing for ${item.title}`);
+      if (item.subcategorySlug && !subcategoryId)
+        throw new Error(`Subcategory '${item.subcategorySlug}' missing for ${item.title}`);
+
+      let product = await Product.findOne({ slug: item.slug });
+      if (!product) {
+        const compare = item.baseComparePrice;
+        const discountPercent =
+          compare && compare > item.basePrice
+            ? Math.round(((compare - item.basePrice) / compare) * 100)
+            : 0;
+
+        product = await Product.create({
+          title: item.title,
+          slug: item.slug,
+          brand: brandId,
+          category: categoryId,
+          subcategory: subcategoryId,
+          shortDescription: item.shortDescription || "",
+          fullDescription: item.fullDescription || item.shortDescription || "",
+          features: item.features || [],
+          specifications: item.specifications || [],
+          images: item.images || [],
+          defaultSku: String(item.defaultSku).toUpperCase(),
+          basePrice: item.basePrice,
+          baseComparePrice: compare,
+          discountPercent,
+          rating: 0,
+          reviewCount: 0,
+          badges: item.badges || [],
+          isQuotationOnly: Boolean(item.isQuotationOnly),
+          isFreebieEligible: Boolean(item.isFreebieEligible),
+          freebieTitle: item.freebieTitle,
+          rewardCoins: item.rewardCoins ?? 0,
+          inStock: false,
+          totalStock: 0,
+          warrantyMonths: item.warrantyMonths ?? 0,
+          packageContents: item.packageContents || "",
+          expiryNotice: "",
+          returnPolicyDays: 0,
+          active: true,
+          provenance: item.provenance || "Bossdent catalogue research",
+          variantAttributeNames: item.variantAttributeNames || [],
+          views: 0,
+          salesCount: 0,
+        });
+        createdProducts++;
+      } else {
+        // Existing product is deliberately left untouched, including its stock, images and pricing.
+        existingProducts++;
+      }
+
+      const variants =
+        Array.isArray(item.variants) && item.variants.length
+          ? item.variants
+          : [
+              {
+                sku: item.defaultSku,
+                title: "Standard option",
+                attributes: {},
+                price: item.basePrice,
+                comparePrice: item.baseComparePrice,
+                stock: 0,
+              },
+            ];
+
+      for (const variant of variants) {
+        const sku = String(variant.sku).toUpperCase().trim();
+        const existing = await ProductVariant.findOne({ sku });
+        if (!existing) {
+          await ProductVariant.create({
+            product: product._id,
+            sku,
+            title: variant.title || "Standard option",
+            attributes: variant.attributes || {},
+            price: variant.price,
+            comparePrice: variant.comparePrice,
+            stock: 0,
+            image: "",
+            active: true,
+          });
+          createdVariants++;
+        } else {
+          existingVariants++;
+        }
+      }
+    }
+
+    // Recalculate category and brand product counts from actual product relationships.
+
+    // Brands
+    const brandEntries = Array.from(brandIds.entries());
+
+    for (let index = 0; index < brandEntries.length; index++) {
+      const [, id] = brandEntries[index];
+
+      const count = await Product.countDocuments({ brand: id });
+
+      await Brand.updateOne({ _id: id }, { $set: { productCount: count } });
+    }
+
+    // Categories
+    const categoryEntries = Array.from(categoryIds.entries());
+
+    for (let index = 0; index < categoryEntries.length; index++) {
+      const [, id] = categoryEntries[index];
+
+      const count = await Product.countDocuments({
+        $or: [{ category: id }, { subcategory: id }],
+      });
+
+      await Category.updateOne({ _id: id }, { $set: { productCount: count } });
+    }
+
+    console.log("Catalogue seed completed.");
+    console.log(`Products created: ${createdProducts}; already existed: ${existingProducts}`);
+    console.log(`Variants created: ${createdVariants}; already existed: ${existingVariants}`);
+    console.log(
+      "All seeded inventory starts at zero. Add approved images and verified stock before enabling purchases.",
+    );
+  } finally {
+    await mongoose.disconnect();
+  }
+}
+
+main().catch((error) => {
+  console.error("Catalogue seed failed:", error instanceof Error ? error.message : error);
+  process.exitCode = 1;
 });

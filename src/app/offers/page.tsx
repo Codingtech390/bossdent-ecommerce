@@ -63,7 +63,7 @@ export default async function OffersPage() {
                 </div>
                 <div className="mt-3 pt-2 border-t border-slate-100 text-[11px] text-slate-500">
                   {c.applicableTiers?.includes("plus")
-                    ? "Exclusive for DentalKart Plus Members"
+                    ? "Exclusive for Bossdent Plus Members"
                     : "Valid for all verified clinics"}
                 </div>
               </div>

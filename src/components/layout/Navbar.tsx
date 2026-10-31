@@ -1,155 +1,146 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import {
-  Menu,
-  ChevronDown,
-  Sparkles,
-  Flame,
-  Gift,
-  Building2,
-  GraduationCap,
-  Percent,
-  Layers,
-  ArrowRight,
-} from "lucide-react";
+import { ChevronDown, ArrowUpRight } from "lucide-react";
+
+const categories = [
+  {
+    name: "Restorative & Esthetics",
+    slug: "restorative-and-esthetics",
+    subs: ["Dental Composites", "Bonding Agents & Etchants", "Glass Ionomer Cements"],
+  },
+  {
+    name: "Endodontics",
+    slug: "endodontics",
+    subs: ["Rotary & Hand Files", "Endomotors & Apex Locators", "Obturation & Sealers"],
+  },
+  {
+    name: "Handpieces & Rotary",
+    slug: "handpieces-and-rotary",
+    subs: ["High Speed Airotors", "Micromotors & Attachments"],
+  },
+  {
+    name: "Instruments & Surgery",
+    slug: "instruments-and-surgery",
+    subs: ["Extraction Forceps & Elevators", "Diagnostic & Scaler Instruments"],
+  },
+  {
+    name: "Orthodontics",
+    slug: "orthodontics",
+    subs: ["Brackets & Buccal Tubes", "Archwires & Elastics"],
+  },
+  {
+    name: "Equipment & Digital",
+    slug: "equipment-and-digital-dentistry",
+    subs: ["Sterilization & Autoclaves", "Operatory Hardware", "Dental Chairs & Units"],
+  },
+  {
+    name: "Impression Materials",
+    slug: "impression-materials",
+    subs: ["Silicone Putty & Light Body", "Alginates & Trays"],
+  },
+  {
+    name: "New Clinic Setup",
+    slug: "new-clinic-setup",
+    subs: ["Turnkey Packages", "Operatory Suites"],
+  },
+];
+
+const navItems = [
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/categories", hasMenu: true },
+  { label: "Products", href: "/best-sellers" },
+  { label: "Referring Doctors", href: "/brands" },
+  { label: "New Patients", href: "/student-section" },
+  { label: "Contact", href: "/contact" },
+];
 
 export function Navbar() {
-  const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
-  const categories = [
-    {
-      name: "Restorative & Esthetics",
-      slug: "restorative-and-esthetics",
-      subs: ["Dental Composites", "Bonding Agents & Etchants", "Glass Ionomer Cements"],
-    },
-    {
-      name: "Endodontics",
-      slug: "endodontics",
-      subs: ["Rotary & Hand Files", "Endomotors & Apex Locators", "Obturation & Sealers"],
-    },
-    {
-      name: "Handpieces & Rotary",
-      slug: "handpieces-and-rotary",
-      subs: ["High Speed Airotors", "Micromotors & Attachments"],
-    },
-    {
-      name: "Instruments & Surgery",
-      slug: "instruments-and-surgery",
-      subs: ["Extraction Forceps & Elevators", "Diagnostic & Scaler Instruments"],
-    },
-    {
-      name: "Orthodontics",
-      slug: "orthodontics",
-      subs: ["Brackets & Buccal Tubes", "Archwires & Elastics"],
-    },
-    {
-      name: "Equipment & Digital",
-      slug: "equipment-and-digital-dentistry",
-      subs: ["Sterilization & Autoclaves", "Operatory Hardware", "Dental Chairs & Units"],
-    },
-    {
-      name: "Impression Materials",
-      slug: "impression-materials",
-      subs: ["Silicone Putty & Light Body", "Alginates & Trays"],
-    },
-    {
-      name: "New Clinic Setup",
-      slug: "new-clinic-setup",
-      subs: ["Turnkey Packages", "Operatory Suites"],
-    },
-  ];
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setServicesOpen(false);
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, []);
 
   return (
-    <nav className="bg-dk-teal-900 text-white relative z-40 border-t border-dk-teal-800">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between text-xs font-semibold overflow-x-auto no-scrollbar">
-        {/* All Categories Button */}
-        <div
-          className="relative"
-          onMouseEnter={() => setIsMegaOpen(true)}
-          onMouseLeave={() => setIsMegaOpen(false)}
-        >
-          <button className="flex items-center gap-2 py-3 px-4 bg-dk-teal-800 hover:bg-dk-teal-700 transition-colors uppercase tracking-wider text-[11px] font-bold">
-            <Menu className="w-4 h-4 text-dk-orange-400" />
-            <span>All Categories</span>
-            <ChevronDown className="w-3.5 h-3.5 ml-1" />
-          </button>
+    <div className="bossdent-vivid-nav-wrap">
+      <nav ref={navRef} className="bossdent-vivid-nav" aria-label="Main navigation">
+        {navItems.map((item) =>
+          item.hasMenu ? (
+            <div
+              key={item.label}
+              className="bossdent-vivid-nav-item bossdent-vivid-services"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                type="button"
+                className="bossdent-vivid-nav-link"
+                aria-expanded={servicesOpen}
+                aria-haspopup="true"
+                onClick={() => setServicesOpen((value) => !value)}
+                onFocus={() => setServicesOpen(true)}
+              >
+                {item.label}
+                <ChevronDown className={servicesOpen ? "is-open" : ""} aria-hidden="true" />
+              </button>
 
-          {/* Mega Menu Dropdown */}
-          {isMegaOpen && (
-            <div className="absolute top-full left-0 w-80 sm:w-96 bg-white text-slate-800 shadow-2xl rounded-b-xl border border-slate-200 py-3 z-50 animate-fade-in divide-y divide-slate-100">
-              {categories.map((cat) => (
-                <div key={cat.slug} className="p-3 hover:bg-slate-50 transition-colors group">
-                  <Link
-                    href={`/categories/${cat.slug}`}
-                    className="flex items-center justify-between font-bold text-dk-teal-950 group-hover:text-dk-orange-600 text-xs"
-                  >
-                    <span>{cat.name}</span>
-                    <ArrowRight className="w-3 h-3 text-slate-400 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                  <div className="flex flex-wrap gap-1.5 mt-1.5">
-                    {cat.subs.map((s) => (
-                      <span
-                        key={s}
-                        className="text-[11px] text-slate-500 hover:text-dk-teal-800 transition-colors"
-                      >
-                        {s} •
-                      </span>
+              {servicesOpen && (
+                <div className="bossdent-vivid-mega-menu">
+                  <div className="bossdent-vivid-mega-heading">
+                    <div>
+                      <span>Explore the catalogue</span>
+                      <h3>Shop by speciality</h3>
+                    </div>
+                    <Link href="/categories" onClick={() => setServicesOpen(false)}>
+                      View all categories <ArrowUpRight aria-hidden="true" />
+                    </Link>
+                  </div>
+                  <div className="bossdent-vivid-category-grid">
+                    {categories.map((category) => (
+                      <section key={category.slug} className="bossdent-vivid-category">
+                        <Link
+                          href={`/categories/${category.slug}`}
+                          onClick={() => setServicesOpen(false)}
+                          className="bossdent-vivid-category-title"
+                        >
+                          {category.name}
+                          <ArrowUpRight aria-hidden="true" />
+                        </Link>
+                        <ul>
+                          {category.subs.map((sub) => (
+                            <li key={sub}>{sub}</li>
+                          ))}
+                        </ul>
+                      </section>
                     ))}
                   </div>
                 </div>
-              ))}
+              )}
             </div>
-          )}
-        </div>
-
-        {/* Primary Navbar Links */}
-        <div className="flex items-center gap-1 whitespace-nowrap">
-          <Link
-            href="/best-sellers"
-            className="flex items-center gap-1 px-3 py-3 text-slate-200 hover:text-white hover:bg-dk-teal-800 rounded transition-colors"
-          >
-            <Flame className="w-3.5 h-3.5 text-amber-400" /> Best Sellers
-          </Link>
-          <Link
-            href="/brands"
-            className="flex items-center gap-1 px-3 py-3 text-slate-200 hover:text-white hover:bg-dk-teal-800 rounded transition-colors"
-          >
-            <Layers className="w-3.5 h-3.5 text-sky-400" /> Brands Directory
-          </Link>
-          <Link
-            href="/offers"
-            className="flex items-center gap-1 px-3 py-3 text-amber-300 hover:text-amber-200 hover:bg-dk-teal-800 rounded transition-colors"
-          >
-            <Percent className="w-3.5 h-3.5" /> Offer Zone
-          </Link>
-          <Link
-            href="/freebies"
-            className="flex items-center gap-1 px-3 py-3 text-emerald-300 hover:text-emerald-200 hover:bg-dk-teal-800 rounded transition-colors"
-          >
-            <Gift className="w-3.5 h-3.5 text-emerald-400" /> Freebies (Gifts @ ₹1)
-          </Link>
-          <Link
-            href="/membership"
-            className="flex items-center gap-1 px-3 py-3 text-amber-400 hover:text-amber-300 hover:bg-dk-teal-800 rounded transition-colors"
-          >
-            <Sparkles className="w-3.5 h-3.5" /> DentalKart Plus
-          </Link>
-          <Link
-            href="/clinic-setup"
-            className="flex items-center gap-1 px-3 py-3 text-slate-200 hover:text-white hover:bg-dk-teal-800 rounded transition-colors"
-          >
-            <Building2 className="w-3.5 h-3.5 text-dk-orange-400" /> New Clinic Setup
-          </Link>
-          <Link
-            href="/student-section"
-            className="flex items-center gap-1 px-3 py-3 text-slate-200 hover:text-white hover:bg-dk-teal-800 rounded transition-colors"
-          >
-            <GraduationCap className="w-3.5 h-3.5 text-purple-300" /> Student Section
-          </Link>
-        </div>
-      </div>
-    </nav>
+          ) : (
+            <Link key={item.label} href={item.href} className="bossdent-vivid-nav-link">
+              {item.label}
+            </Link>
+          ),
+        )}
+      </nav>
+    </div>
   );
 }

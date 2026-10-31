@@ -3,28 +3,1363 @@
 @tailwind utilities;
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  color-scheme: light;
+  --bd-ink: #252522;
+  --bd-charcoal: #343538;
+  --bd-mauve: #918594;
+  --bd-mauve-dark: #786b7b;
+  --bd-ivory: #f4f1ed;
+  --bd-paper: #ffffff;
+  --bd-muted: #77736f;
+  --bd-border: #dedad5;
+  --bd-soft: #eeebe7;
+  --background: var(--bd-ivory);
+  --foreground: var(--bd-ink);
+  --font-editorial: "Cormorant Garamond", "Iowan Old Style", "Baskerville", Georgia, serif;
+  --font-interface: "Manrope", "Avenir Next", Avenir, "Segoe UI", sans-serif;
 }
 
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  color: var(--bd-ink);
+  background: var(--bd-ivory);
+  font-family: var(--font-interface);
+  font-feature-settings: "kern", "liga", "calt";
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, .font-serif { font-family: var(--font-editorial); }
+::selection { background: #d9cbd9; color: var(--bd-ink); }
+:focus-visible { outline: 2px solid var(--bd-mauve); outline-offset: 3px; }
+img, video { max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+button { -webkit-tap-highlight-color: transparent; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bd-ivory); }
+::-webkit-scrollbar-thumb { background: #b8afb8; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--bd-mauve); }
+
+/* Shared page foundation */
+main { min-width: 0; }
+main:not(:has(.bossdent-hero)) { background: var(--bd-ivory); }
+main > div { scroll-margin-top: 100px; }
+.bossdent-container { width: min(100% - 48px, 1440px); margin-inline: auto; }
+.bossdent-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--bd-muted); font-size: 10px; font-weight: 700;
+  letter-spacing: .24em; text-transform: uppercase;
+}
+.bossdent-eyebrow::before { content: ""; width: 34px; height: 1px; background: currentColor; }
+.bossdent-display { font-family: var(--font-editorial); font-weight: 400; letter-spacing: -.045em; line-height: 1.02; }
+.bossdent-button {
+  display: inline-flex; min-height: 48px; align-items: center; justify-content: center;
+  gap: 18px; padding: 12px 22px; background: var(--bd-mauve); color: white;
+  font-size: 12px; font-weight: 700; letter-spacing: .01em; transition: background .2s, transform .2s;
+}
+.bossdent-button:hover { background: var(--bd-mauve-dark); transform: translateY(-1px); }
+.bossdent-link {
+  display: inline-flex; align-items: center; gap: 10px; padding-bottom: 7px;
+  border-bottom: 1px solid var(--bd-mauve); color: var(--bd-ink);
+  font-size: 12px; font-weight: 700;
+}
+.bossdent-editorial-surface { background: var(--bd-soft); }
+
+
+/* SearchAutocomplete is retained; normalize its existing UI */
+.bossdent-site-header input[type="search"],
+.bossdent-site-header input[type="text"] {
+  border-radius: 0 !important; border: 1px solid rgba(255,255,255,.35) !important;
+  background: rgba(255,255,255,.97) !important; color: var(--bd-ink) !important;
+  min-height: 46px;
+}
+.bossdent-site-header input::placeholder { color: #8b8588 !important; }
+
+/* Editorial hero */
+.bossdent-hero { position: relative; isolation: isolate; min-height: min(780px, calc(100svh - 140px)); overflow: hidden; background: var(--bd-charcoal); color: white; }
+.bossdent-hero-media { position: absolute; inset: 0; z-index: -2; }
+.bossdent-hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.bossdent-hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.bossdent-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(30,30,31,.78) 0%, rgba(30,30,31,.48) 48%, rgba(30,30,31,.24) 100%); }
+.bossdent-hero-inner { width: min(100% - 64px, 1440px); min-height: inherit; margin-inline: auto; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-block: 110px 90px; }
+.bossdent-hero h1 { max-width: 850px; font-family: var(--font-editorial); font-size: clamp(54px, 7.2vw, 104px); font-weight: 400; line-height: .98; letter-spacing: -.055em; color: white; }
+.bossdent-hero p { max-width: 580px; color: rgba(255,255,255,.88); font-size: 15px; line-height: 1.9; }
+.bossdent-hero .bossdent-eyebrow { color: rgba(255,255,255,.78); }
+.bossdent-hero .bossdent-button { background: var(--bd-mauve); }
+.bossdent-hero .bossdent-button:hover { background: #a394a6; }
+
+/* Legacy Tailwind color bridge: existing page logic and classes remain valid */
+.text-dk-teal-50 { color: #796d7b !important; }
+.text-dk-teal-100, .text-dk-teal-200 { color: #c9bdca !important; }
+.text-dk-teal-500, .text-dk-teal-600, .text-dk-teal-700, .text-dk-teal-800, .text-dk-teal-900, .text-dk-teal-950 { color: var(--bd-mauve-dark) !important; }
+.bg-dk-teal-50, .bg-dk-teal-100 { background-color: #eee8ef !important; }
+.bg-dk-teal-200 { background-color: #e4dbe5 !important; }
+.bg-dk-teal-500, .bg-dk-teal-600, .bg-dk-teal-700, .bg-dk-teal-800, .bg-dk-teal-900, .bg-dk-teal-950 { background-color: var(--bd-charcoal) !important; }
+.border-dk-teal-50, .border-dk-teal-100, .border-dk-teal-200, .border-dk-teal-500, .border-dk-teal-600, .border-dk-teal-700, .border-dk-teal-800, .border-dk-teal-900 { border-color: #c9bdca !important; }
+.text-dk-orange-400, .text-dk-orange-500, .text-dk-orange-600, .text-dk-orange-700 { color: var(--bd-mauve) !important; }
+.bg-dk-orange-50, .bg-dk-orange-100 { background-color: #f0eaf0 !important; }
+.bg-dk-orange-400, .bg-dk-orange-500, .bg-dk-orange-600, .bg-dk-orange-700 { background-color: var(--bd-mauve) !important; }
+.border-dk-orange-200, .border-dk-orange-400, .border-dk-orange-500 { border-color: var(--bd-mauve) !important; }
+
+/* Global surface refinement for existing route pages */
+.rounded-xl, .rounded-2xl { border-radius: 2px !important; }
+.shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl { box-shadow: 0 12px 34px rgba(37,37,34,.07) !important; }
+.border-slate-200, .border-slate-300 { border-color: var(--bd-border) !important; }
+.bg-slate-50 { background-color: var(--bd-ivory) !important; }
+.bg-slate-100 { background-color: var(--bd-soft) !important; }
+.text-slate-900 { color: var(--bd-ink) !important; }
+.text-slate-800 { color: #393832 !important; }
+.text-slate-700 { color: #555047 !important; }
+.text-slate-600, .text-slate-500 { color: #77736f !important; }
+.text-slate-400 { color: #928c87 !important; }
+.hover\:text-dk-teal-800:hover, .hover\:text-dk-teal-900:hover { color: var(--bd-mauve-dark) !important; }
+.hover\:bg-dk-teal-800:hover, .hover\:bg-dk-teal-900:hover { background-color: var(--bd-mauve-dark) !important; }
+.bg-gradient-to-r.from-dk-teal-900 { background: var(--bd-charcoal) !important; }
+
+/* Product cards */
+.bossdent-product-card { border: 1px solid var(--bd-border); border-radius: 0; background: #fff; transition: border-color .25s, transform .25s; }
+.bossdent-product-card:hover { border-color: var(--bd-mauve); transform: translateY(-3px); }
+.bossdent-product-card .bossdent-product-image { background: #f5f2ef; }
+
+/* Footer */
+.bossdent-footer { background: var(--bd-charcoal); color: rgba(255,255,255,.76); }
+.bossdent-footer a:hover { color: #d9cbd9; }
+
+/* Responsive behavior */
+@media (max-width: 1024px) {
+  .bossdent-header-main { grid-template-columns: 1fr auto; gap: 18px; padding-block: 16px; }
+  .bossdent-search-shell { grid-column: 1 / -1; grid-row: 2; }
+  .bossdent-header-actions { grid-column: 2; grid-row: 1; }
+  .bossdent-header-bottom-inner { justify-content: flex-start; }
+  .bossdent-nav-links { gap: 18px; overflow-x: auto; }
+}
+@media (max-width: 720px) {
+  html { scroll-padding-top: 72px; }
+  .bossdent-container { width: min(100% - 32px, 1440px); }
+  .bossdent-header-main { width: calc(100% - 32px); min-height: 72px; grid-template-columns: 1fr auto; gap: 12px; }
+  .bossdent-wordmark strong { font-size: 21px; }
+  .bossdent-wordmark small { font-size: 7px; }
+  .bossdent-search-shell { grid-column: 1 / -1; grid-row: 2; padding-bottom: 12px; }
+  .bossdent-header-actions { gap: 13px; }
+  .bossdent-header-cta span, .bossdent-account-label, .bossdent-desktop-only { display: none !important; }
+  .bossdent-header-cta { width: 40px; height: 40px; justify-content: center; padding: 0; }
+  .bossdent-header-bottom { display: none; }
+  .bossdent-mobile-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .bossdent-mobile-panel { display: block; padding: 10px 20px 24px; border-top: 1px solid rgba(255,255,255,.15); background: var(--bd-charcoal); }
+  .bossdent-mobile-panel a { display: block; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.12); color: white; font-size: 13px; }
+  .bossdent-hero { min-height: 690px; min-height: min(760px, calc(100svh - 110px)); }
+  .bossdent-hero-inner { width: calc(100% - 40px); padding-block: 86px 70px; }
+  .bossdent-hero h1 { font-size: clamp(48px, 13vw, 72px); }
+  .bossdent-hero p { font-size: 14px; }
+  .bossdent-hero::after { background: linear-gradient(90deg, rgba(30,30,31,.78), rgba(30,30,31,.44)); }
+  .bossdent-hero-media video { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
-/* Custom dental theme scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+
+.bossdent-hero {
+  min-height: 100svh;
+  padding-top: 0;
 }
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
+.bossdent-hero-inner,
+.bossdent-hero > .relative.mx-auto {
+  min-height: 100svh;
+  padding-top: clamp(190px, 23vh, 260px);
+  padding-bottom: clamp(56px, 8vh, 100px);
+  align-items: flex-start;
+  justify-content: flex-end;
 }
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+.bossdent-hero::after {
+  background: linear-gradient(90deg, rgba(35,34,36,.70) 0%, rgba(35,34,36,.42) 54%, rgba(35,34,36,.24) 100%), linear-gradient(0deg, rgba(25,24,26,.35), transparent 42%);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+.bossdent-hero h1 {
+  max-width: 900px;
+  font-size: clamp(58px, 8.2vw, 116px);
+  line-height: .92;
+  letter-spacing: -.045em;
+}
+.bossdent-hero .bossdent-eyebrow { letter-spacing: .22em; }
+.bossdent-hero p { max-width: 760px; }
+@media (max-width: 1100px) {
+  body:has(.bossdent-hero) .bossdent-header-main { grid-template-columns: minmax(150px, .7fr) minmax(180px, 1fr) auto; gap: 16px; }
+  body:has(.bossdent-hero) .bossdent-header-actions { gap: 12px; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-nav-links { gap: 14px; }
+}
+@media (max-width: 767px) {
+  body:has(.bossdent-hero) .bossdent-site-header { position: absolute; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-main,
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-bottom-inner { width: calc(100% - 36px); }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-main { min-height: 76px; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-wordmark strong { font-size: 25px; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-search-shell { display: none; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-actions { gap: 12px; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-bottom { display: none; }
+  .bossdent-hero,
+  .bossdent-hero-inner,
+  .bossdent-hero > .relative.mx-auto { min-height: 820px; min-height: 100svh; }
+  .bossdent-hero-inner,
+  .bossdent-hero > .relative.mx-auto { width: calc(100% - 36px); padding-top: 180px; padding-bottom: 54px; }
+  .bossdent-hero h1 { font-size: clamp(48px, 13vw, 76px); }
+  .bossdent-hero::after { background: linear-gradient(90deg, rgba(35,34,36,.70), rgba(35,34,36,.42)), linear-gradient(0deg, rgba(25,24,26,.4), transparent 55%); }
+}
+
+/* v3 navigation refinement: wide editorial mega-menu, never constrained by trigger width */
+.bossdent-header-bottom { position: relative; z-index: 90; }
+.bossdent-header-bottom-inner { position: relative; }
+.bossdent-category-wrap { position: static; flex: 0 0 auto; align-self: stretch; display: flex; align-items: center; }
+.bossdent-category-trigger { min-height: 54px; padding: 0; cursor: pointer; white-space: nowrap; }
+.bossdent-category-trigger:focus-visible,
+.bossdent-nav-link:focus-visible,
+.bossdent-mega-menu a:focus-visible { outline: 2px solid #c9b9c8; outline-offset: 4px; }
+.bossdent-mega-menu {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  width: min(980px, calc(100vw - 56px));
+  max-width: calc(100vw - 56px);
+  max-height: min(72vh, 680px);
+  overflow: auto;
+  padding: clamp(22px, 3vw, 38px);
+  background: #f8f6f3;
+  color: #292627;
+  border: 1px solid rgba(54, 47, 49, .14);
+  box-shadow: 0 28px 70px rgba(0,0,0,.24);
+  z-index: 160;
+}
+.bossdent-mega-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; padding-bottom: 22px; border-bottom: 1px solid #ded8d4; }
+.bossdent-mega-eyebrow { margin: 0 0 9px; color: #8f808d; font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+.bossdent-mega-heading h3 { margin: 0; color: #282526; font-family: var(--font-editorial, Georgia, serif); font-size: clamp(27px, 3vw, 38px); font-weight: 400; line-height: 1.05; letter-spacing: -.035em; }
+.bossdent-mega-intro { max-width: 520px; margin: 10px 0 0; color: #777071; font-size: 12px; line-height: 1.7; }
+.bossdent-mega-all { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 9px; padding-bottom: 6px; border-bottom: 1px solid #9b8998; color: #443c43; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.bossdent-mega-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; padding-block: 25px 20px; }
+.bossdent-mega-column { display: flex; min-width: 0; flex-direction: column; gap: 22px; }
+.bossdent-mega-category { min-width: 0; }
+.bossdent-mega-category-link { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; color: #302a2d; font-size: 12px; font-weight: 700; line-height: 1.45; text-decoration: none; }
+.bossdent-mega-category-link svg { flex: 0 0 auto; margin-top: 1px; color: #9b8998; opacity: .65; transition: transform .2s, opacity .2s; }
+.bossdent-mega-category-link:hover { color: #8d7789; }
+.bossdent-mega-category-link:hover svg { transform: translate(2px, -2px); opacity: 1; }
+.bossdent-mega-subcategories { display: grid; gap: 7px; margin: 10px 0 0; padding: 0; list-style: none; }
+.bossdent-mega-subcategories a { color: #777071; font-size: 11px; line-height: 1.5; text-decoration: none; transition: color .2s; }
+.bossdent-mega-subcategories a:hover { color: #8d7789; }
+.bossdent-mega-state { padding: 32px 0; color: #777071; font-size: 13px; }
+.bossdent-mega-state a { color: #554653; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.bossdent-mega-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 17px; border-top: 1px solid #ded8d4; color: #898182; font-size: 10px; }
+.bossdent-mega-footer a { display: inline-flex; align-items: center; gap: 7px; color: #4c414a; font-weight: 700; white-space: nowrap; }
+.bossdent-nav-links { min-width: 0; }
+.bossdent-nav-link { padding-block: 18px; }
+@media (max-width: 1100px) {
+  .bossdent-header-bottom-inner { gap: 18px; }
+  .bossdent-nav-links { gap: 16px; }
+  .bossdent-mega-menu { width: min(900px, calc(100vw - 40px)); max-width: calc(100vw - 40px); }
+  .bossdent-mega-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+}
+@media (max-width: 720px) {
+  .bossdent-mega-menu { display: none; }
+}
+
+
+
+/* BOSSDENT VIVID HERO V6 OVERRIDES */
+
+
+/* --------------------------------------------------------------------------
+   Bossdent hero — Vivid-inspired typography, positioning and CTA
+   Appended override: intentionally scoped to the homepage hero only.
+   -------------------------------------------------------------------------- */
+.bossdent-hero-vivid {
+  position: relative;
+  isolation: isolate;
+  min-height: 690px;
+  color: #fff;
+  background: #242222;
+  font-family: var(--font-bossdent-sans), Arial, sans-serif;
+}
+
+.bossdent-hero-vivid__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: #292727;
+}
+
+.bossdent-hero-vivid__media > img,
+.bossdent-hero-vivid__media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bossdent-hero-vivid__media video {
+  z-index: 1;
+}
+
+.bossdent-hero-vivid::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(20, 20, 20, 0.55) 0%, rgba(24, 22, 23, 0.34) 52%, rgba(20, 19, 20, 0.28) 100%),
+    linear-gradient(0deg, rgba(16, 15, 16, 0.48) 0%, rgba(16, 15, 16, 0.02) 58%, rgba(16, 15, 16, 0.12) 100%);
+}
+
+.bossdent-hero-vivid__inner {
+  position: relative;
+  width: min(100% - 56px, 1440px);
+  min-height: 690px;
+  margin-inline: auto;
+  padding-top: 175px;
+  padding-bottom: 42px;
+}
+
+.bossdent-hero-vivid__script {
+  position: absolute;
+  top: 34%;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  color: #c1afc2;
+  font-family: var(--font-bossdent-script), cursive;
+  font-size: clamp(104px, 13vw, 190px);
+  font-weight: 400;
+  line-height: 0.78;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+.bossdent-hero-vivid__headline {
+  position: absolute;
+  right: 0;
+  bottom: 23%;
+  left: 23%;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-bossdent-sans), Arial, sans-serif;
+  font-size: clamp(18px, 2.15vw, 29px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.085em;
+  text-align: left;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.bossdent-hero-vivid__bottom {
+  position: absolute;
+  right: 0;
+  bottom: 42px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.bossdent-hero-vivid__button {
+  display: inline-flex;
+  min-height: 54px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  background: #9a8b9b;
+  color: #fff;
+  font-family: var(--font-bossdent-sans), Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.bossdent-hero-vivid__button svg {
+  width: 17px;
+  height: 17px;
+  transition: transform 180ms ease;
+}
+
+.bossdent-hero-vivid__button:hover {
+  background: #817283;
+  transform: translateY(-1px);
+}
+
+.bossdent-hero-vivid__button:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.bossdent-hero-vivid__description {
+  max-width: 650px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-family: var(--font-bossdent-sans), Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+  text-align: right;
+}
+
+@media (min-width: 1500px) {
+  .bossdent-hero-vivid__inner {
+    width: min(100% - 80px, 1440px);
+  }
+}
+
+@media (max-width: 900px) {
+  .bossdent-hero-vivid,
+  .bossdent-hero-vivid__inner {
+    min-height: 640px;
+  }
+
+  .bossdent-hero-vivid__inner {
+    width: calc(100% - 48px);
+    padding-top: 150px;
+  }
+
+  .bossdent-hero-vivid__script {
+    top: 35%;
+    font-size: clamp(100px, 17vw, 150px);
+  }
+
+  .bossdent-hero-vivid__headline {
+    right: 0;
+    bottom: 24%;
+    left: 13%;
+    font-size: clamp(17px, 3vw, 25px);
+  }
+
+  .bossdent-hero-vivid__bottom {
+    bottom: 32px;
+    gap: 20px;
+  }
+
+  .bossdent-hero-vivid__description {
+    max-width: 52%;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bossdent-hero-vivid,
+  .bossdent-hero-vivid__inner {
+    min-height: 690px;
+  }
+
+  .bossdent-hero-vivid__inner {
+    width: calc(100% - 36px);
+    padding-top: 150px;
+    padding-bottom: 28px;
+  }
+
+  .bossdent-hero-vivid__script {
+    top: 31%;
+    left: -4px;
+    font-size: clamp(92px, 24vw, 132px);
+  }
+
+  .bossdent-hero-vivid__headline {
+    right: 0;
+    bottom: 29%;
+    left: 0;
+    max-width: 100%;
+    font-size: clamp(17px, 5vw, 22px);
+    line-height: 1.45;
+    letter-spacing: 0.055em;
+    text-align: left;
+  }
+
+  .bossdent-hero-vivid__bottom {
+    right: 0;
+    bottom: 28px;
+    left: 0;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .bossdent-hero-vivid__button {
+    min-height: 50px;
+    padding-inline: 22px;
+    font-size: 14px;
+  }
+
+  .bossdent-hero-vivid__description {
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.55;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bossdent-hero-vivid__button,
+  .bossdent-hero-vivid__button svg {
+    transition: none;
+  }
+}
+
+/* Flipper */
+
+/* ==========================================
+   BOSSDENT — INTERACTIVE FLIP CATEGORY CARDS
+========================================== */
+
+.bossdent-specialties-section {
+  width: 100%;
+  padding: 100px 24px 110px;
+  background: #fbfaf8;
+}
+
+/* Compact centered 2 x 2 composition */
+
+.bossdent-specialties-grid {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  perspective: 1400px;
+}
+
+/* Individual card */
+
+.bossdent-flip-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 0.94;
+  overflow: hidden;
+  background: #e9e5e1;
+  text-decoration: none;
+  perspective: 1400px;
+  outline-offset: 4px;
+}
+
+/* Flip animation container */
+
+.bossdent-flip-card-inner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 850ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Flip on hover and keyboard focus */
+
+.bossdent-flip-card:hover .bossdent-flip-card-inner,
+.bossdent-flip-card:focus-visible .bossdent-flip-card-inner,
+.bossdent-flip-card:focus-within .bossdent-flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Shared front and back */
+
+.bossdent-flip-card-front,
+.bossdent-flip-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Front image */
+
+.bossdent-flip-card-front {
+  background: #e8e5e0;
+}
+
+.bossdent-flip-card-front img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 700ms ease;
+}
+
+.bossdent-flip-card:hover .bossdent-flip-card-front img {
+  transform: scale(1.035);
+}
+
+/* Subtle image overlay */
+
+.bossdent-flip-front-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 12px 18px;
+  background: linear-gradient(
+    to top,
+    rgba(20, 18, 17, 0.42),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+
+.bossdent-flip-card:hover .bossdent-flip-front-overlay {
+  opacity: 1;
+}
+
+.bossdent-flip-front-overlay span {
+  color: white;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Back panel */
+
+.bossdent-flip-card-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(18px, 4%, 38px);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(91, 79, 93, 0.96),
+      rgba(150, 138, 152, 0.97)
+    );
+  color: #ffffff;
+  text-align: center;
+  transform: rotateY(180deg);
+}
+
+/* Back typography */
+
+.bossdent-flip-eyebrow {
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bossdent-flip-card-back h3 {
+  max-width: 270px;
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(21px, 3vw, 30px);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.bossdent-flip-card-back p {
+  max-width: 265px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(10px, 1.2vw, 12px);
+  line-height: 1.8;
+}
+
+/* Explore link */
+
+.bossdent-flip-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 23px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.bossdent-flip-explore svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 250ms ease;
+}
+
+.bossdent-flip-card:hover .bossdent-flip-explore svg {
+  transform: translate(3px, -3px);
+}
+
+/* Footer link */
+
+.bossdent-specialties-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.bossdent-specialties-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #a69b9f;
+  color: #49413f;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 250ms ease;
+}
+
+.bossdent-specialties-footer a:hover {
+  color: #968a98;
+}
+
+.bossdent-specialties-footer svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  .bossdent-specialties-section {
+    padding: 70px 20px 80px;
+  }
+
+  .bossdent-specialties-grid {
+    max-width: 560px;
+  }
+
+  .bossdent-flip-card-back {
+    padding: 15px;
+  }
+
+  .bossdent-flip-card-back p {
+    margin-top: 12px;
+    line-height: 1.55;
+  }
+
+  .bossdent-flip-eyebrow {
+    margin-bottom: 12px;
+    font-size: 8px;
+  }
+
+  .bossdent-flip-explore {
+    margin-top: 15px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .bossdent-specialties-section {
+    padding: 45px 12px 60px;
+  }
+
+  .bossdent-specialties-grid {
+    max-width: 100%;
+  }
+
+  .bossdent-flip-card {
+    aspect-ratio: 1 / 1.05;
+  }
+
+  .bossdent-flip-card-back {
+    padding: 10px;
+  }
+
+  .bossdent-flip-eyebrow {
+    margin-bottom: 9px;
+    font-size: 7px;
+    letter-spacing: 0.12em;
+  }
+
+  .bossdent-flip-card-back h3 {
+    font-size: 17px;
+  }
+
+  .bossdent-flip-card-back p {
+    margin-top: 9px;
+    font-size: 9px;
+    line-height: 1.45;
+  }
+
+  .bossdent-flip-explore {
+    gap: 5px;
+    margin-top: 12px;
+    font-size: 8px;
+  }
+
+  .bossdent-specialties-footer {
+    margin-top: 25px;
+  }
+}
+
+/* Respect reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .bossdent-flip-card-inner {
+    transition: none;
+  }
+}
+
+
+/* =========================================
+   BOSSDENT TEAM FLIP CARDS
+========================================= */
+
+.bossdent-team-card {
+  position: relative;
+  height: 320px;
+  min-width: 0;
+  perspective: 1400px;
+  outline: none;
+  overflow: hidden;
+  background: #968a98;
+}
+
+.bossdent-team-card-inner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 850ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.bossdent-team-card:hover .bossdent-team-card-inner,
+.bossdent-team-card:focus .bossdent-team-card-inner,
+.bossdent-team-card:focus-within .bossdent-team-card-inner {
+  transform: rotateY(180deg);
+}
+
+.bossdent-team-card-front,
+.bossdent-team-card-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.bossdent-team-card-front {
+  background: #e9e6df;
+}
+
+.bossdent-team-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(25, 20, 24, 0.68) 0%,
+    rgba(25, 20, 24, 0.12) 45%,
+    transparent 75%
+  );
+  transition: opacity 500ms ease;
+}
+
+.bossdent-team-card-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(65, 54, 66, 0.95),
+      rgba(150, 138, 152, 0.97)
+    );
+  transform: rotateY(180deg);
+  text-align: center;
+}
+
+.bossdent-team-card-content {
+  width: 100%;
+  max-width: 460px;
+  margin: auto;
+}
+
+@media (min-width: 640px) {
+  .bossdent-team-card {
+    height: 420px;
+  }
+
+  .bossdent-team-card-back {
+    padding: 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  .bossdent-team-card {
+    height: 480px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bossdent-team-card {
+    height: 540px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bossdent-team-card {
+    height: 260px;
+  }
+
+  .bossdent-team-card-back {
+    padding: 10px;
+  }
+
+  .bossdent-team-card-content {
+    max-width: 100%;
+  }
+
+  .bossdent-team-card-back .text-xl {
+    font-size: 15px;
+  }
+
+  .bossdent-team-card-back p {
+    line-height: 1.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bossdent-team-card-inner {
+    transition: none;
+  }
+}
+
+/* ========================================================================
+   BOSSDENT HEADER — SINGLE SOURCE OF TRUTH
+   Homepage: transparent overlay at scrollY <= 60px.
+   Scrolled / inner pages: fixed white header.
+   Matches the supplied Vivid reference while retaining Bossdent controls.
+   ======================================================================== */
+
+.bossdent-vivid-header {
+  --header-height: 82px;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #39332f;
+  background: #fff;
+  border: 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .09);
+  isolation: isolate;
+  overflow: visible;
+  transition: background-color 260ms ease, box-shadow 260ms ease;
+}
+
+/* The homepage's first state overlays the hero instead of taking layout space. */
+.bossdent-vivid-header.bossdent-header-hero {
+  position: absolute;
+  inset: 0 0 auto;
+  color: #fff;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Top row: logo at left, customer actions at right. */
+.bossdent-vivid-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  width: min(calc(100% - 52px), 1510px);
+  min-height: 104px;
+  height: 104px;
+  margin: 0 auto;
+  padding: 12px 0;
+  background: transparent;
+}
+
+.bossdent-vivid-logo {
+  display: inline-flex;
+  flex: 0 0 205px;
+  align-items: center;
+  width: 205px;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.bossdent-vivid-logo img {
+  display: block;
+  width: 205px;
+  height: 72px;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.bossdent-vivid-tools {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.55vw, 24px);
+  min-width: 0;
+}
+
+/* Keep the customer actions optically and vertically aligned with the CTA. */
+.bossdent-vivid-tools,
+.bossdent-vivid-account-wrap {
+  align-self: center;
+}
+
+.bossdent-vivid-account-wrap,
+.bossdent-vivid-account,
+.bossdent-vivid-cart-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bossdent-vivid-account,
+.bossdent-vivid-cart-icon {
+  min-height: 44px;
+  line-height: 1;
+}
+
+.bossdent-vivid-account > svg,
+.bossdent-vivid-cart-icon > svg {
+  display: block;
+  flex: 0 0 19px;
+}
+
+.bossdent-vivid-account > span,
+.bossdent-vivid-cart-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.bossdent-vivid-icon {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 28px;
+  color: #39332f;
+  font-size: 12px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.bossdent-vivid-icon:hover { color: var(--bd-mauve-dark); }
+.bossdent-vivid-icon > svg { width: 19px; height: 19px; stroke-width: 1.7; }
+.bossdent-header-hero .bossdent-vivid-icon,
+.bossdent-header-hero .bossdent-vivid-icon > svg { color: #fff; }
+.bossdent-header-hero .bossdent-vivid-icon:hover { color: #e5dbe5; }
+
+.bossdent-vivid-count {
+  position: absolute;
+  top: -8px;
+  right: -9px;
+  display: grid;
+  min-width: 16px;
+  height: 16px;
+  place-items: center;
+  padding: 0 3px;
+  border-radius: 50px;
+  background: var(--bd-mauve);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.bossdent-vivid-account-wrap { position: relative; }
+.bossdent-vivid-account-menu {
+  position: absolute;
+  top: calc(100% + 18px);
+  right: 0;
+  z-index: 1200;
+  width: 230px;
+  padding: 8px;
+  background: #fff;
+  color: #252522;
+  border: 1px solid #dedad5;
+  box-shadow: 0 20px 50px rgba(0,0,0,.2);
+}
+.bossdent-vivid-account-intro {
+  display: grid;
+  gap: 4px;
+  padding: 10px 11px 13px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #e8e3df;
+}
+.bossdent-vivid-account-intro strong { font-size: 12px; }
+.bossdent-vivid-account-intro small {
+  overflow: hidden;
+  color: #77736f;
+  font-size: 10px;
+  text-overflow: ellipsis;
+}
+.bossdent-vivid-account-menu a,
+.bossdent-vivid-account-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 11px;
+  color: #393832;
+  font-size: 11px;
+  text-align: left;
+  text-decoration: none;
+}
+.bossdent-vivid-account-menu a:hover,
+.bossdent-vivid-account-menu button:hover { background: #f4f1ed; }
+.bossdent-vivid-account-menu button { color: #9f3c50; }
+
+.bossdent-vivid-cta {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  min-height: 48px;
+  padding: 0 24px;
+  background: #968a98;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.bossdent-vivid-cta:hover { background: #817482; transform: translateY(-1px); }
+.bossdent-header-hero .bossdent-vivid-cta {
+  min-width: 220px;
+  min-height: 58px;
+  font-size: 15px;
+}
+
+/* Hero navigation is a second row, centered under the top row. */
+.bossdent-vivid-nav-wrap {
+  display: flex;
+  justify-content: center;
+  width: min(calc(100% - 52px), 1510px);
+  min-height: 48px;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+}
+.bossdent-vivid-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: clamp(22px, 2.6vw, 36px);
+  width: min(100%, 855px);
+  min-height: 48px;
+  margin: 0 auto;
+  padding: 0 24px;
+  border-top: 1px solid rgba(255,255,255,.2);
+  border-bottom: 1px solid rgba(255,255,255,.2);
+  background: transparent;
+}
+.bossdent-vivid-nav-item { position: relative; display: flex; align-items: center; height: 47px; }
+.bossdent-vivid-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  color: rgba(255,255,255,.95);
+  background: transparent;
+  font-size: 15px;
+  font-weight: 450;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.bossdent-vivid-nav-link:hover,
+.bossdent-vivid-nav-link[aria-expanded="true"] { color: #d8c9d9; }
+.bossdent-vivid-nav-link svg { width: 13px; height: 13px; transition: transform .2s ease; }
+.bossdent-vivid-nav-link svg.is-open { transform: rotate(180deg); }
+
+/* On scroll the same navigation moves into the compact white header row. */
+.bossdent-header-scrolled .bossdent-vivid-top {
+  height: 82px;
+  min-height: 82px;
+  padding: 8px 0;
+}
+.bossdent-header-scrolled .bossdent-vivid-logo { flex-basis: 145px; width: 145px; }
+.bossdent-header-scrolled .bossdent-vivid-logo img { width: 145px; height: 58px; }
+.bossdent-header-scrolled .bossdent-vivid-cta { min-width: 180px; min-height: 48px; font-size: 13px; }
+.bossdent-header-scrolled .bossdent-vivid-nav-wrap {
+  position: absolute;
+  top: 0;
+  left: 175px;
+  right: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 82px;
+  min-height: 82px;
+  margin: 0;
+}
+.bossdent-header-scrolled .bossdent-vivid-nav {
+  justify-content: center;
+  gap: clamp(12px, 1.45vw, 23px);
+  width: 100%;
+  min-height: 82px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.bossdent-header-scrolled .bossdent-vivid-nav-link {
+  color: #39332f;
+  font-size: 14px;
+}
+.bossdent-header-scrolled .bossdent-vivid-nav-link:hover,
+.bossdent-header-scrolled .bossdent-vivid-nav-link[aria-expanded="true"] { color: var(--bd-mauve-dark); }
+
+/* Services dropdown */
+.bossdent-vivid-services { position: relative; }
+.bossdent-vivid-mega-menu {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: -24px;
+  z-index: 1300;
+  display: block;
+  width: min(920px, calc(100vw - 52px));
+  max-height: min(72vh, 620px);
+  overflow: auto;
+  padding: 27px 30px 30px;
+  background: #f8f6f3;
+  color: #252522;
+  border: 1px solid rgba(37,37,34,.12);
+  box-shadow: 0 24px 65px rgba(0,0,0,.25);
+}
+.bossdent-vivid-mega-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid #dedad5;
+}
+.bossdent-vivid-mega-heading span { color: #918594; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+.bossdent-vivid-mega-heading h3 { margin: 5px 0 0; font-family: var(--font-editorial, Georgia, serif); font-size: 30px; font-weight: 400; }
+.bossdent-vivid-mega-heading > a { display: inline-flex; align-items: center; gap: 5px; color: #5d5360; font-size: 11px; font-weight: 700; white-space: nowrap; text-decoration: none; }
+.bossdent-vivid-mega-heading > a svg,
+.bossdent-vivid-category-title svg { width: 14px; height: 14px; }
+.bossdent-vivid-category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px 24px; }
+.bossdent-vivid-category-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; color: #282725; font-size: 12px; font-weight: 750; line-height: 1.45; text-decoration: none; }
+.bossdent-vivid-category-title:hover { color: #918594; }
+.bossdent-vivid-category-title svg { flex: 0 0 auto; opacity: .5; }
+.bossdent-vivid-category ul { display: grid; gap: 7px; margin: 10px 0 0; padding: 0; list-style: none; }
+.bossdent-vivid-category li { color: #77736f; font-size: 10px; line-height: 1.45; }
+
+.bossdent-vivid-mobile-toggle,
+.bossdent-vivid-mobile-search,
+.bossdent-vivid-mobile-panel,
+.bossdent-vivid-mobile-search-panel { display: none; }
+
+@media (max-width: 1180px) and (min-width: 1101px) {
+  .bossdent-vivid-top,
+  .bossdent-vivid-nav-wrap { width: calc(100% - 40px); }
+  .bossdent-vivid-logo { flex-basis: 175px; width: 175px; }
+  .bossdent-vivid-logo img { width: 175px; }
+  .bossdent-vivid-nav { margin-inline: auto; width: min(100%, 800px); gap: 18px; padding-inline: 14px; }
+  .bossdent-vivid-nav-link { font-size: 13px; }
+  .bossdent-header-scrolled .bossdent-vivid-nav-wrap { left: 155px; right: 310px; }
+  .bossdent-header-scrolled .bossdent-vivid-nav { gap: 11px; }
+  .bossdent-header-scrolled .bossdent-vivid-nav-link { font-size: 12px; }
+  .bossdent-vivid-cta { min-width: 155px; }
+}
+
+@media (max-width: 1100px) {
+  .bossdent-vivid-top { width: calc(100% - 40px); min-height: 82px; height: 82px; }
+  .bossdent-vivid-logo { flex-basis: 155px; width: 155px; }
+  .bossdent-vivid-logo img { width: 155px; height: 58px; }
+  .bossdent-vivid-nav-wrap { display: none; }
+  .bossdent-vivid-cta { min-width: 150px; min-height: 46px; font-size: 12px; }
+  .bossdent-vivid-mobile-toggle,
+  .bossdent-vivid-mobile-search {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    color: #39332f;
+  }
+  .bossdent-header-hero .bossdent-vivid-mobile-toggle,
+  .bossdent-header-hero .bossdent-vivid-mobile-search { color: #fff; }
+  .bossdent-vivid-mobile-toggle svg,
+  .bossdent-vivid-mobile-search svg { width: 21px; height: 21px; }
+  .bossdent-vivid-mobile-search-panel { display: block; padding: 0 20px 15px; background: #fff; }
+  .bossdent-vivid-mobile-search-panel input { width: 100%; }
+  .bossdent-vivid-mobile-panel {
+    display: grid;
+    gap: 0;
+    padding: 8px 24px 20px;
+    background: #fff;
+    border-top: 1px solid #e8e3df;
+  }
+  .bossdent-vivid-mobile-panel a,
+  .bossdent-vivid-mobile-panel button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e8e3df;
+    color: #39332f;
+    font-size: 14px;
+    text-align: left;
+    text-decoration: none;
+  }
+  .bossdent-vivid-mobile-panel button svg { width: 16px; height: 16px; }
+  .bossdent-header-hero .bossdent-vivid-mobile-panel { background: rgba(31,31,32,.97); border-color: rgba(255,255,255,.18); }
+  .bossdent-header-hero .bossdent-vivid-mobile-panel a,
+  .bossdent-header-hero .bossdent-vivid-mobile-panel button { color: #fff; border-color: rgba(255,255,255,.13); }
+  .bossdent-header-scrolled .bossdent-vivid-nav-wrap { display: none; }
+}
+
+@media (max-width: 560px) {
+  .bossdent-vivid-top { width: calc(100% - 26px); min-height: 74px; height: 74px; gap: 12px; }
+  .bossdent-vivid-logo { flex-basis: 130px; width: 130px; }
+  .bossdent-vivid-logo img { width: 130px; height: 50px; }
+  .bossdent-vivid-tools { gap: 9px; }
+  .bossdent-vivid-account span,
+  .bossdent-vivid-cart-label { display: none; }
+  .bossdent-vivid-icon > svg { width: 18px; height: 18px; }
+  .bossdent-vivid-cta { display: none; }
+  .bossdent-vivid-mobile-toggle,
+  .bossdent-vivid-mobile-search { width: 32px; height: 34px; }
+  .bossdent-vivid-mobile-search-panel { padding-inline: 14px; }
+  .bossdent-vivid-mega-menu { left: -8px; width: calc(100vw - 26px); padding: 19px; }
+  .bossdent-vivid-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bossdent-vivid-mega-heading { align-items: flex-start; flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bossdent-vivid-header,
+  .bossdent-vivid-header * { animation: none !important; transition: none !important; }
 }

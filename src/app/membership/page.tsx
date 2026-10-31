@@ -56,7 +56,7 @@ export default function MembershipPage() {
             <Sparkles className="w-3.5 h-3.5 fill-amber-500 text-amber-500" /> OFFICIAL DENTAL PRIVILEGE CLUB
           </span>
           <h1 className="text-3xl md:text-5xl font-black tracking-tight leading-tight">
-            DentalKart Plus Membership
+            Bossdent Plus Membership
           </h1>
           <p className="text-sm md:text-base text-amber-100 leading-relaxed">
             Maximize clinic efficiency and savings with 2x rewards on every purchase, lower free-shipping thresholds, and VIP warehouse dispatch.
@@ -65,7 +65,7 @@ export default function MembershipPage() {
           <div className="pt-2">
             {isAlreadyPlus ? (
               <div className="inline-flex items-center gap-2 px-5 py-3 bg-white text-emerald-900 font-bold rounded-xl text-sm shadow-md">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600" /> You are an Active DentalKart Plus Member
+                <CheckCircle2 className="w-5 h-5 text-emerald-600" /> You are an Active Bossdent Plus Member
               </div>
             ) : (
               <button
@@ -73,7 +73,7 @@ export default function MembershipPage() {
                 disabled={isJoining}
                 className="px-8 py-4 bg-slate-900 hover:bg-black text-white font-extrabold rounded-xl text-sm md:text-base shadow-xl transition-colors flex items-center gap-2 mx-auto md:mx-0"
               >
-                {isJoining ? "Activating Membership..." : "Join DentalKart Plus for ₹999 / Year"}
+                {isJoining ? "Activating Membership..." : "Join Bossdent Plus for ₹999 / Year"}
                 <ArrowRight className="w-4 h-4" />
               </button>
             )}
@@ -89,7 +89,7 @@ export default function MembershipPage() {
 
       {success && (
         <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-xs font-bold text-center">
-          🎉 Congratulations! Your DentalKart Plus membership is now active for 1 year!
+          🎉 Congratulations! Your Bossdent Plus membership is now active for 1 year!
         </div>
       )}
 

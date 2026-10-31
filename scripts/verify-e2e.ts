@@ -1,90 +1,47 @@
 import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
-import { User, Product, ProductVariant, Cart, Order, Coupon, Brand, Category } from "../src/models";
+import { Brand, Category, Product, ProductVariant } from "../src/models";
+import fs from "node:fs";
+import path from "node:path";
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/dentalkart_clone";
-
-async function verifyAll() {
-  console.log("\n========================================");
-  console.log("RUNNING COMPLETE E2E VERIFICATION SUITE");
-  console.log("========================================\n");
-
-  await mongoose.connect(MONGODB_URI);
-
-  // 1. Check Seeding & Catalog Counts
-  const [brandsCount, catsCount, productsCount, variantsCount, usersCount] = await Promise.all([
-    Brand.countDocuments(),
-    Category.countDocuments(),
-    Product.countDocuments(),
-    ProductVariant.countDocuments(),
-    User.countDocuments(),
-  ]);
-
-  console.log(`[CHECK 1] Database Catalogue Verification:`);
-  console.log(`  ✓ Brands in DB: ${brandsCount} (Expected >= 10)`);
-  console.log(`  ✓ Categories in DB: ${catsCount} (Expected >= 15)`);
-  console.log(`  ✓ Products in DB: ${productsCount} (Expected >= 10)`);
-  console.log(`  ✓ Variants in DB: ${variantsCount} (Expected >= 15)`);
-  console.log(`  ✓ Users in DB: ${usersCount} (Expected >= 2)`);
-
-  if (brandsCount < 10 || productsCount < 10) {
-    throw new Error("Catalogue underpopulated.");
+function loadEnv() {
+  const file = path.join(process.cwd(), ".env.local");
+  if (!fs.existsSync(file)) return;
+  for (const line of fs.readFileSync(file, "utf8").split(/\r?\n/)) {
+    const m = line.trim().match(/^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/);
+    if (!m || process.env[m[1]]) continue;
+    let v = m[2].trim();
+    if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) v = v.slice(1, -1);
+    process.env[m[1]] = v;
   }
-
-  // 2. Verify Authentication credentials
-  const doctor = await User.findOne({ email: "dr.sharma@dentalcare.com" });
-  if (!doctor || !doctor.password) throw new Error("Doctor user missing.");
-  const isDoctorValid = await bcrypt.compare("Doctor@123", doctor.password);
-  console.log(`[CHECK 2] Doctor Authentication: ${isDoctorValid ? "PASSED" : "FAILED"}`);
-
-  const admin = await User.findOne({ email: "admin@dentalkart.com" });
-  if (!admin || !admin.password) throw new Error("Admin user missing.");
-  const isAdminValid = await bcrypt.compare("Admin@123", admin.password);
-  console.log(`[CHECK 2B] Admin Authentication: ${isAdminValid ? "PASSED" : "FAILED"}`);
-
-  // 3. Verify Product Variant Relationships
-  const testProduct = await Product.findOne({ slug: "3m-filtek-z250-universal-restorative-composite" });
-  if (!testProduct) throw new Error("3M Filtek test product missing.");
-  const variants = await ProductVariant.find({ product: testProduct._id });
-  console.log(`[CHECK 3] 3M Filtek Variants: Found ${variants.length} shades (SKUs: ${variants.map(v => v.sku).join(", ")})`);
-
-  // 4. Test Coupon Validation
-  const coupon = await Coupon.findOne({ code: "DENTALKART500", isActive: true });
-  if (!coupon) throw new Error("Coupon DENTALKART500 missing.");
-  console.log(`[CHECK 4] Promo Coupon ${coupon.code}: Flat ₹${coupon.discountValue} off on min order ₹${coupon.minOrderValue} - PASSED`);
-
-  // 5. Test Order Stock & Checkout Integrity
-  const initialStock = variants[0].stock;
-  const initialSales = testProduct.salesCount;
-
-  // Deduct test
-  await ProductVariant.findByIdAndUpdate(variants[0]._id, { $inc: { stock: -1 } });
-  await Product.findByIdAndUpdate(testProduct._id, { $inc: { totalStock: -1, salesCount: 1 } });
-
-  const updatedVariant = await ProductVariant.findById(variants[0]._id);
-  const updatedProduct = await Product.findById(testProduct._id);
-
-  console.log(`[CHECK 5] Atomic Stock Deduction: Initial=${initialStock}, After purchase=${updatedVariant?.stock} - PASSED`);
-
-  // Restore test stock
-  await ProductVariant.findByIdAndUpdate(variants[0]._id, { $inc: { stock: 1 } });
-  await Product.findByIdAndUpdate(testProduct._id, { $inc: { totalStock: 1, salesCount: -1 } });
-
-  // 6. Verify Full-Text Search Index
-  const searchResults = await Product.find({
-    active: true,
-    $or: [{ title: /composite/i }, { defaultSku: /3M/i }],
-  });
-  console.log(`[CHECK 6] Database Search Query: Found ${searchResults.length} matching products - PASSED`);
-
-  console.log("\n========================================");
-  console.log("ALL E2E VERIFICATION CHECKS PASSED (6/6)");
-  console.log("========================================\n");
-
-  await mongoose.disconnect();
 }
+async function main() {
+  loadEnv();
+  const uri = process.env.MONGODB_URI;
+  if (!uri) throw new Error("MONGODB_URI is missing from .env.local");
+  const dbName = new URL(uri).pathname.replace(/^\/+/, "").split("/")[0];
+  if (dbName !== "bossdent") throw new Error(`Safety stop: verification only runs against 'bossdent'; URI selects '${dbName || "(none)"}'.`);
 
-verifyAll().catch((err) => {
-  console.error("Verification error:", err);
-  process.exit(1);
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 15000 });
+  try {
+    const [brands, categories, products, variants] = await Promise.all([
+      Brand.countDocuments(), Category.countDocuments(), Product.countDocuments(), ProductVariant.countDocuments()
+    ]);
+    const missingRelations = await Product.countDocuments({
+      $or: [{ brand: { $exists: false } }, { category: { $exists: false } }, { defaultSku: { $in: ["", null] } }]
+    });
+    const noImages = await Product.countDocuments({ $or: [{ images: { $exists: false } }, { images: { $size: 0 } }] });
+    const noStock = await Product.countDocuments({ totalStock: 0 });
+    console.log("BOSSDENT DATABASE VERIFICATION");
+    console.log({ brands, categories, products, variants, missingRelations, productsWithoutImages: noImages, productsWithZeroStock: noStock });
+    if (products < 15) throw new Error(`Expected at least 15 products; found ${products}.`);
+    if (missingRelations > 0) throw new Error(`${missingRelations} products have missing required catalogue relationships.`);
+    console.log("PASS: catalogue records and required relationships are present.");
+    if (noImages || noStock) console.log("ACTION REQUIRED: add licensed product images and verified inventory before enabling purchase.");
+  } finally {
+    await mongoose.disconnect();
+  }
+}
+main().catch((error) => {
+  console.error("Verification failed:", error instanceof Error ? error.message : error);
+  process.exitCode = 1;
 });

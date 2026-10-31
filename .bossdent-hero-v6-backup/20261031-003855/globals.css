@@ -1,0 +1,577 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bd-ink: #252522;
+  --bd-charcoal: #343538;
+  --bd-mauve: #918594;
+  --bd-mauve-dark: #786b7b;
+  --bd-ivory: #f4f1ed;
+  --bd-paper: #ffffff;
+  --bd-muted: #77736f;
+  --bd-border: #dedad5;
+  --bd-soft: #eeebe7;
+  --background: var(--bd-ivory);
+  --foreground: var(--bd-ink);
+  --font-editorial: "Cormorant Garamond", "Iowan Old Style", "Baskerville", Georgia, serif;
+  --font-interface: "Manrope", "Avenir Next", Avenir, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+body {
+  color: var(--bd-ink);
+  background: var(--bd-ivory);
+  font-family: var(--font-interface);
+  font-feature-settings: "kern", "liga", "calt";
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, .font-serif { font-family: var(--font-editorial); }
+::selection { background: #d9cbd9; color: var(--bd-ink); }
+:focus-visible { outline: 2px solid var(--bd-mauve); outline-offset: 3px; }
+img, video { max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+button { -webkit-tap-highlight-color: transparent; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bd-ivory); }
+::-webkit-scrollbar-thumb { background: #b8afb8; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--bd-mauve); }
+
+/* Shared page foundation */
+main { min-width: 0; }
+main:not(:has(.bossdent-hero)) { background: var(--bd-ivory); }
+main > div { scroll-margin-top: 100px; }
+.bossdent-container { width: min(100% - 48px, 1440px); margin-inline: auto; }
+.bossdent-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--bd-muted); font-size: 10px; font-weight: 700;
+  letter-spacing: .24em; text-transform: uppercase;
+}
+.bossdent-eyebrow::before { content: ""; width: 34px; height: 1px; background: currentColor; }
+.bossdent-display { font-family: var(--font-editorial); font-weight: 400; letter-spacing: -.045em; line-height: 1.02; }
+.bossdent-button {
+  display: inline-flex; min-height: 48px; align-items: center; justify-content: center;
+  gap: 18px; padding: 12px 22px; background: var(--bd-mauve); color: white;
+  font-size: 12px; font-weight: 700; letter-spacing: .01em; transition: background .2s, transform .2s;
+}
+.bossdent-button:hover { background: var(--bd-mauve-dark); transform: translateY(-1px); }
+.bossdent-link {
+  display: inline-flex; align-items: center; gap: 10px; padding-bottom: 7px;
+  border-bottom: 1px solid var(--bd-mauve); color: var(--bd-ink);
+  font-size: 12px; font-weight: 700;
+}
+.bossdent-editorial-surface { background: var(--bd-soft); }
+
+/* Brand header */
+.bossdent-site-header {
+  position: sticky; top: 0; z-index: 70; color: #fff;
+  background: rgba(43, 43, 45, .96);
+  border-bottom: 1px solid rgba(255,255,255,.16);
+  backdrop-filter: blur(14px);
+}
+.bossdent-header-main {
+  width: min(100% - 64px, 1480px); min-height: 88px; margin-inline: auto;
+  display: grid; grid-template-columns: minmax(190px, .8fr) minmax(240px, 1.2fr) auto;
+  align-items: center; gap: 30px;
+}
+.bossdent-wordmark { display: inline-flex; flex-direction: column; color: #fff; line-height: 1; text-decoration: none; }
+.bossdent-wordmark strong { font-family: var(--font-interface); font-size: 25px; font-weight: 800; letter-spacing: .12em; }
+.bossdent-wordmark small { margin-top: 7px; color: rgba(255,255,255,.72); font-size: 8px; font-weight: 600; letter-spacing: .23em; }
+.bossdent-search-shell { min-width: 0; }
+.bossdent-header-actions { display: flex; align-items: center; gap: 18px; }
+.bossdent-header-icon { display: inline-flex; align-items: center; justify-content: center; color: #fff; transition: color .2s; }
+.bossdent-header-icon:hover { color: #d8cbd9; }
+.bossdent-header-cta { display: inline-flex; align-items: center; gap: 9px; padding: 13px 18px; background: var(--bd-mauve); color: #fff; font-size: 11px; font-weight: 700; }
+.bossdent-header-cta:hover { background: var(--bd-mauve-dark); }
+.bossdent-header-bottom { border-top: 1px solid rgba(255,255,255,.15); }
+.bossdent-header-bottom-inner { width: min(100% - 64px, 1480px); min-height: 54px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.bossdent-nav-links { display: flex; align-items: center; justify-content: flex-end; gap: clamp(16px, 2.4vw, 36px); }
+.bossdent-nav-link { color: rgba(255,255,255,.88); font-size: 12px; font-weight: 500; white-space: nowrap; transition: color .2s; }
+.bossdent-nav-link:hover { color: #d7c8d8; }
+.bossdent-category-trigger { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.bossdent-mega-menu { position: absolute; top: 100%; left: 0; width: min(100%, 560px); max-height: min(70vh, 620px); overflow: auto; padding: 24px; background: #fff; color: var(--bd-ink); border: 1px solid var(--bd-border); box-shadow: 0 24px 60px rgba(0,0,0,.18); }
+.bossdent-mobile-toggle { display: none; color: white; }
+.bossdent-mobile-panel { display: none; }
+
+/* SearchAutocomplete is retained; normalize its existing UI */
+.bossdent-site-header input[type="search"],
+.bossdent-site-header input[type="text"] {
+  border-radius: 0 !important; border: 1px solid rgba(255,255,255,.35) !important;
+  background: rgba(255,255,255,.97) !important; color: var(--bd-ink) !important;
+  min-height: 46px;
+}
+.bossdent-site-header input::placeholder { color: #8b8588 !important; }
+
+/* Editorial hero */
+.bossdent-hero { position: relative; isolation: isolate; min-height: min(780px, calc(100svh - 140px)); overflow: hidden; background: var(--bd-charcoal); color: white; }
+.bossdent-hero-media { position: absolute; inset: 0; z-index: -2; }
+.bossdent-hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.bossdent-hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.bossdent-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(30,30,31,.78) 0%, rgba(30,30,31,.48) 48%, rgba(30,30,31,.24) 100%); }
+.bossdent-hero-inner { width: min(100% - 64px, 1440px); min-height: inherit; margin-inline: auto; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-block: 110px 90px; }
+.bossdent-hero h1 { max-width: 850px; font-family: var(--font-editorial); font-size: clamp(54px, 7.2vw, 104px); font-weight: 400; line-height: .98; letter-spacing: -.055em; color: white; }
+.bossdent-hero p { max-width: 580px; color: rgba(255,255,255,.88); font-size: 15px; line-height: 1.9; }
+.bossdent-hero .bossdent-eyebrow { color: rgba(255,255,255,.78); }
+.bossdent-hero .bossdent-button { background: var(--bd-mauve); }
+.bossdent-hero .bossdent-button:hover { background: #a394a6; }
+
+/* Legacy Tailwind color bridge: existing page logic and classes remain valid */
+.text-dk-teal-50 { color: #796d7b !important; }
+.text-dk-teal-100, .text-dk-teal-200 { color: #c9bdca !important; }
+.text-dk-teal-500, .text-dk-teal-600, .text-dk-teal-700, .text-dk-teal-800, .text-dk-teal-900, .text-dk-teal-950 { color: var(--bd-mauve-dark) !important; }
+.bg-dk-teal-50, .bg-dk-teal-100 { background-color: #eee8ef !important; }
+.bg-dk-teal-200 { background-color: #e4dbe5 !important; }
+.bg-dk-teal-500, .bg-dk-teal-600, .bg-dk-teal-700, .bg-dk-teal-800, .bg-dk-teal-900, .bg-dk-teal-950 { background-color: var(--bd-charcoal) !important; }
+.border-dk-teal-50, .border-dk-teal-100, .border-dk-teal-200, .border-dk-teal-500, .border-dk-teal-600, .border-dk-teal-700, .border-dk-teal-800, .border-dk-teal-900 { border-color: #c9bdca !important; }
+.text-dk-orange-400, .text-dk-orange-500, .text-dk-orange-600, .text-dk-orange-700 { color: var(--bd-mauve) !important; }
+.bg-dk-orange-50, .bg-dk-orange-100 { background-color: #f0eaf0 !important; }
+.bg-dk-orange-400, .bg-dk-orange-500, .bg-dk-orange-600, .bg-dk-orange-700 { background-color: var(--bd-mauve) !important; }
+.border-dk-orange-200, .border-dk-orange-400, .border-dk-orange-500 { border-color: var(--bd-mauve) !important; }
+
+/* Global surface refinement for existing route pages */
+.rounded-xl, .rounded-2xl { border-radius: 2px !important; }
+.shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl { box-shadow: 0 12px 34px rgba(37,37,34,.07) !important; }
+.border-slate-200, .border-slate-300 { border-color: var(--bd-border) !important; }
+.bg-slate-50 { background-color: var(--bd-ivory) !important; }
+.bg-slate-100 { background-color: var(--bd-soft) !important; }
+.text-slate-900 { color: var(--bd-ink) !important; }
+.text-slate-800 { color: #393832 !important; }
+.text-slate-700 { color: #555047 !important; }
+.text-slate-600, .text-slate-500 { color: #77736f !important; }
+.text-slate-400 { color: #928c87 !important; }
+.hover\:text-dk-teal-800:hover, .hover\:text-dk-teal-900:hover { color: var(--bd-mauve-dark) !important; }
+.hover\:bg-dk-teal-800:hover, .hover\:bg-dk-teal-900:hover { background-color: var(--bd-mauve-dark) !important; }
+.bg-gradient-to-r.from-dk-teal-900 { background: var(--bd-charcoal) !important; }
+
+/* Product cards */
+.bossdent-product-card { border: 1px solid var(--bd-border); border-radius: 0; background: #fff; transition: border-color .25s, transform .25s; }
+.bossdent-product-card:hover { border-color: var(--bd-mauve); transform: translateY(-3px); }
+.bossdent-product-card .bossdent-product-image { background: #f5f2ef; }
+
+/* Footer */
+.bossdent-footer { background: var(--bd-charcoal); color: rgba(255,255,255,.76); }
+.bossdent-footer a:hover { color: #d9cbd9; }
+
+/* Responsive behavior */
+@media (max-width: 1024px) {
+  .bossdent-header-main { grid-template-columns: 1fr auto; gap: 18px; padding-block: 16px; }
+  .bossdent-search-shell { grid-column: 1 / -1; grid-row: 2; }
+  .bossdent-header-actions { grid-column: 2; grid-row: 1; }
+  .bossdent-header-bottom-inner { justify-content: flex-start; }
+  .bossdent-nav-links { gap: 18px; overflow-x: auto; }
+}
+@media (max-width: 720px) {
+  html { scroll-padding-top: 72px; }
+  .bossdent-container { width: min(100% - 32px, 1440px); }
+  .bossdent-header-main { width: calc(100% - 32px); min-height: 72px; grid-template-columns: 1fr auto; gap: 12px; }
+  .bossdent-wordmark strong { font-size: 21px; }
+  .bossdent-wordmark small { font-size: 7px; }
+  .bossdent-search-shell { grid-column: 1 / -1; grid-row: 2; padding-bottom: 12px; }
+  .bossdent-header-actions { gap: 13px; }
+  .bossdent-header-cta span, .bossdent-account-label, .bossdent-desktop-only { display: none !important; }
+  .bossdent-header-cta { width: 40px; height: 40px; justify-content: center; padding: 0; }
+  .bossdent-header-bottom { display: none; }
+  .bossdent-mobile-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .bossdent-mobile-panel { display: block; padding: 10px 20px 24px; border-top: 1px solid rgba(255,255,255,.15); background: var(--bd-charcoal); }
+  .bossdent-mobile-panel a { display: block; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.12); color: white; font-size: 13px; }
+  .bossdent-hero { min-height: 690px; min-height: min(760px, calc(100svh - 110px)); }
+  .bossdent-hero-inner { width: calc(100% - 40px); padding-block: 86px 70px; }
+  .bossdent-hero h1 { font-size: clamp(48px, 13vw, 72px); }
+  .bossdent-hero p { font-size: 14px; }
+  .bossdent-hero::after { background: linear-gradient(90deg, rgba(30,30,31,.78), rgba(30,30,31,.44)); }
+  .bossdent-hero-media video { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+
+/* Vivid-inspired full-bleed homepage header and hero composition */
+body:has(.bossdent-hero) .bossdent-site-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(27, 27, 29, .72), rgba(27, 27, 29, .22));
+  border-bottom: 0;
+  backdrop-filter: none;
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-main {
+  min-height: 92px;
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-bottom {
+  border-top-color: rgba(255,255,255,.22);
+  border-bottom: 1px solid rgba(255,255,255,.22);
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-bottom-inner {
+  min-height: 58px;
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-wordmark strong {
+  font-family: var(--font-editorial);
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 600;
+  letter-spacing: .14em;
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-wordmark small {
+  letter-spacing: .2em;
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-cta {
+  min-height: 48px;
+  padding-inline: 25px;
+  background: #918594;
+  font-size: 12px;
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-cta:hover {
+  background: #a394a6;
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-mobile-toggle { color: #fff; }
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-search-shell input[type="text"] {
+  min-height: 42px;
+  background: rgba(255,255,255,.94) !important;
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-bottom-inner,
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-main {
+  width: min(100% - 56px, 1480px);
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-nav-link,
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-category-trigger {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-category-trigger { padding-block: 18px; }
+body:has(.bossdent-hero) .bossdent-site-header .bossdent-nav-links { gap: clamp(15px, 2.1vw, 32px); }
+body:has(.bossdent-hero) .bossdent-site-header > .bg-dk-teal-950,
+body:has(.bossdent-hero) .bossdent-site-header > div:first-child:not(.bossdent-header-main):not(.bossdent-header-bottom) { display: none; }
+.bossdent-hero {
+  min-height: 100svh;
+  padding-top: 0;
+}
+.bossdent-hero-inner,
+.bossdent-hero > .relative.mx-auto {
+  min-height: 100svh;
+  padding-top: clamp(190px, 23vh, 260px);
+  padding-bottom: clamp(56px, 8vh, 100px);
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.bossdent-hero::after {
+  background: linear-gradient(90deg, rgba(35,34,36,.70) 0%, rgba(35,34,36,.42) 54%, rgba(35,34,36,.24) 100%), linear-gradient(0deg, rgba(25,24,26,.35), transparent 42%);
+}
+.bossdent-hero h1 {
+  max-width: 900px;
+  font-size: clamp(58px, 8.2vw, 116px);
+  line-height: .92;
+  letter-spacing: -.045em;
+}
+.bossdent-hero .bossdent-eyebrow { letter-spacing: .22em; }
+.bossdent-hero p { max-width: 760px; }
+@media (max-width: 1100px) {
+  body:has(.bossdent-hero) .bossdent-header-main { grid-template-columns: minmax(150px, .7fr) minmax(180px, 1fr) auto; gap: 16px; }
+  body:has(.bossdent-hero) .bossdent-header-actions { gap: 12px; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-nav-links { gap: 14px; }
+}
+@media (max-width: 767px) {
+  body:has(.bossdent-hero) .bossdent-site-header { position: absolute; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-main,
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-bottom-inner { width: calc(100% - 36px); }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-main { min-height: 76px; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-wordmark strong { font-size: 25px; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-search-shell { display: none; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-actions { gap: 12px; }
+  body:has(.bossdent-hero) .bossdent-site-header .bossdent-header-bottom { display: none; }
+  .bossdent-hero,
+  .bossdent-hero-inner,
+  .bossdent-hero > .relative.mx-auto { min-height: 820px; min-height: 100svh; }
+  .bossdent-hero-inner,
+  .bossdent-hero > .relative.mx-auto { width: calc(100% - 36px); padding-top: 180px; padding-bottom: 54px; }
+  .bossdent-hero h1 { font-size: clamp(48px, 13vw, 76px); }
+  .bossdent-hero::after { background: linear-gradient(90deg, rgba(35,34,36,.70), rgba(35,34,36,.42)), linear-gradient(0deg, rgba(25,24,26,.4), transparent 55%); }
+}
+
+/* v3 navigation refinement: wide editorial mega-menu, never constrained by trigger width */
+.bossdent-header-bottom { position: relative; z-index: 90; }
+.bossdent-header-bottom-inner { position: relative; }
+.bossdent-category-wrap { position: static; flex: 0 0 auto; align-self: stretch; display: flex; align-items: center; }
+.bossdent-category-trigger { min-height: 54px; padding: 0; cursor: pointer; white-space: nowrap; }
+.bossdent-category-trigger:focus-visible,
+.bossdent-nav-link:focus-visible,
+.bossdent-mega-menu a:focus-visible { outline: 2px solid #c9b9c8; outline-offset: 4px; }
+.bossdent-mega-menu {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  width: min(980px, calc(100vw - 56px));
+  max-width: calc(100vw - 56px);
+  max-height: min(72vh, 680px);
+  overflow: auto;
+  padding: clamp(22px, 3vw, 38px);
+  background: #f8f6f3;
+  color: #292627;
+  border: 1px solid rgba(54, 47, 49, .14);
+  box-shadow: 0 28px 70px rgba(0,0,0,.24);
+  z-index: 160;
+}
+.bossdent-mega-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; padding-bottom: 22px; border-bottom: 1px solid #ded8d4; }
+.bossdent-mega-eyebrow { margin: 0 0 9px; color: #8f808d; font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+.bossdent-mega-heading h3 { margin: 0; color: #282526; font-family: var(--font-editorial, Georgia, serif); font-size: clamp(27px, 3vw, 38px); font-weight: 400; line-height: 1.05; letter-spacing: -.035em; }
+.bossdent-mega-intro { max-width: 520px; margin: 10px 0 0; color: #777071; font-size: 12px; line-height: 1.7; }
+.bossdent-mega-all { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 9px; padding-bottom: 6px; border-bottom: 1px solid #9b8998; color: #443c43; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.bossdent-mega-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; padding-block: 25px 20px; }
+.bossdent-mega-column { display: flex; min-width: 0; flex-direction: column; gap: 22px; }
+.bossdent-mega-category { min-width: 0; }
+.bossdent-mega-category-link { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; color: #302a2d; font-size: 12px; font-weight: 700; line-height: 1.45; text-decoration: none; }
+.bossdent-mega-category-link svg { flex: 0 0 auto; margin-top: 1px; color: #9b8998; opacity: .65; transition: transform .2s, opacity .2s; }
+.bossdent-mega-category-link:hover { color: #8d7789; }
+.bossdent-mega-category-link:hover svg { transform: translate(2px, -2px); opacity: 1; }
+.bossdent-mega-subcategories { display: grid; gap: 7px; margin: 10px 0 0; padding: 0; list-style: none; }
+.bossdent-mega-subcategories a { color: #777071; font-size: 11px; line-height: 1.5; text-decoration: none; transition: color .2s; }
+.bossdent-mega-subcategories a:hover { color: #8d7789; }
+.bossdent-mega-state { padding: 32px 0; color: #777071; font-size: 13px; }
+.bossdent-mega-state a { color: #554653; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.bossdent-mega-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 17px; border-top: 1px solid #ded8d4; color: #898182; font-size: 10px; }
+.bossdent-mega-footer a { display: inline-flex; align-items: center; gap: 7px; color: #4c414a; font-weight: 700; white-space: nowrap; }
+.bossdent-nav-links { min-width: 0; }
+.bossdent-nav-link { padding-block: 18px; }
+@media (max-width: 1100px) {
+  .bossdent-header-bottom-inner { gap: 18px; }
+  .bossdent-nav-links { gap: 16px; }
+  .bossdent-mega-menu { width: min(900px, calc(100vw - 40px)); max-width: calc(100vw - 40px); }
+  .bossdent-mega-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+}
+@media (max-width: 720px) {
+  .bossdent-mega-menu { display: none; }
+}
+
+
+/* BOSSDENT VIVID HEADER V4 - BEGIN */
+.bossdent-vivid-header {
+  position: sticky !important;
+  top: 0;
+  inset: auto 0 auto 0;
+  z-index: 90;
+  width: 100%;
+  padding: 0;
+  color: #fff;
+  background: rgba(35, 35, 37, .97) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+body:has(.bossdent-hero) .bossdent-vivid-header {
+  position: absolute !important;
+  inset: 0 0 auto 0;
+  background: linear-gradient(180deg, rgba(24, 24, 25, .76), rgba(24, 24, 25, .22)) !important;
+}
+
+.bossdent-vivid-top {
+  width: min(calc(100% - 52px), 1510px);
+  min-height: 104px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.bossdent-vivid-logo { display: inline-flex; flex: 0 0 205px; align-items: center; width: 205px; line-height: 0; }
+.bossdent-vivid-logo img { display: block; width: 205px; height: 72px; object-fit: contain; object-position: left center; }
+.bossdent-vivid-tools { display: flex; align-items: center; justify-content: flex-end; gap: clamp(12px, 1.55vw, 24px); min-width: 0; }
+.bossdent-vivid-search { width: clamp(190px, 23vw, 320px); min-width: 0; }
+.bossdent-vivid-search input[type="search"], .bossdent-vivid-search input[type="text"] { min-height: 42px !important; border: 1px solid rgba(255,255,255,.34) !important; background: rgba(255,255,255,.94) !important; color: #252522 !important; }
+.bossdent-vivid-delivery { display: inline-flex; align-items: center; gap: 8px; padding: 7px 0; color: rgba(255,255,255,.92); text-align: left; white-space: nowrap; }
+.bossdent-vivid-delivery > svg { width: 17px; height: 17px; color: #d4c5d4; }
+.bossdent-vivid-delivery small, .bossdent-vivid-delivery strong { display: block; }
+.bossdent-vivid-delivery small { color: rgba(255,255,255,.62); font-size: 9px; line-height: 1.4; }
+.bossdent-vivid-delivery strong { font-size: 10px; font-weight: 650; }
+.bossdent-vivid-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-width: 26px; color: #fff; font-size: 11px; white-space: nowrap; transition: color .2s ease; }
+.bossdent-vivid-icon:hover { color: #d9cbd9; }
+.bossdent-vivid-icon > svg { width: 19px; height: 19px; stroke-width: 1.7; }
+.bossdent-vivid-count { position: absolute; top: -8px; right: -9px; display: grid; min-width: 16px; height: 16px; place-items: center; padding: 0 3px; border-radius: 50px; background: #918594; color: #fff; font-size: 9px; font-weight: 700; }
+.bossdent-vivid-account-wrap { position: relative; }
+.bossdent-vivid-account-menu { position: absolute; top: calc(100% + 18px); right: 0; z-index: 120; width: 230px; padding: 8px; background: #fff; color: #252522; border: 1px solid #dedad5; box-shadow: 0 20px 50px rgba(0,0,0,.2); }
+.bossdent-vivid-account-intro { display: grid; gap: 4px; padding: 10px 11px 13px; margin-bottom: 5px; border-bottom: 1px solid #e8e3df; }
+.bossdent-vivid-account-intro strong { font-size: 12px; }
+.bossdent-vivid-account-intro small { overflow: hidden; color: #77736f; font-size: 10px; text-overflow: ellipsis; }
+.bossdent-vivid-account-menu a, .bossdent-vivid-account-menu button { display: block; width: 100%; padding: 10px 11px; color: #393832; font-size: 11px; text-align: left; }
+.bossdent-vivid-account-menu a:hover, .bossdent-vivid-account-menu button:hover { background: #f4f1ed; }
+.bossdent-vivid-account-menu button { color: #9f3c50; }
+.bossdent-vivid-cta { display: inline-flex; min-width: 160px; min-height: 56px; align-items: center; justify-content: center; padding: 0 25px; background: #918594; color: #fff; font-size: 14px; font-weight: 700; transition: background .2s ease, transform .2s ease; }
+.bossdent-vivid-cta:hover { background: #a092a3; transform: translateY(-1px); }
+.bossdent-vivid-nav-wrap { width: min(calc(100% - 52px), 1510px); margin: 0 auto; }
+.bossdent-vivid-nav { width: min(100%, 855px); min-height: 48px; margin-left: 220px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 0 24px; border-top: 1px solid rgba(255,255,255,.17); border-bottom: 1px solid rgba(255,255,255,.17); }
+.bossdent-vivid-nav-item { position: relative; display: flex; align-items: center; height: 47px; }
+.bossdent-vivid-nav-link { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.93); font-size: 15px; font-weight: 450; line-height: 1; white-space: nowrap; transition: color .2s ease; }
+.bossdent-vivid-nav-link:hover, .bossdent-vivid-nav-link[aria-expanded="true"] { color: #d8c9d9; }
+.bossdent-vivid-nav-link svg { width: 13px; height: 13px; transition: transform .2s ease; }
+.bossdent-vivid-nav-link svg.is-open { transform: rotate(180deg); }
+.bossdent-vivid-mega-menu { position: absolute; top: 100%; left: -24px; z-index: 110; width: min(900px, calc(100vw - 52px)); max-height: min(70vh, 620px); overflow: auto; padding: 27px 30px 30px; background: #f8f6f3; color: #252522; border: 1px solid rgba(37,37,34,.12); box-shadow: 0 24px 65px rgba(0,0,0,.22); }
+.bossdent-vivid-mega-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; padding-bottom: 18px; margin-bottom: 22px; border-bottom: 1px solid #dedad5; }
+.bossdent-vivid-mega-heading span { color: #918594; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+.bossdent-vivid-mega-heading h3 { margin: 5px 0 0; font-family: var(--font-editorial, Georgia, serif); font-size: 30px; font-weight: 400; }
+.bossdent-vivid-mega-heading > a { display: inline-flex; align-items: center; gap: 5px; color: #5d5360; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.bossdent-vivid-mega-heading > a svg, .bossdent-vivid-category-title svg { width: 14px; height: 14px; }
+.bossdent-vivid-category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px 24px; }
+.bossdent-vivid-category-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; color: #282725; font-size: 12px; font-weight: 750; line-height: 1.45; }
+.bossdent-vivid-category-title:hover { color: #918594; }
+.bossdent-vivid-category-title svg { flex: 0 0 auto; opacity: .5; }
+.bossdent-vivid-category ul { display: grid; gap: 7px; margin: 10px 0 0; padding: 0; list-style: none; }
+.bossdent-vivid-category li { color: #77736f; font-size: 10px; line-height: 1.45; }
+.bossdent-vivid-mobile-toggle, .bossdent-vivid-mobile-search, .bossdent-vivid-mobile-panel, .bossdent-vivid-mobile-search-panel { display: none; }
+
+@media (max-width: 1180px) {
+  .bossdent-vivid-top { width: calc(100% - 40px); min-height: 94px; }
+  .bossdent-vivid-search { width: 210px; }
+  .bossdent-vivid-delivery { display: none; }
+  .bossdent-vivid-nav-wrap { width: calc(100% - 40px); }
+  .bossdent-vivid-nav { margin-left: 190px; width: min(100% - 190px, 855px); gap: 15px; padding-inline: 18px; }
+  .bossdent-vivid-nav-link { font-size: 13px; }
+}
+@media (max-width: 900px) {
+  .bossdent-vivid-search { display: none; }
+  .bossdent-vivid-top { min-height: 90px; }
+  .bossdent-vivid-nav-wrap { display: none; }
+  .bossdent-vivid-mobile-toggle, .bossdent-vivid-mobile-search { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; color: #fff; }
+  .bossdent-vivid-mobile-toggle svg, .bossdent-vivid-mobile-search svg { width: 21px; height: 21px; }
+  .bossdent-vivid-mobile-search-panel { display: block; padding: 0 20px 15px; }
+  .bossdent-vivid-mobile-search-panel input { width: 100%; }
+  .bossdent-vivid-mobile-panel { display: grid; gap: 0; padding: 8px 24px 20px; background: rgba(31,31,32,.98); border-top: 1px solid rgba(255,255,255,.2); }
+  .bossdent-vivid-mobile-panel a, .bossdent-vivid-mobile-panel button { display: flex; align-items: center; gap: 9px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.13); color: #fff; font-size: 14px; text-align: left; }
+  .bossdent-vivid-mobile-panel button svg { width: 16px; height: 16px; }
+  .bossdent-vivid-cta { min-width: 120px; min-height: 46px; padding-inline: 17px; font-size: 12px; }
+}
+@media (max-width: 560px) {
+  .bossdent-vivid-top { width: calc(100% - 28px); min-height: 78px; gap: 12px; }
+  .bossdent-vivid-logo { flex-basis: 145px; width: 145px; }
+  .bossdent-vivid-logo img { width: 145px; height: 56px; }
+  .bossdent-vivid-tools { gap: 10px; }
+  .bossdent-vivid-account span, .bossdent-vivid-cta { display: none; }
+  .bossdent-vivid-icon > svg { width: 18px; height: 18px; }
+  .bossdent-vivid-mobile-toggle, .bossdent-vivid-mobile-search { width: 30px; height: 34px; }
+  .bossdent-vivid-mobile-search-panel { padding-inline: 14px; }
+  .bossdent-vivid-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bossdent-vivid-mega-menu { left: -10px; width: calc(100vw - 28px); padding: 20px; }
+}
+
+/* BOSSDENT VIVID HEADER V4 - END */
+
+
+/* BOSSDENT_VIVID_HEADER_OVERRIDES_V5 */
+/* Bossdent Vivid-inspired header. Intentionally overrides legacy header rules. */
+.bossdent-vivid-header,
+header.bossdent-site-header.bossdent-vivid-header {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 100;
+  display: block !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  color: #fff !important;
+  background: #252321 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  isolation: isolate;
+}
+body:has(.bossdent-hero) .bossdent-vivid-header {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: linear-gradient(180deg, rgba(24,24,25,.88), rgba(24,24,25,.62)) !important;
+}
+.bossdent-vivid-header > .bossdent-vivid-top {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: min(calc(100% - 52px), 1510px) !important;
+  min-height: 104px !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  padding: 14px 0 !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 26px !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+.bossdent-vivid-logo { display: inline-flex !important; flex: 0 0 205px !important; width: 205px !important; align-items: center !important; line-height: 0 !important; }
+.bossdent-vivid-logo img { display: block !important; width: 205px !important; height: 72px !important; max-width: 100% !important; object-fit: contain !important; object-position: left center !important; }
+.bossdent-vivid-tools { display: flex !important; flex: 1 1 auto !important; min-width: 0 !important; align-items: center !important; justify-content: flex-end !important; gap: clamp(11px, 1.35vw, 22px) !important; }
+.bossdent-vivid-search { display: block !important; flex: 1 1 300px !important; width: auto !important; max-width: 390px !important; min-width: 190px !important; }
+.bossdent-vivid-search input { min-height: 44px !important; background: #f8f6f3 !important; color: #272522 !important; border: 1px solid rgba(255,255,255,.45) !important; }
+.bossdent-vivid-delivery { display: inline-flex !important; flex: 0 0 auto !important; align-items: center !important; gap: 8px !important; padding: 7px 0 !important; color: rgba(255,255,255,.94) !important; text-align: left !important; white-space: nowrap !important; }
+.bossdent-vivid-delivery > svg { width: 17px !important; height: 17px !important; color: #d5c6d5 !important; }
+.bossdent-vivid-delivery small,.bossdent-vivid-delivery strong { display: block !important; }
+.bossdent-vivid-delivery small { color: rgba(255,255,255,.65) !important; font-size: 9px !important; }
+.bossdent-vivid-delivery strong { color: #fff !important; font-size: 10px !important; font-weight: 650 !important; }
+.bossdent-vivid-icon { position: relative !important; display: inline-flex !important; flex: 0 0 auto !important; align-items: center !important; justify-content: center !important; gap: 7px !important; min-width: 28px !important; color: #fff !important; font-size: 11px !important; white-space: nowrap !important; }
+.bossdent-vivid-icon > svg { width: 19px !important; height: 19px !important; stroke-width: 1.7 !important; }
+.bossdent-vivid-account-wrap { position: relative !important; }
+.bossdent-vivid-count { position: absolute !important; top: -8px !important; right: -9px !important; display: grid !important; min-width: 16px !important; height: 16px !important; place-items: center !important; padding: 0 3px !important; border-radius: 50px !important; background: #918594 !important; color: #fff !important; font-size: 9px !important; }
+.bossdent-vivid-account-menu { position: absolute !important; top: calc(100% + 18px) !important; right: 0 !important; z-index: 130 !important; width: 230px !important; padding: 8px !important; background: #fff !important; color: #252522 !important; border: 1px solid #dedad5 !important; box-shadow: 0 20px 50px rgba(0,0,0,.2) !important; }
+.bossdent-vivid-account-intro { display: grid !important; gap: 4px !important; padding: 10px 11px 13px !important; margin-bottom: 5px !important; border-bottom: 1px solid #e8e3df !important; }
+.bossdent-vivid-account-menu a,.bossdent-vivid-account-menu button { display: block !important; width: 100% !important; padding: 10px 11px !important; color: #393832 !important; font-size: 11px !important; text-align: left !important; }
+.bossdent-vivid-account-menu button { color: #9f3c50 !important; }
+.bossdent-vivid-cta { display: inline-flex !important; flex: 0 0 auto !important; min-width: 132px !important; min-height: 48px !important; align-items: center !important; justify-content: center !important; padding: 0 20px !important; background: #918594 !important; color: #fff !important; font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: .06em !important; }
+.bossdent-vivid-cta:hover { background: #a092a3 !important; }
+
+/* Always render the second navigation row on desktop. */
+.bossdent-vivid-header > .bossdent-vivid-nav-wrap { display: block !important; visibility: visible !important; opacity: 1 !important; width: min(calc(100% - 52px), 1510px) !important; min-height: 48px !important; margin: 0 auto !important; padding: 0 !important; overflow: visible !important; }
+.bossdent-vivid-nav { position: relative !important; display: flex !important; width: min(100%, 855px) !important; min-height: 48px !important; margin: 0 0 0 220px !important; padding: 0 24px !important; align-items: center !important; justify-content: space-between !important; gap: 20px !important; border-top: 1px solid rgba(255,255,255,.2) !important; border-bottom: 1px solid rgba(255,255,255,.2) !important; background: transparent !important; }
+.bossdent-vivid-nav-item { position: relative !important; display: flex !important; height: 47px !important; align-items: center !important; }
+.bossdent-vivid-nav-link { display: inline-flex !important; align-items: center !important; gap: 6px !important; padding: 0 !important; color: rgba(255,255,255,.95) !important; background: transparent !important; font-size: 15px !important; font-weight: 450 !important; line-height: 1.2 !important; white-space: nowrap !important; }
+.bossdent-vivid-nav-link:hover,.bossdent-vivid-nav-link[aria-expanded="true"] { color: #d8c9d9 !important; }
+.bossdent-vivid-nav-link svg { width: 13px !important; height: 13px !important; transition: transform .2s ease !important; }
+.bossdent-vivid-nav-link svg.is-open { transform: rotate(180deg) !important; }
+.bossdent-vivid-mega-menu { position: absolute !important; top: 100% !important; left: -24px !important; z-index: 150 !important; display: block !important; width: min(920px, calc(100vw - 52px)) !important; max-height: min(72vh, 620px) !important; overflow: auto !important; padding: 27px 30px 30px !important; background: #f8f6f3 !important; color: #252522 !important; border: 1px solid rgba(37,37,34,.12) !important; box-shadow: 0 24px 65px rgba(0,0,0,.25) !important; }
+.bossdent-vivid-mega-heading { display: flex !important; align-items: end !important; justify-content: space-between !important; gap: 20px !important; padding-bottom: 18px !important; margin-bottom: 22px !important; border-bottom: 1px solid #dedad5 !important; }
+.bossdent-vivid-mega-heading span { color: #918594 !important; font-size: 9px !important; letter-spacing: .2em !important; text-transform: uppercase !important; }
+.bossdent-vivid-mega-heading h3 { margin: 5px 0 0 !important; font-family: Georgia,serif !important; font-size: 30px !important; font-weight: 400 !important; }
+.bossdent-vivid-mega-heading > a { display: inline-flex !important; align-items: center !important; gap: 5px !important; color: #5d5360 !important; font-size: 11px !important; font-weight: 700 !important; white-space: nowrap !important; }
+.bossdent-vivid-category-grid { display: grid !important; grid-template-columns: repeat(4,minmax(0,1fr)) !important; gap: 26px 24px !important; }
+.bossdent-vivid-category-title { display: flex !important; align-items: flex-start !important; justify-content: space-between !important; gap: 8px !important; color: #282725 !important; font-size: 12px !important; font-weight: 750 !important; line-height: 1.45 !important; }
+.bossdent-vivid-category ul { display: grid !important; gap: 7px !important; margin: 10px 0 0 !important; padding: 0 !important; list-style: none !important; }
+.bossdent-vivid-category li { color: #77736f !important; font-size: 10px !important; line-height: 1.45 !important; }
+.bossdent-vivid-mobile-toggle,.bossdent-vivid-mobile-search,.bossdent-vivid-mobile-panel,.bossdent-vivid-mobile-search-panel { display: none; }
+
+@media (max-width: 1180px) and (min-width: 901px) {
+  .bossdent-vivid-top,.bossdent-vivid-header > .bossdent-vivid-nav-wrap { width: calc(100% - 40px) !important; }
+  .bossdent-vivid-search { max-width: 260px !important; min-width: 150px !important; }
+  .bossdent-vivid-delivery { display: none !important; }
+  .bossdent-vivid-nav { width: calc(100% - 190px) !important; margin-left: 190px !important; gap: 14px !important; padding-inline: 14px !important; }
+  .bossdent-vivid-nav-link { font-size: 13px !important; }
+}
+@media (max-width: 900px) {
+  .bossdent-vivid-header > .bossdent-vivid-top { width: calc(100% - 36px) !important; min-height: 82px !important; gap: 12px !important; }
+  .bossdent-vivid-logo { flex-basis: 155px !important; width: 155px !important; }
+  .bossdent-vivid-logo img { width: 155px !important; height: 58px !important; }
+  .bossdent-vivid-search,.bossdent-vivid-header > .bossdent-vivid-nav-wrap { display: none !important; }
+  .bossdent-vivid-delivery,.bossdent-vivid-cta { display: none !important; }
+  .bossdent-vivid-tools { gap: 12px !important; }
+  .bossdent-vivid-mobile-toggle,.bossdent-vivid-mobile-search { display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 38px !important; color: #fff !important; }
+  .bossdent-vivid-mobile-toggle svg,.bossdent-vivid-mobile-search svg { width: 21px !important; height: 21px !important; }
+  .bossdent-vivid-mobile-search-panel { display: block !important; padding: 0 18px 14px !important; }
+  .bossdent-vivid-mobile-search-panel input { width: 100% !important; }
+  .bossdent-vivid-mobile-panel { display: grid !important; gap: 0 !important; padding: 8px 24px 20px !important; background: rgba(31,31,32,.98) !important; border-top: 1px solid rgba(255,255,255,.2) !important; }
+  .bossdent-vivid-mobile-panel a,.bossdent-vivid-mobile-panel button { display: flex !important; align-items: center !important; gap: 9px !important; padding: 14px 0 !important; border-bottom: 1px solid rgba(255,255,255,.13) !important; color: #fff !important; font-size: 14px !important; text-align: left !important; }
+  .bossdent-vivid-mobile-panel button svg { width: 16px !important; height: 16px !important; }
+}
+@media (max-width: 560px) {
+  .bossdent-vivid-header > .bossdent-vivid-top { width: calc(100% - 26px) !important; min-height: 74px !important; }
+  .bossdent-vivid-logo { flex-basis: 130px !important; width: 130px !important; }
+  .bossdent-vivid-logo img { width: 130px !important; height: 50px !important; }
+  .bossdent-vivid-account span,.bossdent-vivid-cart-label { display: none !important; }
+  .bossdent-vivid-icon > svg { width: 18px !important; height: 18px !important; }
+  .bossdent-vivid-tools { gap: 9px !important; }
+  .bossdent-vivid-category-grid { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+  .bossdent-vivid-mega-menu { left: -8px !important; width: calc(100vw - 26px) !important; padding: 19px !important; }
+}
+
+

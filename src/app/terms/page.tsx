@@ -17,7 +17,7 @@ export default function TermsPage() {
         </h1>
 
         <p>
-          Welcome to DentalKart. By accessing our platform or purchasing dental supplies, you agree to comply with our clinical terms and professional guidelines.
+          Welcome to Bossdent. By accessing our platform or purchasing dental supplies, you agree to comply with our clinical terms and professional guidelines.
         </p>
 
         <h3 className="font-bold text-slate-900 text-sm">1. Professional Qualification</h3>

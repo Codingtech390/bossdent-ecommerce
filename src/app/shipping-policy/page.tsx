@@ -20,14 +20,14 @@ export default function ShippingPolicyPage() {
           <section className="space-y-2">
             <h2 className="text-sm font-bold text-slate-900">1. Pan-India Delivery Coverage</h2>
             <p>
-              DentalKart operates direct warehouse logistics across all major Indian cities. We deliver to over 19,000+ PIN codes through specialized courier partners including Delhivery Express, BlueDart Medical, and DTDC.
+              Bossdent operates direct warehouse logistics across all major Indian cities. We deliver to over 19,000+ PIN codes through specialized courier partners including Delhivery Express, BlueDart Medical, and DTDC.
             </p>
           </section>
 
           <section className="space-y-2">
             <h2 className="text-sm font-bold text-slate-900">2. Free Shipping Thresholds</h2>
             <p>
-              • <strong>DentalKart Plus Members:</strong> Free clinical delivery on all consumable orders above ₹499.
+              • <strong>Bossdent Plus Members:</strong> Free clinical delivery on all consumable orders above ₹499.
             </p>
             <p>
               • <strong>Regular Accounts:</strong> Free delivery on orders above ₹999. A nominal fee of ₹99 is applicable for orders below this value.

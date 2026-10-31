@@ -119,7 +119,7 @@ export default function AccountProfilePage() {
             <Sparkles className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="font-bold text-slate-900">DentalKart Plus</h3>
+            <h3 className="font-bold text-slate-900">Bossdent Plus</h3>
             <span className="text-slate-400 text-[11px]">Perks &amp; 2x rewards</span>
           </div>
         </Link>

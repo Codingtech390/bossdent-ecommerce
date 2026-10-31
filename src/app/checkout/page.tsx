@@ -444,7 +444,7 @@ export default function CheckoutPage() {
             </button>
 
             <div className="text-[10px] text-slate-400 text-center space-y-1">
-              <p>By placing this order, you agree to DentalKart Terms of Service.</p>
+              <p>By placing this order, you agree to Bossdent Terms of Service.</p>
               <p className="text-emerald-700 font-semibold flex items-center justify-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> 100% Genuine Certified Batch Guarantee
               </p>

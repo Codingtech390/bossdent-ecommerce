@@ -13,7 +13,7 @@ export default function AboutPage() {
 
       <div className="bg-gradient-to-r from-dk-teal-900 to-slate-900 text-white p-8 rounded-2xl shadow-md space-y-2">
         <span className="text-xs font-bold uppercase tracking-widest text-dk-orange-400">
-          DentalKart E-Commerce
+          Bossdent E-Commerce
         </span>
         <h1 className="text-3xl font-black">Empowering Indian Dentistry Since 2016</h1>
         <p className="text-slate-300 text-xs md:text-sm">
@@ -24,10 +24,10 @@ export default function AboutPage() {
       <div className="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         <h2 className="text-lg font-bold text-slate-900">Our Mission</h2>
         <p>
-          DentalKart is one of India&apos;s pioneering online dental supply and medical equipment platforms. Founded with the conviction that no dentist should face artificial supply shortages, counterfeit materials, or inflated dealer markups, we deliver genuine clinical batches directly to your clinic operatory.
+          Bossdent is one of India&apos;s pioneering online dental supply and medical equipment platforms. Founded with the conviction that no dentist should face artificial supply shortages, counterfeit materials, or inflated dealer markups, we deliver genuine clinical batches directly to your clinic operatory.
         </p>
         <p>
-          Today, DentalKart hosts more than 450+ global and Indian brands, 20,000+ catalogued products, and maintains climate-controlled logistics hubs across New Delhi, Mumbai, and Bengaluru ensuring composite freshness and cold-chain compliance.
+          Today, Bossdent hosts more than 450+ global and Indian brands, 20,000+ catalogued products, and maintains climate-controlled logistics hubs across New Delhi, Mumbai, and Bengaluru ensuring composite freshness and cold-chain compliance.
         </p>
       </div>
 

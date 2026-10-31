@@ -120,7 +120,7 @@ export default function ClinicSetupPage() {
               Design, Setup &amp; Equip Your Dream Dental Clinic
             </h1>
             <p className="text-sm md:text-base text-slate-300 leading-relaxed">
-              DentalKart acts as your turnkey setup partner: architectural layout planning, dental operatory chairs, digital sterilization, and nationwide engineer installation.
+              Bossdent acts as your turnkey setup partner: architectural layout planning, dental operatory chairs, digital sterilization, and nationwide engineer installation.
             </p>
             <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-slate-200">
               <span className="flex items-center gap-1.5">
@@ -153,7 +153,7 @@ export default function ClinicSetupPage() {
             Hassle-Free Experience
           </span>
           <h2 className="text-2xl md:text-3xl font-black text-slate-900">
-            How The DentalKart Clinic Setup Works
+            How The Bossdent Clinic Setup Works
           </h2>
         </div>
 
@@ -276,7 +276,7 @@ export default function ClinicSetupPage() {
               Schedule Your Clinic Setup Consultation
             </h2>
             <p className="text-xs text-slate-500">
-              Fill in your practice details below. A specialized DentalKart Biomedical Project Manager will prepare a customized quotation within 24 hours.
+              Fill in your practice details below. A specialized Bossdent Biomedical Project Manager will prepare a customized quotation within 24 hours.
             </p>
           </div>
 
@@ -285,7 +285,7 @@ export default function ClinicSetupPage() {
               <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
               <h3 className="text-lg font-bold text-emerald-950">Thank you, Doctor!</h3>
               <p className="text-xs text-emerald-800 max-w-md mx-auto">
-                Your clinic enquiry has been registered with DentalKart Project Operations. Our engineer will reach out to you via phone and email.
+                Your clinic enquiry has been registered with Bossdent Project Operations. Our engineer will reach out to you via phone and email.
               </p>
             </div>
           ) : (

@@ -49,7 +49,7 @@ export function ProductCard({ product, className = "" }: ProductCardProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
 
-  const brandName = typeof product.brand === "object" && product.brand ? product.brand.name : "DentalKart";
+  const brandName = typeof product.brand === "object" && product.brand ? product.brand.name : "Bossdent";
   const brandSlug = typeof product.brand === "object" && product.brand ? product.brand.slug : "";
 
   const discount = product.discountPercent || (product.baseComparePrice && product.baseComparePrice > product.basePrice
@@ -99,7 +99,7 @@ export function ProductCard({ product, className = "" }: ProductCardProps) {
 
   return (
     <div
-      className={`group relative bg-white rounded-xl border border-slate-200 hover:border-dk-teal-600 hover:shadow-card-hover transition-all duration-200 flex flex-col overflow-hidden h-full ${className}`}
+      className={`bossdent-product-card group relative flex h-full flex-col overflow-hidden ${className}`}
     >
       {/* Badges Bar */}
       <div className="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1 items-start max-w-[80%]">
@@ -139,7 +139,7 @@ export function ProductCard({ product, className = "" }: ProductCardProps) {
       {/* Product Image */}
       <Link
         href={`/products/${product.slug}`}
-        className="relative block w-full pt-[90%] bg-slate-50 overflow-hidden"
+        className="bossdent-product-image relative block w-full pt-[90%] overflow-hidden"
       >
         <Image
           src={primaryImage}

@@ -11,28 +11,28 @@ const config: Config = {
       colors: {
         dk: {
           teal: {
-            50: "#f0fdfa",
-            100: "#ccfbf1",
-            200: "#99f6e4",
-            500: "#14b8a6",
-            600: "#0d9488",
-            700: "#0f766e",
-            800: "#0b4d6c", // Primary DentalKart Teal
-            900: "#083344",
-            950: "#04202c",
+            50: "#f2edf2",
+            100: "#e8dfe9",
+            200: "#d9cbd9",
+            500: "#a99baa",
+            600: "#918594",
+            700: "#786b7b",
+            800: "#343538", // Primary DentalKart Teal
+            900: "#2c2c2e",
+            950: "#252526",
           },
           orange: {
-            50: "#fff7ed",
-            100: "#ffedd5",
-            200: "#fed7aa",
-            400: "#fb923c",
-            500: "#ff6b00", // DentalKart Primary Orange Action
-            600: "#ea580c",
-            700: "#c2410c",
+            50: "#f4f1ed",
+            100: "#eee8ef",
+            200: "#ded4df",
+            400: "#a99baa",
+            500: "#918594", // DentalKart Primary Orange Action
+            600: "#786b7b",
+            700: "#625765",
           },
           navy: {
-            800: "#1e293b",
-            900: "#0f172a",
+            800: "#343538",
+            900: "#252522",
           },
           gold: {
             400: "#fbbf24",

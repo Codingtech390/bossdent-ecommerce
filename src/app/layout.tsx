@@ -7,19 +7,26 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "DentalKart: India's Largest Online Dental Store | 20,000+ Products",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
+  title: {
+    default: "Bossdent | Dental Supplies, Instruments & Technology",
+    template: "%s | Bossdent",
+  },
   description:
-    "Buy genuine dental supplies, restorative composites, rotary files, airotors, autoclaves, and dental clinic packages online at DentalKart. Fast delivery across 19,000+ pincodes.",
+    "Explore thoughtfully selected dental materials, instruments, equipment and technology for dental professionals across India. Bossdent Global India Pvt Ltd.",
+  applicationName: "Bossdent",
+  openGraph: {
+    type: "website",
+    siteName: "Bossdent",
+    title: "Bossdent | Dental Supplies, Instruments & Technology",
+    description: "Professional dental products and solutions, thoughtfully brought together.",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased font-sans">
+      <body className="min-h-screen flex flex-col antialiased">
         <AuthProvider>
           <PincodeProvider>
             <CartProvider>

@@ -33,7 +33,7 @@ export default async function AdminLayout({
             DK
           </div>
           <div>
-            <span className="font-bold text-sm block">DentalKart Admin Portal</span>
+            <span className="font-bold text-sm block">Bossdent Admin Portal</span>
             <span className="text-[10px] text-slate-400">Inventory &amp; Operations Control</span>
           </div>
         </div>

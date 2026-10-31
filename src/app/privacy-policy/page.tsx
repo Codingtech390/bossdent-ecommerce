@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
         </h1>
 
         <p>
-          At DentalKart, we uphold the highest standards of data security and confidentiality for our registered dental professionals and hospital clinics.
+          At Bossdent, we uphold the highest standards of data security and confidentiality for our registered dental professionals and hospital clinics.
         </p>
 
         <h3 className="font-bold text-slate-900 text-sm">1. Information Collection</h3>

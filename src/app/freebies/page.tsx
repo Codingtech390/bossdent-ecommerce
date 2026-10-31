@@ -29,7 +29,7 @@ export default async function FreebiesPage() {
         <div className="flex items-center gap-2 mb-2">
           <Gift className="w-6 h-6 text-amber-300" />
           <span className="text-xs font-bold uppercase tracking-widest bg-emerald-950/60 text-emerald-200 px-3 py-1 rounded-full">
-            DentalKart Exclusive Perks
+            Bossdent Exclusive Perks
           </span>
         </div>
         <h1 className="text-3xl font-black">Claim Professional Freebies &amp; Gifts @ ₹1</h1>
@@ -40,7 +40,7 @@ export default async function FreebiesPage() {
 
       <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-xs text-emerald-900 space-y-1">
         <h3 className="font-bold flex items-center gap-1.5 text-sm">
-          <Sparkles className="w-4 h-4 text-emerald-600" /> How DentalKart Freebies Work:
+          <Sparkles className="w-4 h-4 text-emerald-600" /> How Bossdent Freebies Work:
         </h3>
         <p>1. Browse eligible promotional products below.</p>
         <p>2. Products labelled &ldquo;Gift at ₹1&rdquo; can be added directly or unlocked at checkout when qualifying cart thresholds are met.</p>
