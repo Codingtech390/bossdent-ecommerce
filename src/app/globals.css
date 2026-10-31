@@ -1363,3 +1363,40 @@ main > div { scroll-margin-top: 100px; }
   .bossdent-vivid-header,
   .bossdent-vivid-header * { animation: none !important; transition: none !important; }
 }
+
+/* Bossdent logo */
+/* Bossdent wordmark beside logo */
+.bossdent-vivid-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.bossdent-brand-wordmark {
+  color: #ffffff;
+  font-family: var(--font-interface);
+  font-size: clamp(24px, 2.5vw, 38px);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+/* White header after scrolling */
+.bossdent-header-scrolled .bossdent-brand-wordmark {
+  color: #29232e;
+}
+
+/* Mobile sizing */
+@media (max-width: 767px) {
+  .bossdent-vivid-logo {
+    gap: 8px;
+  }
+
+  .bossdent-brand-wordmark {
+    font-size: 20px;
+    letter-spacing: 0.08em;
+  }
+}

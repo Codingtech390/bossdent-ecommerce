@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { connectToDatabase } from "@/lib/db";
 import { Product } from "@/models/Product";
+import "@/models/Brand";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Flame, ChevronRight } from "lucide-react";
 

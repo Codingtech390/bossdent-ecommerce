@@ -25,7 +25,7 @@ export function Header() {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const isHeroPage = pathname === "/" || pathname === "/contact";
+const isHeroPage = pathname === "/" || pathname === "/contact" || pathname === "/about" || pathname === "/products" || pathname.startsWith("/products/");
 
  useEffect(() => {
    const updateScrollState = () => {
@@ -64,6 +64,8 @@ const headerStateClass =
             height={82}
             fetchPriority="high"
           />
+
+          <span className="bossdent-brand-wordmark">BOSSDENT</span>
         </Link>
 
         <div className="bossdent-vivid-tools">
@@ -185,8 +187,8 @@ const headerStateClass =
           <Link href="/categories" onClick={closeMobile}>
             Services / Categories
           </Link>
-          <Link href="/best-sellers" onClick={closeMobile}>
-            Problems We Treat
+          <Link href="/products" onClick={closeMobile}>
+            Products
           </Link>
           <Link href="/brands" onClick={closeMobile}>
             Referring Doctors

@@ -50,7 +50,7 @@ const categories = [
 const navItems = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/categories", hasMenu: true },
-  { label: "Products", href: "/best-sellers" },
+  { label: "Products", href: "/products" },
   { label: "Referring Doctors", href: "/brands" },
   { label: "New Patients", href: "/student-section" },
   { label: "Contact", href: "/contact" },
