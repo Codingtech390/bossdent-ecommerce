@@ -22,7 +22,7 @@ export default async function CategoriesIndexPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 py-8 space-y-12 mt-20">
       {/* Header */}
       <div>
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
@@ -50,9 +50,9 @@ export default async function CategoriesIndexPage() {
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-lg font-bold text-slate-900">{cat.name}</h2>
-                  <span className="text-[11px] font-bold text-dk-teal-700 bg-dk-teal-50 px-2 py-0.5 rounded">
-                    {cat.productCount} Products
+                  <h2 className="text-md font-serif font-semibold text-slate-900">{cat.name}</h2>
+                  <span className="text-[11px] font-bold text-dk-teal-700 bg-dk-teal-50 px-2 py-0.5 rounded mr-0.5">
+                    {cat.productCount} Product
                   </span>
                 </div>
                 <p className="text-xs text-slate-500 mb-4">{cat.description}</p>

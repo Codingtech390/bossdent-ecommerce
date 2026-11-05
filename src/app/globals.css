@@ -15,7 +15,7 @@
   --bd-soft: #eeebe7;
   --background: var(--bd-ivory);
   --foreground: var(--bd-ink);
-  --font-editorial: "Cormorant Garamond", "Iowan Old Style", "Baskerville", Georgia, serif;
+  --font-editorial: "Poppins","Cormorant Garamond", "Iowan Old Style", "Baskerville", Georgia, serif;
   --font-interface: "Manrope", "Avenir Next", Avenir, "Segoe UI", sans-serif;
 }
 
@@ -1400,3 +1400,604 @@ main > div { scroll-margin-top: 100px; }
     letter-spacing: 0.08em;
   }
 }
+
+
+
+
+/* =========================================================
+   BOSSDENT — FINAL SINGLE-ROW HEADER
+   Logo | Navigation | Cart | Sign in
+   ========================================================= */
+
+.bossdent-vivid-header {
+  --header-height: 88px;
+  position: fixed !important;
+  inset: 0 0 auto !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  overflow: visible !important;
+  isolation: isolate;
+}
+
+.bossdent-vivid-header.bossdent-header-hero {
+  position: absolute !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Main header row */
+.bossdent-vivid-header > .bossdent-vivid-top {
+  display: flex !important;
+  width: min(calc(100% - 64px), 1510px) !important;
+  min-height: 88px !important;
+  height: 88px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: clamp(16px, 2vw, 30px) !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+/* Logo */
+.bossdent-vivid-logo {
+  display: inline-flex !important;
+  flex: 0 0 190px !important;
+  width: 190px !important;
+  min-width: 0 !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+}
+
+.bossdent-vivid-logo img {
+  display: block !important;
+  width: 190px !important;
+  height: 66px !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+}
+
+/* Navigation occupies the middle of the same row */
+.bossdent-vivid-header > .bossdent-vivid-top > .bossdent-vivid-nav-wrap {
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+}
+
+.bossdent-vivid-nav {
+  position: relative !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 48px !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+  gap: clamp(11px, 1.35vw, 21px) !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.bossdent-vivid-nav-item {
+  position: relative !important;
+  display: flex !important;
+  flex: 0 0 auto !important;
+  height: 48px !important;
+  align-items: center !important;
+}
+
+.bossdent-vivid-nav-link {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 8px 0 !important;
+  color: rgba(255,255,255,.96) !important;
+  background: transparent !important;
+  font-size: clamp(11px, .91vw, 13px) !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  transition: color .2s ease !important;
+}
+
+.bossdent-vivid-nav-link:hover,
+.bossdent-vivid-nav-link[aria-expanded="true"] {
+  color: #d9cbd9 !important;
+}
+
+.bossdent-vivid-nav-link svg {
+  width: 12px !important;
+  height: 12px !important;
+  flex: 0 0 auto !important;
+}
+
+.bossdent-header-scrolled .bossdent-vivid-nav-link {
+  color: #39332f !important;
+}
+
+.bossdent-header-scrolled .bossdent-vivid-nav-link:hover,
+.bossdent-header-scrolled .bossdent-vivid-nav-link[aria-expanded="true"] {
+  color: #9478a5 !important;
+}
+
+/* Right-side actions */
+.bossdent-vivid-header > .bossdent-vivid-top > .bossdent-vivid-tools {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: clamp(12px, 1.5vw, 21px) !important;
+}
+
+.bossdent-vivid-icon {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  min-height: 40px !important;
+  padding: 0 !important;
+  color: #39332f !important;
+  font-size: 11px !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+}
+
+.bossdent-header-hero .bossdent-vivid-icon {
+  color: #fff !important;
+}
+
+.bossdent-vivid-icon > svg {
+  width: 17px !important;
+  height: 17px !important;
+  flex: 0 0 auto !important;
+}
+
+/* Sign in button replaces Book a Consult */
+.bossdent-vivid-signin {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  min-width: 112px !important;
+  min-height: 43px !important;
+  padding: 0 19px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  border: 1px solid #9478a5 !important;
+  border-radius: 2px !important;
+  background: #9478a5 !important;
+  color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .035em !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: background .2s ease, border-color .2s ease !important;
+}
+
+.bossdent-vivid-signin:hover {
+  border-color: #786b7b !important;
+  background: #786b7b !important;
+  color: #fff !important;
+}
+
+.bossdent-vivid-signin svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.bossdent-header-hero .bossdent-vivid-signin {
+  border-color: #9478a5 !important;
+  background: #9478a5 !important;
+  color: #fff !important;
+}
+
+/* Keep the account menu and Services menu above page content */
+.bossdent-vivid-account-menu {
+  z-index: 1400 !important;
+}
+
+.bossdent-vivid-mega-menu {
+  top: calc(100% + 1px) !important;
+  left: -15px !important;
+  z-index: 1500 !important;
+}
+
+/* Compact scrolled header — still one row */
+.bossdent-header-scrolled > .bossdent-vivid-top {
+  height: 78px !important;
+  min-height: 78px !important;
+}
+
+.bossdent-header-scrolled .bossdent-vivid-logo {
+  flex-basis: 155px !important;
+  width: 155px !important;
+}
+
+.bossdent-header-scrolled .bossdent-vivid-logo img {
+  width: 155px !important;
+  height: 55px !important;
+}
+
+/* Desktop / laptop spacing */
+@media (max-width: 1280px) and (min-width: 1101px) {
+  .bossdent-vivid-header > .bossdent-vivid-top {
+    width: calc(100% - 40px) !important;
+    gap: 15px !important;
+  }
+
+  .bossdent-vivid-logo {
+    flex-basis: 160px !important;
+    width: 160px !important;
+  }
+
+  .bossdent-vivid-logo img {
+    width: 160px !important;
+    height: 58px !important;
+  }
+
+  .bossdent-vivid-nav {
+    gap: 11px !important;
+  }
+
+  .bossdent-vivid-nav-link {
+    font-size: 11px !important;
+  }
+
+  .bossdent-vivid-header > .bossdent-vivid-top > .bossdent-vivid-tools {
+    gap: 12px !important;
+  }
+
+  .bossdent-vivid-signin {
+    min-width: 95px !important;
+    padding-inline: 13px !important;
+  }
+}
+
+/* Tablet and mobile: use the existing mobile menu */
+@media (max-width: 1100px) {
+  .bossdent-vivid-header > .bossdent-vivid-top {
+    width: calc(100% - 40px) !important;
+    min-height: 78px !important;
+    height: 78px !important;
+    gap: 12px !important;
+  }
+
+  .bossdent-vivid-header > .bossdent-vivid-top > .bossdent-vivid-nav-wrap {
+    display: none !important;
+  }
+
+  .bossdent-vivid-logo {
+    flex: 0 0 155px !important;
+    width: 155px !important;
+  }
+
+  .bossdent-vivid-logo img {
+    width: 155px !important;
+    height: 56px !important;
+  }
+
+  .bossdent-vivid-header > .bossdent-vivid-top > .bossdent-vivid-tools {
+    flex: 0 0 auto !important;
+    gap: 14px !important;
+  }
+
+  .bossdent-vivid-mobile-toggle,
+  .bossdent-vivid-mobile-search {
+    display: inline-flex !important;
+    width: 38px !important;
+    height: 38px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #39332f !important;
+  }
+
+  .bossdent-header-hero .bossdent-vivid-mobile-toggle,
+  .bossdent-header-hero .bossdent-vivid-mobile-search {
+    color: #fff !important;
+  }
+
+  .bossdent-vivid-mobile-toggle svg,
+  .bossdent-vivid-mobile-search svg {
+    width: 21px !important;
+    height: 21px !important;
+  }
+
+  .bossdent-vivid-mobile-panel {
+    display: grid !important;
+    gap: 0 !important;
+    padding: 8px 24px 20px !important;
+    background: #292627 !important;
+    border-top: 1px solid rgba(255,255,255,.15) !important;
+  }
+
+  .bossdent-vivid-mobile-panel a,
+  .bossdent-vivid-mobile-panel button {
+    display: flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    padding: 14px 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,.13) !important;
+    color: #fff !important;
+    font-size: 13px !important;
+    text-align: left !important;
+    text-decoration: none !important;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 560px) {
+  .bossdent-vivid-header > .bossdent-vivid-top {
+    width: calc(100% - 26px) !important;
+    min-height: 72px !important;
+    height: 72px !important;
+  }
+
+  .bossdent-vivid-logo {
+    flex-basis: 125px !important;
+    width: 125px !important;
+  }
+
+  .bossdent-vivid-logo img {
+    width: 125px !important;
+    height: 48px !important;
+  }
+
+  .bossdent-vivid-header > .bossdent-vivid-top > .bossdent-vivid-tools {
+    gap: 10px !important;
+  }
+
+  .bossdent-vivid-account > span,
+  .bossdent-vivid-cart-label {
+    display: none !important;
+  }
+
+  .bossdent-vivid-signin {
+    min-width: 38px !important;
+    min-height: 38px !important;
+    padding: 0 10px !important;
+  }
+
+  .bossdent-vivid-signin span {
+    display: none !important;
+  }
+
+  .bossdent-vivid-signin svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+}
+
+
+/* =========================================================
+   BOSSDENT — SERVICES MEGA MENU SPACING REFINEMENT
+   ========================================================= */
+
+/* Make the navigation the positioning reference */
+.bossdent-vivid-nav {
+  position: relative !important;
+}
+
+.bossdent-vivid-services {
+  position: static !important;
+}
+
+/* Dropdown panel */
+.bossdent-vivid-mega-menu {
+  position: absolute !important;
+
+  /* Center beneath the desktop navigation */
+  top: calc(100% + 14px) !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+
+  width: min(1000px, calc(100vw - 64px)) !important;
+  max-width: calc(100vw - 64px) !important;
+  max-height: min(75vh, 680px) !important;
+
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+
+  padding: 34px 38px 36px !important;
+  margin: 0 !important;
+
+  background: #f8f6f3 !important;
+  color: #252522 !important;
+
+  border: 1px solid rgba(37, 37, 34, 0.12) !important;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.22) !important;
+
+  z-index: 1500 !important;
+}
+
+/* Heading area */
+.bossdent-vivid-mega-heading {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+
+  gap: 28px !important;
+
+  padding: 0 0 23px !important;
+  margin: 0 0 27px !important;
+
+  border-bottom: 1px solid #dedad5 !important;
+}
+
+.bossdent-vivid-mega-heading > div {
+  min-width: 0 !important;
+}
+
+.bossdent-vivid-mega-heading span {
+  display: block !important;
+  margin: 0 0 9px !important;
+
+  color: #918594 !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2em !important;
+  line-height: 1.5 !important;
+  text-transform: uppercase !important;
+}
+
+.bossdent-vivid-mega-heading h3 {
+  margin: 0 !important;
+
+  color: #292627 !important;
+  font-family: var(--font-editorial, Georgia, serif) !important;
+  font-size: clamp(28px, 3vw, 34px) !important;
+  font-weight: 400 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.025em !important;
+}
+
+/* View all categories link */
+.bossdent-vivid-mega-heading > a {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+
+  margin: 0 0 4px !important;
+  padding: 0 0 6px !important;
+
+  color: #5d5360 !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+}
+
+.bossdent-vivid-mega-heading > a:hover {
+  color: #9478a5 !important;
+}
+
+.bossdent-vivid-mega-heading > a svg {
+  width: 14px !important;
+  height: 14px !important;
+  flex: 0 0 auto !important;
+}
+
+/* Four-column category layout */
+.bossdent-vivid-category-grid {
+  display: grid !important;
+
+  width: 100% !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+
+  column-gap: 34px !important;
+  row-gap: 32px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Individual category */
+.bossdent-vivid-category {
+  display: block !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Category title */
+.bossdent-vivid-category-title {
+  display: flex !important;
+
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #302a2d !important;
+  font-size: 12px !important;
+  font-weight: 750 !important;
+  line-height: 1.5 !important;
+  text-decoration: none !important;
+}
+
+.bossdent-vivid-category-title:hover {
+  color: #9478a5 !important;
+}
+
+.bossdent-vivid-category-title svg {
+  flex: 0 0 14px !important;
+  width: 14px !important;
+  height: 14px !important;
+  margin-top: 2px !important;
+  color: #918594 !important;
+}
+
+/* Subcategory list */
+.bossdent-vivid-category ul {
+  display: grid !important;
+  gap: 9px !important;
+
+  margin: 13px 0 0 !important;
+  padding: 0 !important;
+
+  list-style: none !important;
+}
+
+.bossdent-vivid-category li {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  color: #77736f !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+}
+
+/* Slightly tighter layout on smaller desktop screens */
+@media (max-width: 1200px) and (min-width: 1101px) {
+  .bossdent-vivid-mega-menu {
+    width: min(900px, calc(100vw - 48px)) !important;
+    padding: 28px 28px 30px !important;
+  }
+
+  .bossdent-vivid-category-grid {
+    column-gap: 22px !important;
+    row-gap: 26px !important;
+  }
+}
+
+/* Hide desktop mega-menu on tablet/mobile */
+@media (max-width: 1100px) {
+  .bossdent-vivid-mega-menu {
+    display: none !important;
+  }
+}
+
+
+
+

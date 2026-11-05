@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
 
+import { SearchAutocomplete } from "./SearchAutocomplete";
+
 const categories = [
   {
     name: "Restorative & Esthetics",
@@ -49,10 +51,9 @@ const categories = [
 
 const navItems = [
   { label: "About", href: "/about" },
-  { label: "Services", href: "/categories", hasMenu: true },
+  { label: "Categories", href: "/categories", hasMenu: true },
   { label: "Products", href: "/products" },
-  { label: "Referring Doctors", href: "/brands" },
-  { label: "New Patients", href: "/student-section" },
+  { label: "Brands", href: "/brands" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -66,12 +67,16 @@ export function Navbar() {
         setServicesOpen(false);
       }
     };
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setServicesOpen(false);
+      if (event.key === "Escape") {
+        setServicesOpen(false);
+      }
     };
 
     document.addEventListener("pointerdown", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
+
     return () => {
       document.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
@@ -106,12 +111,15 @@ export function Navbar() {
                   <div className="bossdent-vivid-mega-heading">
                     <div>
                       <span>Explore the catalogue</span>
-                      <h3>Shop by speciality</h3>
+                      <h3>Shop by Category</h3>
                     </div>
+
                     <Link href="/categories" onClick={() => setServicesOpen(false)}>
-                      View all categories <ArrowUpRight aria-hidden="true" />
+                      View all categories
+                      <ArrowUpRight aria-hidden="true" />
                     </Link>
                   </div>
+
                   <div className="bossdent-vivid-category-grid">
                     {categories.map((category) => (
                       <section key={category.slug} className="bossdent-vivid-category">
@@ -123,6 +131,7 @@ export function Navbar() {
                           {category.name}
                           <ArrowUpRight aria-hidden="true" />
                         </Link>
+
                         <ul>
                           {category.subs.map((sub) => (
                             <li key={sub}>{sub}</li>
@@ -141,6 +150,11 @@ export function Navbar() {
           ),
         )}
       </nav>
+
+      {/* Desktop product search */}
+      <div className="bossdent-vivid-search">
+        <SearchAutocomplete />
+      </div>
     </div>
   );
 }

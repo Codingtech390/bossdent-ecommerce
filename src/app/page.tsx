@@ -6,11 +6,15 @@ import { Brand } from "@/models/Brand";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
 import { SiteBanner } from "@/models/SiteBanner";
-import { ProductCard } from "@/components/product/ProductCard";
-import { TechnologyShowcase } from "@/components/home/TechnologyShowcase";
-import { FAQSection } from "@/components/home/FAQSection";
-import { ArrowUpRight, Check, Gift, MoveUpRight } from "lucide-react";
 import CountUp from "@/components/home/CountUp";
+import { ProductCard } from "@/components/product/ProductCard";
+import { FeaturedCategories } from "@/components/home/FeaturedCategories";
+import { TechnologyShowcase } from "@/components/home/TechnologyShowcase";
+import { FeaturedProducts } from "@/components/home/FeaturedProducts";
+import { TopBrands } from "@/components/home/TopBrands";
+import { FAQSection } from "@/components/home/FAQSection";
+import { ProductShowcaseCarousel } from "@/components/home/ProductShowcaseCarousel";
+import { ArrowUpRight, Check, Gift, MoveUpRight } from "lucide-react";
 
 import mongoose from "mongoose";
 
@@ -89,29 +93,45 @@ console.log("Collections:", {
 console.log("===================================================\n");
 
 
-  const [banners, categories, brands, bestSellers, hotDeals, newArrivals, freebies] =
-    await Promise.all([
-      SiteBanner.find({ active: true }).sort({ order: 1 }).lean(),
-      Category.find({ level: 0 }).sort({ order: 1 }).lean(),
-      Brand.find({ isFeatured: true }).sort({ productCount: -1 }).limit(8).lean(),
-      Product.find({ active: true, badges: "Best Seller" })
-        .populate("brand", "name slug")
-        .limit(8)
-        .lean(),
-      Product.find({ active: true, discountPercent: { $gt: 20 } })
-        .populate("brand", "name slug")
-        .limit(8)
-        .lean(),
-      Product.find({ active: true })
-        .populate("brand", "name slug")
-        .sort({ createdAt: -1 })
-        .limit(8)
-        .lean(),
-      Product.find({ active: true, isFreebieEligible: true })
-        .populate("brand", "name slug")
-        .limit(4)
-        .lean(),
-    ]);
+  const [
+    banners,
+    categories,
+    brands,
+    bestSellers,
+    hotDeals,
+    newArrivals,
+    freebies,
+    showcaseProducts,
+  ] = await Promise.all([
+    SiteBanner.find({ active: true }).sort({ order: 1 }).lean(),
+
+    Category.find({ level: 0 }).sort({ order: 1 }).lean(),
+
+    Brand.find({ isFeatured: true }).sort({ productCount: -1 }).limit(12).lean(),
+
+    Product.find({ active: true, badges: "Best Seller" })
+      .populate("brand", "name slug")
+      .limit(8)
+      .lean(),
+
+    Product.find({ active: true, discountPercent: { $gt: 20 } })
+      .populate("brand", "name slug")
+      .limit(8)
+      .lean(),
+
+    Product.find({ active: true })
+      .populate("brand", "name slug")
+      .sort({ createdAt: -1 })
+      .limit(8)
+      .lean(),
+
+    Product.find({ active: true, isFreebieEligible: true })
+      .populate("brand", "name slug")
+      .limit(4)
+      .lean(),
+
+    Product.find({ active: true }).sort({ salesCount: -1, updatedAt: -1 }).limit(6).lean(),
+  ]);
 
   return {
     banners: JSON.parse(JSON.stringify(banners)),
@@ -121,6 +141,7 @@ console.log("===================================================\n");
     hotDeals: JSON.parse(JSON.stringify(hotDeals)),
     newArrivals: JSON.parse(JSON.stringify(newArrivals)),
     freebies: JSON.parse(JSON.stringify(freebies)),
+    showcaseProducts: JSON.parse(JSON.stringify(showcaseProducts)),
   };
 }
 
@@ -166,8 +187,16 @@ function SectionHeading({
 }
 
 export default async function HomePage() {
-  const { banners, categories, brands, bestSellers, hotDeals, newArrivals, freebies } =
-    await getHomepageData();
+  const {
+    banners,
+    categories,
+    brands,
+    bestSellers,
+    hotDeals,
+    newArrivals,
+    freebies,
+    showcaseProducts,
+  } = await getHomepageData();
 console.log("========== BOSSDENT HOMEPAGE DATA ==========");
 
 console.log("Categories:", categories.length);
@@ -247,6 +276,9 @@ console.log("============================================");
 
       {/* Intro / brand positioning */}
       <section className="bg-[#fbfaf8]">
+        {/* Featured Product Showcase Carousel */}
+        <ProductShowcaseCarousel products={showcaseProducts} />
+
         {/* Statistics */}
         <div className="mx-auto max-w-[1440px] px-5 pb-8 pt-8 sm:px-10 md:px-16 lg:px-24">
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
@@ -284,26 +316,8 @@ console.log("============================================");
           </div>
         </div>
 
-        {/* Featured brand strip */}
-        {brands.length > 0 && (
-          <div className="border-y border-[#e9e6e2] bg-[#f5f4f1]">
-            <div className="mx-auto max-w-[1440px] px-6 py-9 sm:px-10 md:px-16 lg:px-24">
-              <div className="grid grid-cols-2 items-center gap-x-8 gap-y-7 md:grid-cols-4">
-                {brands.slice(0, 4).map((brand: { _id: string; slug: string; name: string }) => (
-                  <Link
-                    key={brand._id}
-                    href={`/brands/${brand.slug}`}
-                    className="group flex min-h-[55px] items-center justify-center text-center"
-                  >
-                    <span className="font-serif text-lg font-medium uppercase tracking-[0.08em] text-[#37332f] transition-colors duration-300 group-hover:text-[#968a98] sm:text-xl">
-                      {brand.name}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Top Brands */}
+        <TopBrands brands={brands} />
 
         {/* Editorial specialty section */}
         <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-10 md:px-16 md:py-28 lg:px-24">
@@ -380,6 +394,62 @@ console.log("============================================");
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <FeaturedCategories />
+
+      <FeaturedProducts />
+
+      {/* Featured Medical Offers Banner */}
+      <section className="bg-[#f4f1ed] px-5 py-10 sm:px-8 sm:py-14 lg:px-14">
+        <div className="mx-auto max-w-[1440px]">
+          {/* Section heading */}
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <div>
+              <div className="mb-5 flex items-center gap-3">
+                <span className="h-px w-7 bg-[#9478a5]" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#9478a5]">
+                  Curated for your practice
+                </span>
+              </div>
+
+              <h2 className="font-serif text-3xl tracking-tight text-[#252522] sm:text-3xl lg:text-[48px]">
+                Featured <span className="italic text-[#9478a5]">offers.</span>
+              </h2>
+            </div>
+
+            <Link
+              href="/products"
+              className="group hidden items-center gap-2 border-b border-[#c9bdc9] pb-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#786b7b] transition-colors hover:border-[#9478a5] hover:text-[#9478a5] sm:inline-flex"
+            >
+              Explore products
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
+
+          {/* Clickable promotional image */}
+          <Link
+            href="/products"
+            aria-label="Explore featured dental products and offers"
+            className="group relative block overflow-hidden rounded-[12px] border border-[#e5dce5] bg-white transition-all duration-500 hover:border-[#9478a5]/50 hover:shadow-[0_18px_45px_rgba(120,107,123,0.12)]"
+          >
+            <img
+              src="/images/bossdent-med.png"
+              alt="Featured dental products and medical offers"
+              className="block h-auto w-full transition-transform duration-700 group-hover:scale-[1.015]"
+              loading="lazy"
+            />
+          </Link>
+
+          {/* Mobile link */}
+          <Link
+            href="/products"
+            className="mt-4 inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#786b7b] sm:hidden"
+          >
+            Explore all products
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </section>
 

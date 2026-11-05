@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Menu, X, ShoppingBag, UserRound, MapPin, Search } from "lucide-react";
+
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
 import { usePincode } from "@/context/PincodeContext";
+
 import { Navbar } from "./Navbar";
 import { SearchAutocomplete } from "./SearchAutocomplete";
 import { PincodeModal } from "./PincodeModal";
@@ -18,6 +20,7 @@ export function Header() {
   const { user, logout } = useAuth();
   const { cartCount, openDrawer } = useCart();
   const { currentPincode, openPincodeModal } = usePincode();
+
   const pathname = usePathname();
 
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -25,23 +28,28 @@ export function Header() {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-const isHeroPage = pathname === "/" || pathname === "/contact" || pathname === "/about" || pathname === "/products" || pathname.startsWith("/products/");
+  const isHeroPage =
+    pathname === "/" ||
+    pathname === "/contact" ||
+    pathname === "/about" ||
+    pathname === "/products" ||
+    pathname.startsWith("/products/");
 
- useEffect(() => {
-   const updateScrollState = () => {
-     setIsScrolled(window.scrollY > HEADER_SCROLL_THRESHOLD);
-   };
+  useEffect(() => {
+    const updateScrollState = () => {
+      setIsScrolled(window.scrollY > HEADER_SCROLL_THRESHOLD);
+    };
 
-   updateScrollState();
+    updateScrollState();
 
-   window.addEventListener("scroll", updateScrollState, {
-     passive: true,
-   });
+    window.addEventListener("scroll", updateScrollState, {
+      passive: true,
+    });
 
-   return () => {
-     window.removeEventListener("scroll", updateScrollState);
-   };
- }, [pathname]);
+    return () => {
+      window.removeEventListener("scroll", updateScrollState);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -50,12 +58,15 @@ const isHeroPage = pathname === "/" || pathname === "/contact" || pathname === "
   }, [pathname]);
 
   const closeMobile = () => setMobileOpen(false);
-const headerStateClass =
-  isHeroPage && !isScrolled ? "bossdent-header-hero" : "bossdent-header-scrolled";
+
+  const headerStateClass =
+    isHeroPage && !isScrolled ? "bossdent-header-hero" : "bossdent-header-scrolled";
 
   return (
     <header className={`bossdent-site-header bossdent-vivid-header ${headerStateClass}`}>
+      {/* Single-row desktop header */}
       <div className="bossdent-vivid-top">
+        {/* Logo */}
         <Link href="/" className="bossdent-vivid-logo" aria-label="Bossdent home">
           <img
             src="/videos/bossdent-logo-1.jpeg"
@@ -68,7 +79,12 @@ const headerStateClass =
           <span className="bossdent-brand-wordmark">BOSSDENT</span>
         </Link>
 
+        {/* Desktop navigation — now inside the same row */}
+        <Navbar />
+
+        {/* Right-side actions */}
         <div className="bossdent-vivid-tools">
+          {/* Account */}
           <div className="bossdent-vivid-account-wrap">
             {user ? (
               <>
@@ -89,9 +105,11 @@ const headerStateClass =
                       <strong>{user.name}</strong>
                       <small>{user.email}</small>
                     </div>
+
                     <Link href="/account" role="menuitem" onClick={() => setAccountOpen(false)}>
                       My account
                     </Link>
+
                     <Link
                       href="/account/orders"
                       role="menuitem"
@@ -99,6 +117,7 @@ const headerStateClass =
                     >
                       Orders &amp; tracking
                     </Link>
+
                     <Link
                       href="/account/rewards"
                       role="menuitem"
@@ -106,11 +125,13 @@ const headerStateClass =
                     >
                       Rewards
                     </Link>
+
                     {user.role === "admin" && (
                       <Link href="/admin" role="menuitem" onClick={() => setAccountOpen(false)}>
                         Admin dashboard
                       </Link>
                     )}
+
                     <button
                       type="button"
                       role="menuitem"
@@ -125,13 +146,14 @@ const headerStateClass =
                 )}
               </>
             ) : (
-              <Link href="/login" className="bossdent-vivid-icon bossdent-vivid-account">
+              <Link href="/login" className="bossdent-vivid-signin">
                 <UserRound aria-hidden="true" />
                 <span>Sign in</span>
               </Link>
             )}
           </div>
 
+          {/* Cart */}
           <button
             type="button"
             className="bossdent-vivid-icon bossdent-vivid-cart-icon"
@@ -139,16 +161,16 @@ const headerStateClass =
             aria-label={`Open cart, ${cartCount} items`}
           >
             <ShoppingBag aria-hidden="true" />
+
             <span className="bossdent-vivid-cart-label">
-              Cart{cartCount > 0 ? ` (${cartCount})` : ""}
+              Cart
+              {cartCount > 0 ? ` (${cartCount})` : ""}
             </span>
+
             {cartCount > 0 && <span className="bossdent-vivid-count">{cartCount}</span>}
           </button>
 
-          <Link href="/categories" className="bossdent-vivid-cta">
-            Book a Consult
-          </Link>
-
+          {/* Mobile search */}
           <button
             type="button"
             className="bossdent-vivid-mobile-search"
@@ -159,6 +181,7 @@ const headerStateClass =
             <Search aria-hidden="true" />
           </button>
 
+          {/* Mobile menu */}
           <button
             type="button"
             className="bossdent-vivid-mobile-toggle"
@@ -171,34 +194,47 @@ const headerStateClass =
         </div>
       </div>
 
+      {/* Mobile search panel */}
       {mobileSearchOpen && (
         <div className="bossdent-vivid-mobile-search-panel">
           <SearchAutocomplete />
         </div>
       )}
 
-      <Navbar />
-
+      {/* Mobile navigation */}
       {mobileOpen && (
         <nav className="bossdent-vivid-mobile-panel" aria-label="Mobile navigation">
           <Link href="/about" onClick={closeMobile}>
             About
           </Link>
+
           <Link href="/categories" onClick={closeMobile}>
-            Services / Categories
+            Categories
           </Link>
+
           <Link href="/products" onClick={closeMobile}>
             Products
           </Link>
+
           <Link href="/brands" onClick={closeMobile}>
             Referring Doctors
           </Link>
+
           <Link href="/student-section" onClick={closeMobile}>
             New Patients
           </Link>
+
           <Link href="/contact" onClick={closeMobile}>
             Contact
           </Link>
+
+          {!user && (
+            <Link href="/login" onClick={closeMobile}>
+              <UserRound aria-hidden="true" />
+              Sign in
+            </Link>
+          )}
+
           <button
             type="button"
             onClick={() => {
