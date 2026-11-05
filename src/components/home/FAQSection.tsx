@@ -89,7 +89,7 @@ export function FAQSection() {
               </span>
 
               <ChevronDown
-                className={`h-4 w-4 shrink-0 text-[#968a98] transition-transform duration-300 ${
+                className={`h-4 w-4 shrink-0 text-blue-900 transition-transform duration-300 ${
                   isOpen ? "rotate-180" : ""
                 }`}
               />
@@ -125,7 +125,7 @@ export function FAQSection() {
           </h2>
 
           <p
-            className={`${answeredFont.className} -mt-1 text-6xl leading-[1.15] text-[#a99eaa] sm:text-7xl md:text-[88px]`}
+            className={`${answeredFont.className} -mt-1 text-6xl leading-[1.15] text-blue-900 sm:text-7xl md:text-[88px]`}
           >
             Answered
           </p>
@@ -145,7 +145,7 @@ export function FAQSection() {
 
           <Link
             href="/contact"
-            className="mt-4 inline-flex min-h-[46px] min-w-[220px] items-center justify-center rounded-[5px] bg-[#968a98] px-7 py-3 text-xs font-semibold text-white transition-colors duration-300 hover:bg-[#817482]"
+            className="mt-4 inline-flex min-h-[46px] min-w-[220px] items-center justify-center rounded-[5px] bg-blue-900 px-7 py-3 text-xs font-semibold text-white transition-colors duration-300 hover:bg-[#817482]"
           >
             Contact Our Team
           </Link>
@@ -154,4 +154,3 @@ export function FAQSection() {
     </section>
   );
 }
-

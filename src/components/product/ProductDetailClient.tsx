@@ -267,7 +267,7 @@ export function ProductDetailClient({
             )}
 
             {discountPercent > 0 && (
-              <span className="absolute left-5 top-5 bg-[#9478a5] px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-white">
+              <span className="absolute left-5 top-5 bg-blue-900 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.14em] text-white">
                 Save {discountPercent}%
               </span>
             )}
@@ -352,7 +352,7 @@ export function ProductDetailClient({
 
           {/* Title and price */}
           <div className="pt-6">
-            <h1 className="font-serif text-[clamp(2.3rem,4vw,3.8rem)] leading-[1.02] tracking-[-0.035em] text-[#252522]">
+            <h1 className="font-serif text-[clamp(2.3rem,4vw,3.8rem)] leading-[1.02] tracking-[-0.035em] text-blue-900">
               {product.title}
             </h1>
 
@@ -444,7 +444,7 @@ export function ProductDetailClient({
               }`}
             />
 
-            <span className="text-[10px] uppercase tracking-[0.12em] text-[#77716f]">
+            <span className="text-[10px] uppercase tracking-[0.12em] text-blue-900">
               {isAvailable ? "Available" : "Currently unavailable"}
             </span>
           </div>
@@ -472,7 +472,7 @@ export function ProductDetailClient({
           ) : (
             <div className="mt-7">
               <div className="mb-3 flex items-center justify-between">
-                <label className="text-[9px] font-medium uppercase tracking-[0.18em] text-[#92888e]">
+                <label className="text-[9px] font-medium uppercase tracking-[0.18em] text-blue-900">
                   Quantity
                 </label>
 
@@ -524,7 +524,7 @@ export function ProductDetailClient({
                   type="button"
                   onClick={handleAddToCart}
                   disabled={!isAvailable || isAdding}
-                  className="flex h-12 flex-1 items-center justify-center gap-3 bg-[#9478a5] px-6 text-[9px] font-semibold uppercase tracking-[0.17em] text-white transition-all duration-300 hover:bg-[#786b7b] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="flex h-12 flex-1 items-center justify-center gap-3 bg-blue-900 px-6 text-[9px] font-semibold uppercase tracking-[0.17em] text-white transition-all duration-300 hover:bg-[#786b7b] disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   <ShoppingBag className="h-4 w-4" />
                   {isAdding ? "Adding..." : "Add to cart"}
@@ -547,9 +547,9 @@ export function ProductDetailClient({
           <div className="mt-7 border border-[#ded6d9] bg-[#eee8ed]/50 p-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <Truck className="h-4 w-4 text-[#9478a5]" />
+                <Truck className="h-4 w-4 text-blue-900" />
 
-                <span className="text-[9px] font-semibold uppercase tracking-[0.15em] text-[#786b7b]">
+                <span className="text-[9px] font-semibold uppercase tracking-[0.15em] text-blue-900">
                   Delivery information
                 </span>
               </div>
@@ -557,17 +557,17 @@ export function ProductDetailClient({
               <button
                 type="button"
                 onClick={openPincodeModal}
-                className="text-[9px] font-semibold uppercase tracking-[0.12em] text-[#9478a5] underline underline-offset-4 transition hover:text-[#786b7b]"
+                className="text-[9px] font-semibold uppercase tracking-[0.12em] text-blue-900 underline underline-offset-4 transition hover:text-[#786b7b]"
               >
                 {currentPincode?.pincode ? "Change PIN" : "Check PIN"}
               </button>
             </div>
 
             {currentPincode?.pincode ? (
-              <p className="mt-3 flex items-center gap-2 text-[11px] text-[#77716f]">
-                <MapPin className="h-3.5 w-3.5 text-[#9478a5]" />
+              <p className="mt-3 flex items-center gap-2 text-[11px] text-blue-900">
+                <MapPin className="h-3.5 w-3.5 text-blue-900" />
                 Delivering to{" "}
-                <strong className="font-semibold text-[#252522]">
+                <strong className="font-semibold text-blue-900">
                   {currentPincode.pincode}
                 </strong>
                 {currentPincode.city ? `, ${currentPincode.city}` : ""}
@@ -622,7 +622,7 @@ export function ProductDetailClient({
                 </span>
               </div>
 
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#9478a5] text-white">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-900 text-white">
                 <Check className="h-3.5 w-3.5" />
               </span>
             </div>

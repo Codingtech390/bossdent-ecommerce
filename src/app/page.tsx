@@ -225,54 +225,65 @@ console.log("============================================");
   });
   return (
     <main className="overflow-hidden bg-[#f7f6f2] text-[#292925]">
-      {/* Vivid-inspired editorial hero */}
-      <section
-        className={`bossdent-hero-vivid relative isolate min-h-[630px] overflow-hidden md:min-h-[700px] ${heroScriptFont.variable} ${heroSansFont.variable}`}
-      >
-        <div className="bossdent-hero-vivid__media" aria-hidden="true">
-          <Image
-            src={heroBanner.imageUrl}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={heroBanner.imageUrl}
-            aria-hidden="true"
-          >
-            <source src="/videos/bossdent-banner-video.mp4" type="video/mp4" />
-          </video>
-        </div>
+{/* Compact editorial hero banner */}
+<section className="relative isolate min-h-[400px] overflow-hidden bg-[#252522] md:min-h-[480px] lg:min-h-[500px]">
 
-        <div className="bossdent-hero-vivid__inner">
-          <p className="bossdent-hero-vivid__script" aria-label="Dentistry">
-            Dentistry
-          </p>
+  {/* Background image and video */}
+  <div className="absolute inset-0 -z-20">
+    <Image
+      src={heroBanner.imageUrl}
+      alt=""
+      fill
+      priority
+      sizes="100vw"
+      className="object-cover object-center"
+    />
 
-          <h1 className="bossdent-hero-vivid__headline">
-            {heroBanner.title || "The right tools for better dentistry."}
-          </h1>
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      poster={heroBanner.imageUrl}
+      aria-hidden="true"
+      className="absolute inset-0 h-full w-full object-cover object-center"
+    >
+      <source src="/videos/bossdent-banner-video.mp4" type="video/mp4" />
+    </video>
+  </div>
 
-          <div className="bossdent-hero-vivid__bottom">
-            <Link
-              href={heroBanner.linkUrl || "/categories"}
-              className="bossdent-hero-vivid__button"
-            >
-              Explore the catalogue
-              <ArrowUpRight aria-hidden="true" />
-            </Link>
+  {/* Dark overlay */}
+  <div className="absolute inset-0 -z-10 bg-[#0b1f3a]/55" />
 
-            <p className="bossdent-hero-vivid__description">{heroBanner.subtitle}</p>
-          </div>
-        </div>
-      </section>
+  {/* Content */}
+  <div className="mx-auto flex min-h-[400px] max-w-[1440px] flex-col justify-center px-6 py-14 md:min-h-[480px] md:px-14 lg:min-h-[500px] lg:px-20">
+
+    <div className="grid items-center gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
+
+      {/* Left: Heading and CTA */}
+      <div className="max-w-2xl">
+
+        <span className="mb-4 block text-[10px] font-semibold uppercase tracking-[0.24em] text-white">
+          Bossdent · Dental Collection
+        </span>
+
+        <h1 className="font-serif text-4xl font-medium leading-[1.08] tracking-[-0.035em] text-white sm:text-5xl md:text-6xl">
+          {heroBanner.title || "The right tools for better dentistry."}
+        </h1>
+
+        <Link
+  href={heroBanner.linkUrl || "/categories"}
+  className="mt-8 inline-flex h-12 items-center gap-8 bg-blue-900 px-7 text-xs font-semibold text-white transition-all duration-300 hover:bg-blue-950"
+>
+  Explore the catalogue
+  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+</Link>
+
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Intro / brand positioning */}
       <section className="bg-[#fbfaf8]">
@@ -302,7 +313,7 @@ console.log("============================================");
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="flex min-h-[112px] flex-col justify-between rounded-[4px] bg-[#968a98] px-5 py-5 text-white sm:min-h-[132px] sm:px-6 sm:py-6"
+                className="flex min-h-[112px] flex-col justify-between rounded-[4px] bg-blue-900 px-5 py-5 text-white sm:min-h-[132px] sm:px-6 sm:py-6"
               >
                 <p className="text-[11px] font-medium tracking-wide text-white/90 sm:text-xs">
                   {stat.label}
@@ -319,21 +330,22 @@ console.log("============================================");
         {/* Top Brands */}
         <TopBrands brands={brands} />
 
+
+            <FeaturedCategories />
         {/* Editorial specialty section */}
         <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-10 md:px-16 md:py-28 lg:px-24">
           <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
             {/* Left content */}
             <div className="max-w-[540px]">
-              <div className="mb-5 h-px w-full bg-[#bdb7b0]" />
 
-              <p className="font-serif text-[38px] font-normal uppercase leading-[1.12] tracking-[0.015em] text-[#342f2a] sm:text-[48px] md:text-[54px]">
+              <p className="font-serif text-[38px] font-normal leading-[1.12] tracking-[0.015em] text-[#342f2a] sm:text-[48px] md:text-[54px] text-blue-900">
                 Your practice.
                 <br />
                 Our priority.
               </p>
 
               <h2 className="mt-4 text-base font-medium leading-relaxed text-[#292522] sm:text-lg">
-                Advanced Dental Products, Thoughtfully Selected.
+              Thoughtfully Selected Dental Products.
               </h2>
 
               <p className="mt-5 max-w-[470px] text-sm leading-7 text-[#77716b] sm:text-[15px] sm:leading-8">
@@ -351,7 +363,7 @@ console.log("============================================");
 
               <Link
                 href="/about"
-                className="group mt-8 inline-flex min-h-[48px] items-center justify-center gap-6 rounded-[4px] bg-[#968a98] px-7 py-3 text-xs font-semibold text-white transition-colors duration-300 hover:bg-[#7f7182]"
+                className="group mt-8 inline-flex min-h-[48px] items-center justify-center gap-6 rounded-[4px] bg-blue-900 px-7 py-3 text-xs font-semibold text-white transition-colors duration-300 hover:bg-blue-800"
               >
                 Discover Bossdent
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -397,7 +409,7 @@ console.log("============================================");
         </div>
       </section>
 
-      <FeaturedCategories />
+
 
       <FeaturedProducts />
 
@@ -409,19 +421,19 @@ console.log("============================================");
             <div>
               <div className="mb-5 flex items-center gap-3">
                 <span className="h-px w-7 bg-[#9478a5]" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#9478a5]">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-blue-900">
                   Curated for your practice
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl tracking-tight text-[#252522] sm:text-3xl lg:text-[48px]">
-                Featured <span className="italic text-[#9478a5]">offers.</span>
+                Featured <span className="italic text-blue-900">offers.</span>
               </h2>
             </div>
 
             <Link
               href="/products"
-              className="group hidden items-center gap-2 border-b border-[#c9bdc9] pb-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#786b7b] transition-colors hover:border-[#9478a5] hover:text-[#9478a5] sm:inline-flex"
+              className="group hidden items-center gap-2 border-b border-[#c9bdc9] pb-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-blue-900 transition-colors hover:border-[#9478a5] hover:text-blue-800 sm:inline-flex"
             >
               Explore products
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -445,7 +457,7 @@ console.log("============================================");
           {/* Mobile link */}
           <Link
             href="/products"
-            className="mt-4 inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-[#786b7b] sm:hidden"
+            className="mt-4 inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.16em] text-blue-900 sm:hidden"
           >
             Explore all products
             <ArrowUpRight className="h-3.5 w-3.5" />
@@ -454,7 +466,7 @@ console.log("============================================");
       </section>
 
       {/* Team / Interactive Flip Cards */}
-      <section className="w-full px-4 py-8 sm:px-6 md:py-12">
+      <section className="w-full px-4 py-8 sm:px-6 md:py-12 ">
         <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-0">
           {[
             {
@@ -566,19 +578,21 @@ console.log("============================================");
         <div className="mt-8 flex justify-center md:mt-10">
           <Link
             href="/best-sellers"
-            className="inline-flex min-h-[48px] min-w-[260px] items-center justify-center rounded-[5px] bg-[#968a98] px-8 py-3 text-center text-sm font-semibold text-white transition-all duration-300 hover:bg-[#817482] hover:shadow-md sm:min-w-[277px]"
+            className="inline-flex min-h-[48px] min-w-[260px] items-center justify-center rounded-[5px] bg-blue-900 px-8 py-3 text-center text-sm font-semibold text-white transition-all duration-300 hover:bg-[#817482] hover:shadow-md sm:min-w-[277px]"
           >
             Meet all Members
           </Link>
         </div>
       </section>
+
+
       {/* Discover What's Possible */}
       <section className="w-full bg-white py-12 md:py-16">
         {/* Section heading */}
         <div
           className={`${heroScriptFont.variable} mx-auto flex flex-col items-center justify-center px-5 pb-10 text-center md:pb-14`}
         >
-          <p className="font-[var(--font-bossdent-script)] text-6xl leading-none text-[#968a98] sm:text-7xl md:text-8xl">
+          <p className="font-[var(--font-bossdent-script)] text-6xl leading-none text-blue-900 sm:text-7xl md:text-8xl">
             Discover
           </p>
 
@@ -586,37 +600,34 @@ console.log("============================================");
             What's Possible
           </h2>
         </div>
+
         {/* Four image cards */}
         <div className="grid w-full grid-cols-2 gap-1.5 sm:gap-2 lg:grid-cols-4">
           {[
             {
               title: "Dental Implants",
               image: "/images/bestsellers/dental-implants.png",
-              link: "/best-sellers",
               button: "Explore Dental Implants",
             },
             {
               title: "Reconstructive Dentistry",
               image: "/images/bestsellers/reconstructive-dentistry.png",
-              link: "/best-sellers",
               button: "Explore Reconstructive Dentistry",
             },
             {
               title: "Cosmetic Dentistry",
               image: "/images/bestsellers/cosmetic-dentistry.png",
-              link: "/best-sellers",
               button: "Explore Cosmetic Dentistry",
             },
             {
               title: "Preventative Dentistry",
               image: "/images/bestsellers/preventative-dentistry.png",
-              link: "/best-sellers",
               button: "Explore Preventative Dentistry",
             },
           ].map((item) => (
             <Link
               key={item.title}
-              href={item.link}
+              href="/blog"
               className="group relative block aspect-[1/0.96] overflow-hidden bg-[#e8e5e0] sm:aspect-[1/1.05] lg:aspect-[1/0.96]"
             >
               {/* Background image */}
@@ -647,22 +658,31 @@ console.log("============================================");
             </Link>
           ))}
         </div>
-        {/* Explore All Treatments Button */}
+
+        {/* Explore All Articles Button */}
         <div className="mt-8 flex justify-center md:mt-10">
           <Link
-            href="/best-sellers"
-            className="inline-flex min-h-[48px] min-w-[260px] items-center justify-center rounded-[5px] bg-[#968a98] px-8 py-3 text-center text-sm font-semibold text-white transition-all duration-300 hover:bg-[#817482] hover:shadow-md sm:min-w-[277px]"
+            href="/blog"
+            className="inline-flex min-h-[48px] min-w-[260px] items-center justify-center rounded-[5px] bg-blue-900 px-8 py-3 text-center text-sm font-semibold text-white transition-all duration-300 hover:bg-[#817482] hover:shadow-md sm:min-w-[277px]"
           >
-            Explore All Our Treatments
+            Explore All Articles
           </Link>
         </div>
       </section>
+
+
       {/* Interactive Dental Technology Showcase */}
       <TechnologyShowcase />
+
       {/* Frequently Asked Questions */}
       <FAQSection />
       {/* Clinic setup */}
-      <section className="bg-[#e9e6df]">
+      <section
+          style={{
+              background:
+                "radial-gradient(ellipse at 20% 20%, rgba(30, 58, 138, 0.45), transparent 95%), linear-gradient(135deg, #1e3a8a, #1e293b 50%, #0f172a)" ,
+            }}
+          className="text-white">
         <div className="mx-auto grid max-w-[1440px] md:grid-cols-2">
           <div className="relative min-h-[360px] md:min-h-[620px]">
             <Image
@@ -674,24 +694,24 @@ console.log("============================================");
             />
           </div>
           <div className="flex flex-col justify-center px-6 py-16 sm:px-10 md:px-16 md:py-24 lg:px-24">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-stone-500">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white">
               Beyond the product
             </p>
             <h2 className="mt-6 font-serif text-4xl font-normal leading-[1.1] tracking-[-0.035em] sm:text-5xl">
               Bringing your new practice to life.
             </h2>
-            <p className="mt-6 max-w-md text-sm leading-8 text-stone-600">
+            <p className="mt-6 max-w-md text-sm leading-8 text-white">
               Planning a new clinic? Explore equipment sourcing, practice essentials and
               consultation support for your setup journey.
             </p>
-            <ul className="mt-7 space-y-3 text-xs text-stone-700">
+            <ul className="mt-7 space-y-3 text-xs text-white">
               {[
                 "Equipment and instrument planning",
                 "Solutions tailored to your practice",
                 "Guidance for your clinic setup",
               ].map((benefit) => (
                 <li key={benefit} className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-stone-500" />
+                  <Check className="h-4 w-4 text-white" />
                   {benefit}
                 </li>
               ))}
@@ -707,12 +727,15 @@ console.log("============================================");
       </section>
 
       {/* Visit Us / Contact Section */}
-      <section className="w-full bg-[#191919] px-6 py-16 text-white sm:px-10 md:px-16 md:py-20 lg:px-24">
+        <section className="w-full mt-20 px-6 py-16 text-white sm:px-10 md:px-16 md:py-20 lg:px-24 mb-12" style={{
+    background:
+      "radial-gradient(ellipse at 20% 20%, rgba(30, 58, 138, 0.45), transparent 95%), linear-gradient(135deg, #1e3a8a, #1e293b 50%, #0f172a)",
+  }}>
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
           {/* Left: Contact information */}
           <div className="flex flex-col">
             <h2
-              className={`${heroScriptFont.className} text-5xl leading-none text-[#b9aab9] sm:text-6xl md:text-7xl`}
+              className={`${heroScriptFont.className} text-5xl leading-none text-white sm:text-6xl md:text-7xl`}
             >
               Visit Us
             </h2>

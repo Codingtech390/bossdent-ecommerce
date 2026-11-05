@@ -146,7 +146,7 @@ export function Header() {
                 )}
               </>
             ) : (
-              <Link href="/login" className="bossdent-vivid-signin">
+              <Link href="/login" className="bossdent-vivid-signin ">
                 <UserRound aria-hidden="true" />
                 <span>Sign in</span>
               </Link>

@@ -74,7 +74,7 @@ export function TechnologyShowcase() {
         className="mx-auto max-w-[1440px] overflow-hidden px-4 py-12 sm:px-8 md:px-12 md:py-16"
         style={{
           background:
-            "radial-gradient(ellipse at 20% 20%, rgba(90,75,90,0.12), transparent 95%), linear-gradient(135deg, #aaa0aa, #b8aeb8 50%, #a99faa)",
+            "radial-gradient(ellipse at 20% 20%, rgba(30, 58, 138, 0.45), transparent 95%), linear-gradient(135deg, #1e3a8a, #1e293b 50%, #0f172a)",
         }}
       >
         {/* Heading */}
@@ -109,8 +109,8 @@ export function TechnologyShowcase() {
                   aria-pressed={isActive}
                   className={`flex min-h-[58px] items-center justify-center rounded-[5px] px-3 py-3 text-center font-serif text-[9px] uppercase leading-5 tracking-[0.035em] transition-all duration-300 sm:text-[10px] md:min-h-[68px] md:px-4 ${
                     isActive
-                      ? "bg-[#968a98] text-white shadow-md"
-                      : "bg-[#f5f3f3] text-[#655966] hover:bg-white hover:text-[#968a98]"
+                      ? "bg-blue-900 text-white shadow-md"
+                      : "bg-[#f5f3f3] text-blue-900 hover:bg-white hover:text-[#968a98]"
                   }`}
                 >
                   {technology.tab}
@@ -121,7 +121,7 @@ export function TechnologyShowcase() {
 
           {/* Right content panel */}
           <div
-            className="grid min-w-0 overflow-hidden rounded-[5px] bg-[#968a98] md:grid-cols-[1fr_255px] lg:grid-cols-[1fr_290px]"
+            className="grid min-w-0 overflow-hidden rounded-[5px] bg-blue-900 md:grid-cols-[1fr_255px] lg:grid-cols-[1fr_290px]"
             aria-live="polite"
           >
             {/* Text content */}
@@ -143,7 +143,7 @@ export function TechnologyShowcase() {
 
               <Link
                 href={activeTechnology.href}
-                className="group mt-6 inline-flex min-h-[44px] w-fit items-center justify-center gap-3 rounded-[5px] bg-white px-5 py-3 text-center text-[11px] font-semibold text-[#827584] transition-all duration-300 hover:bg-[#eee9ee] hover:shadow-md sm:min-w-[230px] sm:text-xs"
+                className="group mt-6 inline-flex min-h-[44px] w-fit items-center justify-center gap-3 rounded-[5px] bg-white px-5 py-3 text-center text-[11px] font-semibold text-blue-900 transition-all duration-300 hover:bg-[#eee9ee] hover:shadow-md sm:min-w-[230px] sm:text-xs"
               >
                 {activeTechnology.button}
 

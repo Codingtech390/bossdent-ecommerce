@@ -62,14 +62,14 @@ export function FeaturedCategories() {
             <div className="mb-4 flex items-center gap-3">
               <span className="h-px w-8 bg-[#9478a5]" />
 
-              <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#9478a5]">
+              <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-blue-900">
                 Explore our collection
               </span>
             </div>
 
             <h2 className="font-serif text-[clamp(2.3rem,4vw,3.8rem)] leading-[1.02] tracking-[-0.035em] text-[#252522]">
               Featured
-              <span className="ml-3 italic font-normal text-[#9478a5]">categories.</span>
+              <span className="ml-3 italic font-normal text-blue-900">categories.</span>
             </h2>
 
             <p className="mt-4 max-w-lg text-xs leading-7 text-[#77716f] sm:text-sm">
@@ -80,7 +80,7 @@ export function FeaturedCategories() {
 
           <Link
             href="/categories"
-            className="group inline-flex w-fit items-center gap-3 border-b border-[#c9bdc9] pb-3 text-[9px] font-semibold uppercase tracking-[0.17em] text-[#786b7b] transition-colors hover:border-[#9478a5] hover:text-[#9478a5]"
+            className="group inline-flex w-fit items-center gap-3 border-b border-[#c9bdc9] pb-3 text-[9px] font-semibold uppercase tracking-[0.17em] text-blue-900 transition-colors hover:border-[#9478a5] hover:text-blue-800"
           >
             Explore all categories
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />

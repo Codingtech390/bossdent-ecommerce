@@ -63,7 +63,7 @@ export function ProductShowcaseCarousel({ products }: ProductShowcaseCarouselPro
       <div className="mx-auto max-w-[1440px]">
         <div className="group relative isolate min-h-[330px] overflow-hidden rounded-[5px] border border-[#e6dfdc] bg-[#968a98] shadow-[0_12px_35px_rgba(52,43,49,0.09)] sm:min-h-[390px] lg:min-h-[430px]">
           {/* Background texture */}
-          <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.23),transparent_35%),linear-gradient(115deg,#968a98_0%,#a99ca9_48%,#817482_100%)]" />
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-blue-900" />
 
           {/* Decorative circles */}
           <div className="pointer-events-none absolute -right-24 -top-36 -z-10 h-[420px] w-[420px] rounded-full border border-white/15" />

@@ -21,17 +21,21 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="bossdent-footer mt-auto">
+    <footer className="bossdent-footer mt-auto"
+  style={{
+  background:
+    "radial-gradient(ellipse at 20% 20%, rgba(15, 23, 42, 0.65), transparent 95%), linear-gradient(135deg, #172554, #0f172a 50%, #020617)",
+}}>
       <div className="mx-auto grid max-w-[1480px] gap-12 px-6 py-16 sm:px-10 md:grid-cols-[1.3fr_2fr] md:px-16 lg:px-20 lg:py-20">
         <div>
           <Link href="/" className="inline-flex flex-col text-white no-underline">
-            <strong className="text-2xl font-extrabold tracking-[.14em]">BOSSDENT</strong>
-            <span className="mt-2 text-[8px] font-semibold tracking-[.25em] text-white/60">GLOBAL INDIA PVT LTD</span>
+            <strong className="text-2xl font-extrabold tracking-[.14em] text-white">BOSSDENT</strong>
+            <span className="mt-2 text-[10px] font-semibold tracking-[.25em] text-white/90">GLOBAL INDIA PVT LTD</span>
           </Link>
-          <p className="mt-7 max-w-sm text-sm leading-7 text-white/65">
+          <p className="mt-7 max-w-sm text-sm leading-7 text-white/90">
             Thoughtfully selected dental materials, instruments, equipment and technology for the people and practices behind every smile.
           </p>
-          <div className="mt-7 space-y-3 text-xs text-white/65">
+          <div className="mt-7 space-y-3 text-xs text-white/90">
             <Link href="/contact" className="flex items-center gap-3 hover:text-white"><MapPin className="h-4 w-4 text-[#c9bdca]"/> Contact our team</Link>
             <a href="tel:18001033321" className="flex items-center gap-3 hover:text-white"><Phone className="h-4 w-4 text-[#c9bdca]"/> 1800-103-3321</a>
             <Link href="/contact" className="flex items-center gap-3 hover:text-white"><Mail className="h-4 w-4 text-[#c9bdca]"/> Send an enquiry</Link>
@@ -43,7 +47,7 @@ export function Footer() {
               <h3 className="mb-5 text-[10px] font-bold uppercase tracking-[.2em] text-white">{column.title}</h3>
               <ul className="space-y-3">
                 {column.links.map(([label, href]) => (
-                  <li key={href}><Link href={href} className="text-xs text-white/60 transition-colors hover:text-white">{label}</Link></li>
+                  <li key={href}><Link href={href} className="text-xs text-white/90 transition-colors hover:text-white">{label}</Link></li>
                 ))}
               </ul>
             </div>
@@ -52,8 +56,8 @@ export function Footer() {
       </div>
       <div className="border-t border-white/15">
         <div className="mx-auto flex max-w-[1480px] flex-col gap-3 px-6 py-6 text-[10px] text-white/45 sm:px-10 md:flex-row md:items-center md:justify-between md:px-16 lg:px-20">
-          <p>© {new Date().getFullYear()} Bossdent Global India Pvt Ltd. All rights reserved.</p>
-          <p className="flex items-center gap-2">Professional dental supplies & solutions <ArrowUpRight className="h-3 w-3"/></p>
+          <p className="text-white">© {new Date().getFullYear()} Bossdent Global India Pvt Ltd. All rights reserved.</p>
+          <p className="flex items-center gap-2 text-white">Professional dental supplies & solutions <ArrowUpRight className="h-3 w-3"/></p>
         </div>
       </div>
     </footer>

@@ -181,7 +181,7 @@ export function FeaturedProductsCarousel({ products }: Props) {
                   {product.badges?.slice(0, 1).map((badge) => (
                     <span
                       key={badge}
-                      className="rounded-[2px] bg-[#9478a5] px-2 py-1 text-[8px] font-semibold uppercase tracking-[0.1em] text-white shadow-sm"
+                      className="rounded-[2px] bg-blue-900 px-2 py-1 text-[8px] font-semibold uppercase tracking-[0.1em] text-white shadow-sm"
                     >
                       {badge}
                     </span>
@@ -291,7 +291,7 @@ export function FeaturedProductsCarousel({ products }: Props) {
                       type="button"
                       onClick={() => handleAddToCart(product)}
                       disabled={!!addingId || outOfStock}
-                      className="inline-flex min-h-9 items-center justify-center gap-2 rounded-[3px] bg-[#9478a5] px-3 text-[9px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[#786b7b] disabled:cursor-not-allowed disabled:opacity-50"
+                      className="inline-flex min-h-9 items-center justify-center gap-2 rounded-[3px] bg-blue-900 px-3 text-[9px] font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <ShoppingBag className="h-3.5 w-3.5" />
                       {addingId === product._id

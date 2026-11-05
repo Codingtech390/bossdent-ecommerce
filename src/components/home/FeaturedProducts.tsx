@@ -61,14 +61,14 @@ export async function FeaturedProducts() {
             <div>
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-px w-8 bg-[#9478a5]" />
-                <span className="text-[9px] font-semibold uppercase tracking-[0.24em] text-[#9478a5]">
+                <span className="text-[9px] font-semibold uppercase tracking-[0.24em] text-blue-900">
                   The Bossdent selection
                 </span>
               </div>
 
               <h2 className="font-serif text-[clamp(2rem,4vw,3.25rem)] leading-[1.02] tracking-[-0.035em] text-[#252522]">
                 Practice essentials.
-                <span className="ml-2 font-normal italic text-[#9478a5]">Thoughtfully chosen.</span>
+                <span className="ml-2 font-normal italic text-blue-900">Thoughtfully chosen.</span>
               </h2>
 
               <p className="mt-3 max-w-xl text-xs leading-6 text-[#77716f] sm:text-sm">
@@ -79,7 +79,7 @@ export async function FeaturedProducts() {
 
             <Link
               href="/products"
-              className="group inline-flex w-fit shrink-0 items-center gap-3 border-b border-[#c9bdc9] pb-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-[#786b7b] transition-colors hover:border-[#9478a5] hover:text-[#9478a5]"
+              className="group inline-flex w-fit shrink-0 items-center gap-3 border-b border-[#c9bdc9] pb-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-blue-900 transition-colors hover:border-[#9478a5] hover:text-blue-800"
             >
               View all products
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
