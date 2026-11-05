@@ -40,15 +40,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[75vh] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[75vh] flex items-center justify-center px-4 py-12 mt-12">
       <div className="max-w-md w-full bg-white rounded-2xl border border-slate-200 shadow-xl p-8 space-y-6 text-xs">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-xl bg-dk-teal-800 text-white font-black text-xl flex items-center justify-center mx-auto shadow-md">
-            DK
-          </div>
           <h1 className="text-2xl font-black text-slate-900">
-            Sign In to Dental<span className="text-dk-orange-500">Kart</span>
+            Sign In
           </h1>
           <p className="text-slate-500 text-xs">
             Access your clinic orders, Dentacoins rewards, and specialized member discounts

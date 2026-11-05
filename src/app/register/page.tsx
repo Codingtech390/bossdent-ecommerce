@@ -40,24 +40,13 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 mt-8">
       <div className="max-w-md w-full bg-white rounded-2xl border border-slate-200 shadow-xl p-8 space-y-6 text-xs">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-xl bg-dk-teal-800 text-white font-black text-xl flex items-center justify-center mx-auto shadow-md">
-            DK
-          </div>
           <h1 className="text-2xl font-black text-slate-900">
-            Create Dentist Account
+            Create Account
           </h1>
-          <p className="text-slate-500 text-xs">
-            Join 100,000+ verified dental practitioners and unlock 100 welcome Dentacoins
-          </p>
-        </div>
-
-        <div className="p-2.5 bg-amber-50 rounded-lg border border-amber-200 text-amber-900 flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-amber-600 flex-shrink-0" />
-          <span>New dental registrations receive <strong>100 Free Dentacoins (₹100)</strong> instantly!</span>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
