@@ -1983,41 +1983,26 @@ main > div { scroll-margin-top: 100px; }
 }
 
 
-
-.bossdent-vivid-logo {
-
-  display: inline-flex;
-
-  flex: 0 0 205px;
-
-  align-items: center;
-
-  width: 205px;
-
-  line-height: 0;
-
-  text-decoration: none;
-
+/* Bossdent header logo */
+.bossdent-site-header .bossdent-vivid-top .bossdent-vivid-logo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex: 0 0 180px !important;
+  width: 180px !important;
+  height: 100% !important;
+  min-height: 90px;
+  overflow: visible !important;
 }
 
-
-
-.bossdent-vivid-logo img {
-
-  display: block;
-
-  width: 205px;
-
-  height: 72px;
-
-  max-width: 100%;
-
-  object-fit: contain;
-
-  object-position: left center;
-
+.bossdent-site-header .bossdent-vivid-top .bossdent-vivid-logo img {
+  display: block !important;
+  width: 180px !important;
+  height: 75px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  object-position: left center !important;
 }
-
 
 
 .bossdent-vivid-tools {

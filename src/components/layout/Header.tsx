@@ -68,15 +68,7 @@ export function Header() {
       <div className="bossdent-vivid-top">
         {/* Logo */}
         <Link href="/" className="bossdent-vivid-logo" aria-label="Bossdent home">
-          <img
-            src="/videos/bossdent-logo-1.jpeg"
-            alt="Bossdent"
-            width={230}
-            height={82}
-            fetchPriority="high"
-          />
-
-          <span className="bossdent-brand-wordmark">BOSSDENT</span>
+          <img src="/videos/bossdent-logo-2.png" alt="Bossdent" fetchPriority="high" />
         </Link>
 
         {/* Desktop navigation — now inside the same row */}

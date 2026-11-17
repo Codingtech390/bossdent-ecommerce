@@ -225,65 +225,57 @@ console.log("============================================");
   });
   return (
     <main className="overflow-hidden bg-[#f7f6f2] text-[#292925]">
-{/* Compact editorial hero banner */}
-<section className="relative isolate min-h-[400px] overflow-hidden bg-[#252522] md:min-h-[480px] lg:min-h-[500px]">
+      {/* Compact video-first editorial hero */}
+      <section className="relative isolate h-[490px] w-full overflow-hidden bg-[#0b1f3a] sm:h-[540px] lg:h-[570px]">
+        {/* Background image and video */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={heroBanner.imageUrl}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
 
-  {/* Background image and video */}
-  <div className="absolute inset-0 -z-20">
-    <Image
-      src={heroBanner.imageUrl}
-      alt=""
-      fill
-      priority
-      sizes="100vw"
-      className="object-cover object-center"
-    />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={heroBanner.imageUrl}
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover object-[center_10%]"
+          >
+            <source src="/videos/bossdent-banner-video-1.mp4" type="video/mp4" />
+          </video>
+        </div>
 
-    <video
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      poster={heroBanner.imageUrl}
-      aria-hidden="true"
-      className="absolute inset-0 h-full w-full object-cover object-center"
-    >
-      <source src="/videos/bossdent-banner-video.mp4" type="video/mp4" />
-    </video>
-  </div>
+        {/* Subtle overlay */}
+        <div className="absolute inset-0 z-[1] bg-[#0b1f3a]/20" />
 
-  {/* Dark overlay */}
-  <div className="absolute inset-0 -z-10 bg-[#0b1f3a]/55" />
+        {/* Content */}
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1440px] items-center px-6 pt-16 sm:px-10 md:px-14 lg:px-20">
+          <div className="max-w-[340px]">
+            <span className="mb-3 block text-[9px] font-semibold uppercase tracking-[0.24em] text-white/90">
+              Bossdent · Dental Collection
+            </span>
 
-  {/* Content */}
-  <div className="mx-auto flex min-h-[400px] max-w-[1440px] flex-col justify-center px-6 py-14 md:min-h-[480px] md:px-14 lg:min-h-[500px] lg:px-20">
+            <h1 className="max-w-[330px] font-sans text-2xl font-semibold leading-[1.12] tracking-[-0.035em] text-white sm:text-3xl md:text-4xl">
+              {heroBanner.title || "The right tools for better dentistry."}
+            </h1>
 
-    <div className="grid items-center gap-8 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
-
-      {/* Left: Heading and CTA */}
-      <div className="max-w-2xl">
-
-        <span className="mb-4 block text-[10px] font-semibold uppercase tracking-[0.24em] text-white">
-          Bossdent · Dental Collection
-        </span>
-
-        <h1 className="font-serif text-4xl font-medium leading-[1.08] tracking-[-0.035em] text-white sm:text-5xl md:text-6xl">
-          {heroBanner.title || "The right tools for better dentistry."}
-        </h1>
-
-        <Link
-  href={heroBanner.linkUrl || "/categories"}
-  className="mt-8 inline-flex h-12 items-center gap-8 bg-blue-900 px-7 text-xs font-semibold text-white transition-all duration-300 hover:bg-blue-950"
->
-  Explore the catalogue
-  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-</Link>
-
-      </div>
-    </div>
-  </div>
-</section>
+            <Link
+              href={heroBanner.linkUrl || "/categories"}
+              className="mt-5 inline-flex h-10 items-center gap-5 bg-blue-900 px-5 text-[10px] font-semibold text-white transition-all duration-300 hover:bg-blue-950"
+            >
+              Explore the catalogue
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Intro / brand positioning */}
       <section className="bg-[#fbfaf8]">
@@ -330,14 +322,12 @@ console.log("============================================");
         {/* Top Brands */}
         <TopBrands brands={brands} />
 
-
-            <FeaturedCategories />
+        <FeaturedCategories />
         {/* Editorial specialty section */}
         <div className="mx-auto max-w-[1440px] px-6 py-20 sm:px-10 md:px-16 md:py-28 lg:px-24">
           <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
             {/* Left content */}
             <div className="max-w-[540px]">
-
               <p className="font-serif text-[38px] font-normal leading-[1.12] tracking-[0.015em] text-[#342f2a] sm:text-[48px] md:text-[54px] text-blue-900">
                 Your practice.
                 <br />
@@ -345,7 +335,7 @@ console.log("============================================");
               </p>
 
               <h2 className="mt-4 text-base font-medium leading-relaxed text-[#292522] sm:text-lg">
-              Thoughtfully Selected Dental Products.
+                Thoughtfully Selected Dental Products.
               </h2>
 
               <p className="mt-5 max-w-[470px] text-sm leading-7 text-[#77716b] sm:text-[15px] sm:leading-8">
@@ -408,8 +398,6 @@ console.log("============================================");
           </div>
         </div>
       </section>
-
-
 
       <FeaturedProducts />
 
@@ -585,7 +573,6 @@ console.log("============================================");
         </div>
       </section>
 
-
       {/* Discover What's Possible */}
       <section className="w-full bg-white py-12 md:py-16">
         {/* Section heading */}
@@ -670,7 +657,6 @@ console.log("============================================");
         </div>
       </section>
 
-
       {/* Interactive Dental Technology Showcase */}
       <TechnologyShowcase />
 
@@ -678,11 +664,12 @@ console.log("============================================");
       <FAQSection />
       {/* Clinic setup */}
       <section
-          style={{
-              background:
-                "radial-gradient(ellipse at 20% 20%, rgba(30, 58, 138, 0.45), transparent 95%), linear-gradient(135deg, #1e3a8a, #1e293b 50%, #0f172a)" ,
-            }}
-          className="text-white">
+        style={{
+          background:
+            "radial-gradient(ellipse at 20% 20%, rgba(30, 58, 138, 0.45), transparent 95%), linear-gradient(135deg, #1e3a8a, #1e293b 50%, #0f172a)",
+        }}
+        className="text-white"
+      >
         <div className="mx-auto grid max-w-[1440px] md:grid-cols-2">
           <div className="relative min-h-[360px] md:min-h-[620px]">
             <Image
@@ -727,10 +714,13 @@ console.log("============================================");
       </section>
 
       {/* Visit Us / Contact Section */}
-        <section className="w-full mt-20 px-6 py-16 text-white sm:px-10 md:px-16 md:py-20 lg:px-24 mb-12" style={{
-    background:
-      "radial-gradient(ellipse at 20% 20%, rgba(30, 58, 138, 0.45), transparent 95%), linear-gradient(135deg, #1e3a8a, #1e293b 50%, #0f172a)",
-  }}>
+      <section
+        className="w-full mt-20 px-6 py-16 text-white sm:px-10 md:px-16 md:py-20 lg:px-24 mb-12"
+        style={{
+          background:
+            "radial-gradient(ellipse at 20% 20%, rgba(30, 58, 138, 0.45), transparent 95%), linear-gradient(135deg, #1e3a8a, #1e293b 50%, #0f172a)",
+        }}
+      >
         <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
           {/* Left: Contact information */}
           <div className="flex flex-col">
