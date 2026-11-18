@@ -212,8 +212,6 @@ console.log("============================================");
     subtitle:
       "Discover thoughtfully selected dental materials, instruments and technology for every stage of your practice.",
     badge: "A MORE CONSIDERED WAY TO SHOP DENTAL",
-    imageUrl:
-      "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1800&q=85",
     linkUrl: "/categories",
   };
 
@@ -227,28 +225,19 @@ console.log("============================================");
     <main className="overflow-hidden bg-[#f7f6f2] text-[#292925]">
       {/* Compact video-first editorial hero */}
       <section className="relative isolate h-[490px] w-full overflow-hidden bg-[#0b1f3a] sm:h-[540px] lg:h-[570px]">
-        {/* Background image and video */}
+        {/* Video background only */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src={heroBanner.imageUrl}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-
           <video
             autoPlay
             muted
             loop
             playsInline
             preload="metadata"
-            poster={heroBanner.imageUrl}
+
             aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover object-[center_10%]"
           >
-            <source src="/videos/Bossdent-Homepage.mp4" type="video/mp4" />
+            <source src="/videos/Bossdent-homepage-new.mp4" type="video/mp4" />
           </video>
         </div>
 
