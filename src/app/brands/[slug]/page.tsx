@@ -61,9 +61,9 @@ export default async function BrandDetailPage({ params, searchParams }: BrandDet
       <div className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-3 max-w-2xl">
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 bg-dk-teal-50 text-dk-teal-800 rounded font-bold text-xs uppercase tracking-wider">
+            {/* <span className="px-2.5 py-1 bg-dk-teal-50 text-dk-teal-800 rounded font-bold text-xs uppercase tracking-wider">
               {brand.originCountry}
-            </span>
+            </span> */}
             <span className="flex items-center gap-1 text-emerald-700 text-xs font-semibold">
               <ShieldCheck className="w-4 h-4 text-emerald-600" /> Authorized Distributor
             </span>

@@ -16,7 +16,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const user = await User.findOne({ email: email.toLowerCase().trim() });
+    const normalizedEmail = email.toLowerCase().trim();
+
+    const user = await User.findOne({ email: normalizedEmail });
+
+    console.log("=== LOGIN DEBUG ===");
+    console.log("Email:", normalizedEmail);
+    console.log("User found:", !!user);
+    console.log("Has password hash:", !!user?.password);
+    console.log("User role:", user?.role);
+    console.log("==================");
+
     if (!user || !user.password) {
       return NextResponse.json(
         { error: "Invalid email or password" },
@@ -25,6 +35,7 @@ export async function POST(req: NextRequest) {
     }
 
     const isValid = await verifyPassword(password, user.password);
+    console.log("Password verification:", isValid);
     if (!isValid) {
       return NextResponse.json(
         { error: "Invalid email or password" },

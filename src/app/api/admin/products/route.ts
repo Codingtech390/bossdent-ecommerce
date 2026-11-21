@@ -1,29 +1,42 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "@/lib/db";
+
 import { Product } from "@/models/Product";
 import { ProductVariant } from "@/models/ProductVariant";
 import { Brand } from "@/models/Brand";
 import { Category } from "@/models/Category";
+
 import { extractSessionFromRequest } from "@/lib/auth";
 import { slugify } from "@/lib/utils";
 
 export async function GET(req: NextRequest) {
   try {
     const session = extractSessionFromRequest(req);
+
     if (!session || session.role !== "admin") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
     }
 
     await connectToDatabase();
+
     const products = await Product.find({})
-      .populate("brand", "name slug")
-      .populate("category", "name slug")
+      .populate({
+        path: "brand",
+        model: Brand,
+        select: "name slug",
+      })
+      .populate({
+        path: "category",
+        model: Category,
+        select: "name slug",
+      })
       .sort({ createdAt: -1 })
       .lean();
 
     return NextResponse.json({ products });
   } catch (err: unknown) {
     console.error("Admin products GET error:", err);
+
     return NextResponse.json({ error: "Failed to fetch products" }, { status: 500 });
   }
 }
